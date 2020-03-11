@@ -1,0 +1,35 @@
+body.theme-front-green .flex-column.nav-pills:hover .nav-link.active,
+body.theme-front-green a{
+    color: #2dce89;
+}
+.theme-control div.theme-front-green:before,
+.theme-control div.theme-front-green:after,
+body.theme-front-green .js-toc-move:before,
+body.theme-front-green .page-item.active .page-link,
+body.theme-front-green .nav-pills .nav-link.active,
+body.theme-front-green .nav-pills:hover .nav-link:hover,
+body.theme-front-green .nav-pills:hover .nav-link.active:hover,
+body.theme-front-green .search:after,
+body.theme-front-green .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before,
+body.theme-front-green .custom-checkbox .custom-control-input:disabled:checked::before,
+body.theme-front-green .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before{
+    background-color: #2dce89;
+}
+body.theme-front-green article h1:before {
+  background-color: rgba(45, 206, 137);
+}
+body.theme-front-green article h2:before {
+  background-color: rgba(45, 206, 137, 0.8);
+}
+body.theme-front-green article h3:before {
+  background-color: rgba(45, 206, 137, 0.6);
+}
+body.theme-front-green article h4:before {
+  background-color: rgba(45, 206, 137, 0.4);
+}
+body.theme-front-green article h5:before {
+  background-color: rgba(45, 206, 137, 0.2);
+}
+body.theme-front-green .nav-pills:hover .nav-link.active:hover{
+  color: #fff;
+}

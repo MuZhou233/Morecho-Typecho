@@ -1,0 +1,24 @@
+body.theme-front-none .flex-column.nav-pills:hover .nav-link.active,
+body.theme-front-none a{
+    color: transparent;
+}
+.theme-control div.theme-front-none:before,
+.theme-control div.theme-front-none:after,
+body.theme-front-none .js-toc-move:before,
+body.theme-front-none .page-item.active .page-link,
+body.theme-front-none .nav-pills .nav-link.active,
+body.theme-front-none .nav-pills:hover .nav-link:hover,
+body.theme-front-none .nav-pills:hover .nav-link.active:hover,
+body.theme-front-none .search:after,
+body.theme-front-none .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before,
+body.theme-front-none .custom-checkbox .custom-control-input:disabled:checked::before,
+body.theme-front-none .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before{
+    background-color: #fff;
+}
+body.theme-front-none article h1:before,
+body.theme-front-none article h2:before,
+body.theme-front-none article h3:before,
+body.theme-front-none article h4:before,
+body.theme-front-none article h5:before {
+    background-color: transparent;
+}

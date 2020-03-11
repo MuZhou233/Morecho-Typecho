@@ -1,0 +1,35 @@
+body.theme-front-orange .flex-column.nav-pills:hover .nav-link.active,
+body.theme-front-orange a{
+    color: #fb6340;
+}
+.theme-control div.theme-front-orange:before,
+.theme-control div.theme-front-orange:after,
+body.theme-front-orange .js-toc-move:before,
+body.theme-front-orange .page-item.active .page-link,
+body.theme-front-orange .nav-pills .nav-link.active,
+body.theme-front-orange .nav-pills:hover .nav-link:hover,
+body.theme-front-orange .nav-pills:hover .nav-link.active:hover,
+body.theme-front-orange .search:after,
+body.theme-front-orange .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before,
+body.theme-front-orange .custom-checkbox .custom-control-input:disabled:checked::before,
+body.theme-front-orange .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before{
+    background-color: #fb6340;
+}
+body.theme-front-orange article h1:before {
+  background-color: rgba(251, 99, 64);
+}
+body.theme-front-orange article h2:before {
+  background-color: rgba(251, 99, 64, 0.8);
+}
+body.theme-front-orange article h3:before {
+  background-color: rgba(251, 99, 64, 0.6);
+}
+body.theme-front-orange article h4:before {
+  background-color: rgba(251, 99, 64, 0.4);
+}
+body.theme-front-orange article h5:before {
+  background-color: rgba(251, 99, 64, 0.2);
+}
+body.theme-front-orange .nav-pills:hover .nav-link.active:hover{
+  color: #fff;
+}
