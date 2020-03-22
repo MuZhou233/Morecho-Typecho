@@ -1,12 +1,29 @@
----
-layout: default
----
+<?php
+/**
+ * archive
+ * 
+ * @package custom
+ */
 
-<!-- 
-Credits: this page borrowed a lot from:
-https://github.com/kitian616/jekyll-TeXt-theme
--->
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+ $this->need('_layouts/default-0.php');
+ ?>
 
+<h1 class="title">
+<?php $this->archiveTitle(array(
+    'category'  =>  _t('分类 %s 下的文章'),
+    'search'    =>  _t('包含关键字 %s 的文章'),
+    'tag'       =>  _t('标签 %s 下的文章'),
+    'author'    =>  _t('%s 发布的文章')
+), '', ''); ?>
+</h1>
+
+<?php
+if($this->is('search'))$article = $this;
+else $article = $this->widget('Widget_Contents_Post_List');
+?>
+
+<!--
 <div id='tag_cloud' class="tags js-tags">
     <a class="tag-button--all" data-encode="">
         Show All
@@ -25,61 +42,49 @@ https://github.com/kitian616/jekyll-TeXt-theme
     {{ tags | split:'</a>' | sort | join:'</a>' }}
     </a>
 </div>
-
+-->
 <div class="archive timeline">
+    <?php if ($article->have()): $lastDate = 1000000 ?>
+    <section>
+    <?php 
+    while($article->next()): 
+    if(date('Ym', $article->date->timeStamp) < $lastDate):
+        $lastDate = date('Ym', $article->date->timeStamp);
+    ?>
+    </section><section>
+    <div class="tl-head">
+        <div class="tl-title"><?php $article->date('y年m月'); ?></div>
+    </div>
+    <?php endif ?>
     <div class="js-result d-none">
-        {%- assign _sorted_list = site.posts -%}
-        {%- assign _sorted_list = _sorted_list | sort: 'date' -%}
-        {%- assign _sorted_list = _sorted_list | reverse -%}
-
-
-        {%- for _article in _sorted_list -%}
-            {%- assign _tags = '' -%}
-            {%- for _tag in _article.tags -%}
-                {%- assign _tag_encode = _tag | strip | url_encode -%}
-                {%- if forloop.last -%}
-                    {%- assign _tags = _tags | append: _tag_encode -%}
-                    {%- else -%}
-                    {%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
-                {%- endif -%}
-            {%- endfor -%}
-
-            {% comment %} group by year {% endcomment %}
-            {%- assign _currentdate = _article.date | date: '%Y年%m月' -%}
-            {%- if _currentdate != _date -%}
-                {%- unless forloop.first -%}
-                </section>
-                {%- endunless -%}
-                <section>
-                <div class="tl-head">
-                    <div class="tl-title">{{ _currentdate }}</div>
-                </div>
-                {%- assign _date = _currentdate -%}
-            {%- endif -%}
-
-            <div class="post-preview item tl-item" data-tags="{{ _tags }}">
-                <div class="tl-date">{{ _article.date | date: "%d日" }}</div>
-                <div class="tl-body">
-                    <div class="tl-content">
-                        <a href="{{ _article.url | prepend: site.baseurl }}">
-                            <h2 class="post-title">
-                                {% if _article.copyright %}「转载」{% endif %}
-                                {{ _article.title }}
-                            </h2>
-                            {% if _article.subtitle %}
-                                <h3 class="post-subtitle">
-                                    {{ _article.subtitle }}
-                                </h3>
-                            {% endif %}
-                        </a>
-                    </div>
+        <div class="post-preview item tl-item" data-tags="<?php $article->tags(',', false, ''); ?>">
+            <div class="tl-date"><?php $article->date('d日') ?></div>
+            <div class="tl-body">
+                <div class="tl-content">
+                    <a href="<?php $article->permalink() ?>">
+                        <h2 class="post-title">
+                            <?php $article->title() ?>
+                        </h2>
+                        <?php if($article->fields->subtitle): ?>
+                            <h3 class="post-subtitle">
+                                <?php $article->fields->subtitle() ?>
+                            </h3>
+                        <?php endif ?>
+                    </a>
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
+    <?php endwhile; ?>
+    </section>
     <div class="tl-head">
         <div class="tl-title bg-white" style="color: #777;">BEGIN</div>
     </div>
+    <?php else: ?>
+        <article>
+            <h2 class="post-title"><?php _e('没有找到内容'); ?></h2>
+        </article>
+    <?php endif; ?>
 </div>
 
 <style>
@@ -106,3 +111,5 @@ https://github.com/kitian616/jekyll-TeXt-theme
         overflow-y: scroll;
     }
 </style>
+
+<?php $this->need('_layouts/default-1.php'); ?>

@@ -11,7 +11,7 @@
             <div>评论</div>
         </div>
         <div class="col-4">
-            <div><?php echo get_last_update() ?></div>
+            <div><?php echo get_last_update(); ?></div>
             <div>更新</div>
         </div>
     </div>
@@ -30,7 +30,7 @@
             <div>字数</div>
         </div>
         <div class="col-4">
-            <div><?php $this->date('y/m/d'); ?></div>
+            <div><?php echo date('y/m/d', $this->modified) ?></div>
             <div>修改</div>
         </div>
     </div>

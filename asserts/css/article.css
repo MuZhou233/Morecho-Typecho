@@ -1,0 +1,224 @@
+article{
+  font-size: 0.9rem;
+  padding: 1rem;
+  position: relative;
+}
+article * {
+  max-width: 100%;
+}
+article h1,
+article h2,
+article h3,
+article h4,
+article h5 {
+  position: relative;
+  margin-bottom: 1rem;
+}
+article h1:before,
+article h2:before,
+article h3:before,
+article h4:before,
+article h5:before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  width: 0.2rem;
+  height: 100%;
+  background-color: rgb(0, 123, 255);
+}
+article h2:before {
+  background-color: rgba(0, 123, 255, 0.8);
+}
+article h3:before {
+  background-color: rgba(0, 123, 255, 0.6);
+}
+article h4:before {
+  background-color: rgba(0, 123, 255, 0.4);
+}
+article h5:before {
+  background-color: rgba(0, 123, 255, 0.2);
+}
+article code.cover {
+  color: #555;
+  background-color: #555;
+  transition: all 0.1s ease 0s;
+  text-shadow: none !important;
+}
+article code.cover:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+article thead,
+article tbody {
+  width: 100%;
+}
+article .table-responsive {
+  position: relative;
+  left: -1rem;
+  width: calc(100% + 2rem);
+  max-width: unset;
+}
+article table td:first-child {
+  padding-left: 1rem;
+}
+article table td:last-child {
+  padding-right: 1rem;
+}
+article table::-webkit-scrollbar {
+  width: 1rem;
+  background-color: transparent;
+}
+article table::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #555;
+}
+article table::-webkit-scrollbar-track {
+  border-radius: 0.5rem;
+  background-color: transparent;
+}
+.hljs {
+  font-size: 0.8rem;
+}
+code.hljs {
+  border-radius: 0;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: #21252a;
+  word-wrap: normal;
+  word-break: keep-all;
+}
+code.hljs::-webkit-scrollbar {
+  width: 1rem;
+  background-color: transparent;
+}
+code.hljs::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #555;
+}
+code.hljs::-webkit-scrollbar-track {
+  border-radius: 0.5rem;
+  background-color: transparent;
+}
+article pre.hljs {
+  border-radius: 0.5rem;
+  position: relative;
+  padding: 0;
+}
+article pre.hljs-line-numbered code {
+  margin-left: 3em;
+}
+article pre .hljs-line-number {
+  background-color: #272c33;
+  color: #a0a0a0;
+  list-style-type: none;
+  position: absolute;
+  text-align: right;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  width: 3em;
+  height: 100%;
+  margin: 0;
+}
+article pre.hljs.control-bar {
+  padding-top: 30px;
+}
+article pre.hljs.control-bar:before {
+  content: " ";
+  position: absolute;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #fc625d;
+  width: 12px;
+  height: 12px;
+  left: 10px;
+  top: 10px;
+  -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  z-index: 2;
+}
+article code.hljs .copy-btn {
+  position: absolute;
+  cursor: pointer;
+  right: 6px;
+  top: 6px;
+  font-size: 18px;
+  line-height: 18px;
+}
+article pre.control-bar .hljs-line-number {
+  height: calc(100% - 30px);
+}
+article .alt {
+  position: relative;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding-bottom: 0.4rem;
+  color: #777;
+}
+article .alt:after {
+  content: "";
+  position: absolute;
+  height: 0.2rem;
+  width: 50%;
+  background-color: #ddd;
+  bottom: 0;
+  left: 25%;
+  border-radius: 0.1rem;
+}
+.task-list-item.custom-checkbox {
+  list-style-type: none;
+}
+.task-list-item > p {
+  margin-bottom: 0;
+}
+article blockquote {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.25rem 1rem;
+    overflow: hidden;
+    margin: 0 0 1rem;
+}
+article blockquote:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: .25rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    left: 0;
+    top: 0;
+}
+article blockquote.card-meta {
+  padding: 1rem;
+  font-size: 0.9rem;
+  min-height: 8rem;
+}
+article blockquote.card-meta:before {
+  display: none;
+}
+article blockquote.card-meta h1,
+article blockquote.card-meta h2,
+article blockquote.card-meta h3,
+article blockquote.card-meta h4,
+article blockquote.card-meta h5 {
+  font-size: 1.2em;
+}
+article blockquote.card-meta h1:before,
+article blockquote.card-meta h2:before,
+article blockquote.card-meta h3:before,
+article blockquote.card-meta h4:before,
+article blockquote.card-meta h5:before {
+  display: none;
+}
+article blockquote.card-meta *{
+  z-index: 5;
+  position: relative;
+  text-shadow: 0px 0px 10px #fff;
+}
+article blockquote.card-meta img{
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+}

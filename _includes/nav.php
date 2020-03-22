@@ -11,10 +11,14 @@
     </div>
 
     <div class="owner">
-        <?php if($this->options->avatar): ?>
+        <?php if($this->is('post')): ?>
+            <?php echo $this->author->gravatar($size=256,$rating = 'X', $default = NULL,$class='shadow');?>
+        <?php elseif($this->options->avatar): ?>
             <img class="shadow" src="<?php $this->options->avatar(); ?>">
         <?php endif ?>
-        <?php if($this->options->owner): ?>
+        <?php if($this->is('post')): ?>
+            <p class="owner-name"><?php $this->author(); ?></p>
+        <?php elseif($this->options->owner): ?>
             <p class="owner-name"><?php $this->options->owner(); ?></p>
         <?php endif ?>
     </div>

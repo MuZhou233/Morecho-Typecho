@@ -2,10 +2,17 @@ Page Plan
 
 - [x] index
 - [ ] about
-- [ ] archive
+- [x] archive
 - [x] post
 - [ ] comment board
 - [ ] single page
+
+Plugin Plan  
+
+- [x] Dashboard Style
+- [ ] Server render
+- [x] Synchronous scrolling
+- [x] Article preview
 
 Feature Plan
 
@@ -20,7 +27,7 @@ Feature Plan
 - [x] Smooth Scroll
 - [ ] Pjax
 - [ ] Search
-- [ ] TimeLine
+- [x] TimeLine
  
 MarkDown Adaptation Plan  
 
@@ -29,8 +36,8 @@ MarkDown Adaptation Plan
 - [x] Syntax Hightlighting
 - [x] Inline Code
     - [ ] One Click Copy
-- [ ] Task Lists
-- [ ] Hide Text
+- [x] Task Lists
+- [x] Hide Text
 - [ ] Picture Viewer
 - [x] Meta Card
 

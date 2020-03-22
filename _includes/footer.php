@@ -16,9 +16,6 @@
         feather.replace();
     </script>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
-    <script
-        src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.7.0/dist/highlightjs-line-numbers.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="<?php $this->options->themeUrl('asserts/js/SmoothScroll.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/js/Autolinker.min.js'); ?>"></script>
     
@@ -52,6 +49,7 @@
     </script>
     <?php endif ?>
 
+    <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/plyr/plyr.polyfilled.min.js'); ?>"></script>
     <script>

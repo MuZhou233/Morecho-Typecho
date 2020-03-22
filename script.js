@@ -5,78 +5,7 @@ $(function(){
         localStorage.setItem('theme', $(this).attr('class'))
     })
 
-    $('article p code').each(function(){
-        var content = $(this).text();
-        if(content[0] === '[' && content[content.length-1] === ']'){
-            $(this).addClass('cover');
-            $(this).text(content.slice(1,-1))
-        }
-    })
-    $('article p').each(function(){
-        var reg = /([ \n]{1})(http|https)(:\/\/[\w\-_]+)(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])([ \n]{1})/g;
-        content = $(this).html();
-        //$(this).html(content.replace(reg, '$1<a href="$2$3$4$5">$1$2$3$4$5</a>$6'));
-        $(this).html(Autolinker.link(content));
-    })
-    $('article a').each(function(){
-        var href = $(this).attr('href').trim();
-        if(href.slice(0,4) === 'http' && href[4] != 's')
-            href = '<strong>不安全 http</strong>' + href.slice(4)
-        $(this).tooltip({
-            html: true,
-            title: href
-        })
-    })
-    $('article pre code').each(function () {
-        var id;
-        do{
-            id = 'code-'+parseInt(Math.random()*10000);
-        }while(document.getElementById(id))
-        var copybtn = '<a class="copy-btn" data-clipboard-action="copy" data-clipboard-target="#'+id+'"><i data-feather="copy"></i></a>';
-        $(this).attr('id',id).prepend(copybtn);
-        feather.replace();
-        new ClipboardJS('.copy-btn');
-
-        var lines = $(this).text().split('\n').length - 1;
-        var numbering = $('<ul/>').addClass('hljs').addClass('hljs-line-number');
-        $(this)
-            .parent()
-            .addClass('hljs').addClass('hljs-line-numbered')
-            .prepend(numbering);
-        if(lines > 3){
-            $(this).parent().addClass('control-bar')
-            for (i = 1; i <= lines; i++) {
-                numbering.append($('<li/>').text(i));
-            }
-        }
-    });
-    $('article img').each(function(){
-        if($(this).attr('alt').length === 0) return 0;
-        var $imgalt = $('<div/>').addClass('alt').text($(this).attr('alt'));
-        $(this).parent().append($imgalt);
-    })
-    $('article thead').addClass('thead-light')
-    $('article table').each(function(){
-        var table = '<div class="table-responsive">'+$(this).addClass('table table-hover').prop('outerHTML')+'</div>'
-        $(this).after(table).remove();
-    })
-    $('article input[type="checkbox"]').parent().each(function(){
-        var input = $(this).children('input').addClass('custom-control-input').prop('outerHTML');
-        $(this).children('input').remove();
-        $(this).addClass('custom-checkbox')
-        var label = $('<label/>').addClass('custom-control-label')
-        $(this).prepend(label).prepend(input);
-    })
-
-    $('article blockquote').each(function(){
-        if($(this).text().trim().slice(0,8) !== 'METACARD')return;
-        $(this).addClass('card-meta')
-        $(this).children('p:contains(METACARD)').remove();
-        var img = $(this).find('img').first().prop('outerHTML')
-        $(this).find('img').remove();
-        $(this).find('.alt').remove();
-        $(this).append(img)
-    })
+    article($);
 
     $('.search input').focus(function(){
         $('.search').addClass('active');
