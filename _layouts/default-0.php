@@ -17,11 +17,10 @@
     <meta name="description" content="<?php $this->options->description(); ?>" />
     <meta name="keywords" content="<?php $this->options->keywords(); ?>" />
     <link rel="shortcut icon" href="<?php if($this->options->favicon)$this->options->favicon(); ?>">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/bootstrap/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
+        href="<?php $this->options->themeUrl('asserts/lib/highlight/vscode.css'); ?>">
     <?php $this->header(); ?>
 </head>
 

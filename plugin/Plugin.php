@@ -134,7 +134,7 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
     }
         
     /**
-     * 使用 Parsedown 解析（开启安全模式）
+     * 修改markdown编辑器
      * 
      * @access public
      * @return void
