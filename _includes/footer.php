@@ -93,4 +93,5 @@
             }, 2000)
         })
     </script>
+    <?php $this -> footer(); ?>
 </footer>

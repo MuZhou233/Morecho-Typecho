@@ -39,8 +39,10 @@
 
 .btn:focus,
 .btn:active,
-input.form-control:focus,
-input.form-control:active,
+textarea:focus,
+textarea:active,
+.form-control:focus,
+.form-control:active,
 .page-item .page-link:focus,
 .page-item .page-link:active {
   outline: none;
@@ -64,6 +66,9 @@ body {
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   border: 0;
+}
+.btn{
+  border-radius: .5rem;
 }
 p {
   line-height: 1.6;
@@ -135,6 +140,13 @@ article a:hover {
 .form-control,
 .input-group-text {
   border-radius: 0.5rem;
+}
+.form-control-sm {
+  height: calc(1.5em + .5em + 2px);
+  padding: .25em .5em;
+  font-size: inherit;
+  line-height: 1.5;
+  border-radius: .2em;
 }
 
 /* from argon */

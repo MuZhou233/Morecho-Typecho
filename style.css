@@ -13,8 +13,8 @@ body {
   min-width: 320px;
 }
 .feather {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
 }
 
 /* sidebar */
@@ -281,7 +281,7 @@ body {
 
 /* musicbox */
 .card-musicbox {
-  padding: 16px;
+  padding: 1rem;
 }
 .music-controls .feather {
   cursor: pointer;
@@ -507,4 +507,130 @@ a.toc-link:hover {
 .is-position-fixed {
   position: fixed !important;
   top: 0;
+}
+
+/* comments */
+.card-comments{
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+.card-comments h1{
+  font-size: 1.75rem;
+}
+.card-comments h2{
+  font-size: 1.5rem;
+}
+.card-comments h3{
+  font-size: 1.25rem;
+}
+.comment-list,
+.comment-respond{
+  padding-left: 3rem;
+  line-height: 1.2rem;
+  color: #555;
+}
+.comment-list a,
+.comment-respond a{
+  font-style: normal;
+}
+.comment-list a:hover,
+.comment-respond a:hover{
+  text-decoration: none;
+}
+.comment-list p{
+  margin-bottom: 0;
+}
+.comment-list li{
+  list-style: none;
+}
+.comment-list .comment-body,
+.comment-respond,
+.comment-respond .comment-form{
+  position: relative;
+}
+.comment-list .avatar,
+.comment-respond .avatar{
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+  top: 0rem;
+  left: -3rem;
+  border-radius: 100%;
+}
+.comment-list .comment-time{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.comment-list hr{
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+}
+.comment-list .comment-author,
+.comment-respond .comment-respond-author{
+  font-weight: 600;
+}
+.comment-list .comment-reply,
+.comment-list .comment-reply-cancel{
+  opacity: 0;
+  float: right;
+  background-color: #007bff;
+  padding: .125em .25em;
+  border-radius: .25em;
+  transition: all .3s ease 0s;
+}
+.comment-list .comment-reply a,
+.comment-list .comment-reply-cancel a{
+  position: relative;
+  color: #fff;
+  z-index: 12;
+}
+.comment-list .comment-body:hover .comment-reply{
+  opacity: 1;
+}
+.comment-list .comment-respond:before{
+  content: '';
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0;
+  top: -1em;
+  transition: all .3s ease 0s;
+}
+.comment-list .comment-respond:hover:before{
+  background-color: #007bff;
+}
+.comment-list .comment-reply:before{
+  content: '';
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0;
+  background-color: #007bff;
+  bottom: 0;
+  transition: all .3s ease 0s;
+}
+.comment-list .comment-reply:hover:before{
+  bottom: -1px;
+  height: 3px;
+}
+.comment-list .comment-reply-cancel{
+  opacity: 1;
+  position: absolute;
+  top: -1.75em;
+  right: 0;
+  z-index: 13;
+}
+.comment-respond .comment-respond-author input{
+  font-size: .8rem;
+  margin-bottom: .2em;
+}
+.comment-respond .form-row{
+  padding-bottom: 3px;
+}
+.comment-respond textarea{
+  min-height: 2.2em;
 }

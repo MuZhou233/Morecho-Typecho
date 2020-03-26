@@ -54,6 +54,13 @@
                 <div class="col"><div class="theme-front-green"></div></div>
                 <div class="col"><div class="theme-front-orange"></div></div>
             </div>
+            <?php if ($this->user->hasLogin()): ?>
+            <div class="title">已登录</div>
+            <nav class="nav flex-column nav-pills">
+                <a class="nav-link active" href="<?php $this->options->profileUrl(); ?>"><?php _e('个人设置'); ?></a>
+                <a class="nav-link" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
+            </nav>
+            <?php endif ?>
         </div>
     </div>
 

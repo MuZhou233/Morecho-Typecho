@@ -26,3 +26,4 @@ Morecho 插件推荐配套使用，插件提供了后台样式、后台编辑器
 - Plyr
 - jekyll-TeXt-theme
 - smoothscroll.net
+- Paul-typecho-theme

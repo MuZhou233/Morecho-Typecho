@@ -19,4 +19,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->content(); ?>
 </article>
 
+<?php $this->need('_includes/comments.php'); ?>
 <?php $this->need('_layouts/default-1.php'); ?>
