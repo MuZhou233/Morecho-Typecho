@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<?php if ($this->is('post')||$this->is('page')): ?>
+<?php if ($this->is('post')||$this->is('page') && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
 <div class="card card-post-meta">
     <div class="title">文章信息</div>
     <div class="site-meta row text-center">
@@ -59,7 +59,7 @@
 </div>
 <?php endif ?>
 
-<?php if ($this->is('post')||$this->is('page')): ?>
+<?php if (($this->is('post') || $this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
 <div class="card card-toc">
     <div class="js-toc-move"></div>
     <div class="js-toc toc"></div>

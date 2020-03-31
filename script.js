@@ -32,11 +32,13 @@ $(function(){
     })
 
     $('.site-controls div[data-tab]').click(function(){
+        localStorage.setItem('site-controls', $(this).attr('data-tab'));
         $('.site-controls div[data-tab]').removeClass('active');
         $(this).addClass('active');
         $('.site-control div[data-tab]').removeClass('active');
         $('.site-control div[data-tab='+$(this).attr('data-tab')+']').addClass('active')
-    })
+    });
+    $('.site-controls div[data-tab='+localStorage.getItem('site-controls')+']').trigger('click');
 
     var dynamicHideHeight = $('.dynamic-hide').height();
     var dynamicHideStat = false;

@@ -44,7 +44,7 @@
         </div>
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
-                <a class="nav-link" href="/archive/">文章归档</a>
+                <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>" href="/archive/">文章归档</a>
             </nav>
         </div>
         <div data-tab="setting">
@@ -60,6 +60,27 @@
                 <a class="nav-link active" href="<?php $this->options->profileUrl(); ?>"><?php _e('个人设置'); ?></a>
                 <a class="nav-link" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
             </nav>
+            <?php else: ?>
+            <div class="title">未登录</div>
+            <form action="<?php $this->options->loginAction()?>" method="post" name="login" class="login-form" rold="form">
+                <input type="hidden" name="referer" class="form-control form-control-sm" value="<?php $this->options->siteUrl(); ?>">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" name="name" class="form-control form-control-sm" autocomplete="username" placeholder="用户名" required/>
+                    </div>
+                    <div class="col-auto">
+                        <a href="<?php echo $this->options->adminUrl.'register.php'; ?>" class="submit btn btn-sm" style="padding-left: 0;padding-right:0"><?php _e('没有账号？'); ?></a>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="password" name="password" class="form-control form-control-sm" autocomplete="current-password" placeholder="密码" required/>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="submit btn btn-sm btn-primary"><?php _e('登录'); ?></button>
+                    </div>
+                </div>
+            </form>
             <?php endif ?>
         </div>
     </div>

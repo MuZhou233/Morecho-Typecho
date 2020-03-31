@@ -6,8 +6,21 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
- $this->need('_layouts/default-0.php');
- ?>
+
+if($this->is('tag')){
+    $url = Typecho_Router::getPathInfo();
+    if(substr($url, -1) == '/')$url = substr($url, 0, strlen($url)-1);
+    Header("Location: ".$this->options->siteUrl.'archive.html?tag='.trim(strrchr($url, '/'),'/'));
+}
+
+$GLOBALS['is_archive'] = true;
+if($this->is('archive'))$article = $this;
+else if($this->is('page')||$this->is('Morecho_archive')){
+    $this->widget('Widget_Contents_Post_Recent', 'pageSize=6')->to($article);
+}else $article = $this->widget('Widget_Contents_Post_List');
+
+$this->need('_layouts/default-0.php');
+?>
 
 <h1 class="title">
 <?php $this->archiveTitle(array(
@@ -18,45 +31,47 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ), '', ''); ?>
 </h1>
 
-<?php
-if($this->is('search'))$article = $this;
-else $article = $this->widget('Widget_Contents_Post_List');
-?>
-
-<!--
+<?php if(!$this->is('tag')): ?>
 <div id='tag_cloud' class="tags js-tags">
     <a class="tag-button--all" data-encode="">
         Show All
-        <sup>{{site.posts.size}}</sup>
+        <sup><?php echo $article->length ?></sup>
     </a>
-
-    {% capture tags %}
-    {% for tag in site.tags %}
-    <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
-        data-encode="{{ tag[0] | strip | url_encode }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-        {{ tag[0] }}
-        <sup>{{tag[1].size}}</sup>
+<?php 
+    $tags = array();
+    if ($article->have()) while($article->next()) {
+        foreach ($article->tags as $tag) {
+            if(array_key_exists($tag['name'], $tags))
+                $tags[$tag['name']] += 1;
+            else $tags[$tag['name']] = 1;
+        }
+    }
+    foreach($tags as $tag => $num):
+?>
+    <a data-sort="<?php echo get_post_num() - $num ?>"
+        data-encode="<?php echo urlencode($tag) ?>" class="tag-button" title="<?php echo $tag ?>" rel="<?php echo $num ?>">
+        <?php echo $tag ?>
+        <sup><?php echo $num ?></sup>
     </a>
-    {% endfor %}
-    {% endcapture %}
-    {{ tags | split:'</a>' | sort | join:'</a>' }}
-    </a>
+<?php endforeach; ?>
 </div>
--->
+<?php endif; ?>
+
+<div style="overflow:hidden">
 <div class="archive timeline">
-    <?php if ($article->have()): $lastDate = 1000000 ?>
-    <section>
-    <?php 
-    while($article->next()): 
-    if(date('Ym', $article->date->timeStamp) < $lastDate):
-        $lastDate = date('Ym', $article->date->timeStamp);
-    ?>
-    </section><section>
-    <div class="tl-head">
-        <div class="tl-title"><?php $article->date('y年m月'); ?></div>
-    </div>
-    <?php endif ?>
-    <div class="js-result d-none">
+    <div class="js-result <?php if($this->is_archive_all) echo 'd-none'; ?>">
+        <?php if ($article->have()): $lastDate = 1000000 ?>
+        <?php 
+        while($article->next()): 
+        if(date('Ym', $article->date->timeStamp) < $lastDate):
+            if($lastDate != 1000000)echo '</section>';
+            $lastDate = date('Ym', $article->date->timeStamp);
+        ?>
+        <section>
+        <div class="tl-head">
+            <div class="tl-title"><?php $article->date('y年m月'); ?></div>
+        </div>
+        <?php endif ?>
         <div class="post-preview item tl-item" data-tags="<?php $article->tags(',', false, ''); ?>">
             <div class="tl-date"><?php $article->date('d日') ?></div>
             <div class="tl-body">
@@ -74,7 +89,6 @@ else $article = $this->widget('Widget_Contents_Post_List');
                 </div>
             </div>
         </div>
-    </div>
     <?php endwhile; ?>
     </section>
     <div class="tl-head">
@@ -85,6 +99,8 @@ else $article = $this->widget('Widget_Contents_Post_List');
             <h2 class="post-title"><?php _e('没有找到内容'); ?></h2>
         </article>
     <?php endif; ?>
+    </div>
+</div>
 </div>
 
 <style>

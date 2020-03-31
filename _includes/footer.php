@@ -13,7 +13,7 @@
     <script src="<?php $this->options->themeUrl('asserts/lib/SmoothScroll.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/Autolinker.min.js'); ?>"></script>
     
-    <?php if ($this->is('post')||$this->is('page')): ?>
+    <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
     <script src="<?php $this->options->themeUrl('asserts/lib/clipboard.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/tocbot.min.js'); ?>"></script>
     <script>
@@ -31,7 +31,7 @@
     </script>
     <?php endif ?>
     
-    <?php if ($this->is('archive')): ?>
+    <?php if (array_key_exists('is_archive', $GLOBALS) && $GLOBALS['is_archive']): ?>
     <script src="<?php $this->options->themeUrl('asserts/js/archive.js') ?>"></script>
     <script>
         $(function () {

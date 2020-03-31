@@ -2,6 +2,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 define('__TYPECHO_DEBUG__',true);
+
+function themeInit($data)
+{
+    if($data->is('category')||$data->is('search')||$data->is('tag')||$data->is('author'))
+        $data->parameter->pageSize = 2^32;
+}
+
 function themeConfig($form)
 {
     // 自定义站点图标
@@ -23,12 +30,14 @@ function themeConfig($form)
 
 function themeFields($layout)
 {
+    /*
     if (preg_match("/write-page.php/", $_SERVER['REQUEST_URI'])) {
         $title = new Typecho_Widget_Helper_Form_Element_Text('title', NULL, NULL, _t('标题'), _t('首页模板功能'));
         $layout->addItem($title);
         $intro = new Typecho_Widget_Helper_Form_Element_Text('intro', NULL, NULL, _t('介绍'), _t('首页模板功能'));
         $layout->addItem($intro);
     }
+    */
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
         //$mood = new Typecho_Widget_Helper_Form_Element_Select('mood', array('一般' => '一般', '开心' => '开心', '伤心' => '伤心', '沉闷' => '沉闷', '无聊' => '无聊', '紧张' => '紧张', '愤怒' => '愤怒', '迷茫' => '迷茫', '心酸' => '心酸', '绝望' => '绝望'), '一般', '心情如何');
         //$layout->addItem($mood);

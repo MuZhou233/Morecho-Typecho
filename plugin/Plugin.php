@@ -25,6 +25,8 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
      */
     public static function activate()
     {
+        Helper::addRoute('Morecho_archive_page', '/archive/', 'Widget_Archive', 'render');
+        Typecho_Plugin::factory('Widget_Archive')->handle = array('Morecho_Plugin', 'archive');
         Typecho_Plugin::factory('admin/header.php')->header = array('Morecho_Plugin', 'header');
         Typecho_Plugin::factory('admin/footer.php')->end = array('Morecho_Plugin', 'footer');
         Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('Morecho_Plugin', 'markdown');
@@ -42,7 +44,9 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
      * @return void
      * @throws Typecho_Plugin_Exception
      */
-    public static function deactivate(){}
+    public static function deactivate(){
+        Helper::removeRoute('Morecho_archive_page');
+    }
     
     /**
      * 获取插件配置面板
@@ -145,5 +149,37 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
         list($prefixVersion, $suffixVersion) = explode('/', $options->version);
         $options->theme_folder_name = Typecho_Widget::widget('Widget_Options')->plugin('Morecho')->theme_folder_name;
         require dirname(__FILE__) . '/editor-js.php';
+    }
+    
+    /**
+     * 修改markdown编辑器
+     * 
+     * @access public
+     * @return void
+     */
+    public static function archive($parameterType, $data, $select)
+    {
+        $data->setThemeFile('archive.php');
+
+        /** 设置头部feed */
+        /** RSS 2.0 */
+        $data->setFeedUrl($data->feedUrl);
+
+        /** RSS 1.0 */
+        $data->setFeedRssUrl($data->feedRssUrl);
+
+        /** ATOM 1.0 */
+        $data->setFeedAtomUrl($data->feedAtomUrl);
+
+        /** 设置标题 */
+        $data->setArchiveTitle($data->title);
+
+        /** 设置关键词 */
+        $data->setKeywords(implode(',', Typecho_Common::arrayFlatten($data->tags, 'name')));
+
+        /** 设置描述 */
+        $data->setDescription($data->description);
+
+        return true;
     }
 }
