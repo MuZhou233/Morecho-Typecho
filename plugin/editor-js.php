@@ -1,11 +1,11 @@
 <?php if(!defined('__TYPECHO_ADMIN__')) exit; ?>
 <?php $content = !empty($post) ? $post : $page; if ($options->markdown): ?>
 <script src="<?php echo Helper::options()->pluginUrl ?>/Morecho/cheerio.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/js/clipboard.min.js"></script>
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/js/Autolinker.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/feather.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/highlight.min.js"></script>
+<link rel="stylesheet" href="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/vscode.css">
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/clipboard.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/Autolinker.min.js"></script>
 <script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/js/article.js"></script>
 <script src="<?php $options->adminStaticUrl('js', 'hyperdown.js?v=' . $suffixVersion); ?>"></script>
 <script src="<?php $options->adminStaticUrl('js', 'pagedown.js?v=' . $suffixVersion); ?>"></script>
