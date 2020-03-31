@@ -10,8 +10,8 @@ Morecho 插件推荐配套使用，插件提供了后台样式、后台编辑器
 1. 从[下载页面](release)下载最新稳定版
 1. 将主题包解压并重命名为 `Morecho`
 1. 上传至服务器 `themes` 文件夹中，和其他主题的操作相同
-    - 如果你需要使用 Morecho 插件，从`plugin`文件夹中复制`plugin.php`，在服务器 `plugins` 文件夹中新建名为 `Morecho` 的文件夹，放入复制的文件即可
-1. 在后台新建独立页面。路径为 archive，模板为 archive
+    - 如果你需要使用 Morecho 插件，将`plugin`文件夹复制到服务器 `plugins` 文件夹中重命名为 `Morecho`  
+1. 如果未使用 Morecho 插件，在后台新建独立页面。路径为 archive，模板为 archive  
 
 ## 开发进度
 

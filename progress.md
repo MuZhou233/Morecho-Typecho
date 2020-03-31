@@ -4,7 +4,7 @@ Page Plan
 - [ ] about
 - [x] archive
 - [x] post
-- [ ] comment board
+- [x] comment board
 - [ ] single page
 
 Plugin Plan  
@@ -13,10 +13,11 @@ Plugin Plan
 - [ ] Server render
 - [x] Synchronous scrolling
 - [x] Article preview
+- [x] Auto add single page
 
 Feature Plan
 
-- [ ] Site Control
+- [x] Site Control
 - [x] Fullscreen
 - [x] Article Navigation
 - [x] Site Metadata
