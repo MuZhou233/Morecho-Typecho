@@ -340,19 +340,36 @@ body {
   animation: spining 4s linear infinite;
 }
 
-/* owner */
-.owner {
+/* profile */
+.profile {
   padding: 15px 30px;
 }
-.owner img {
+.profile img {
   width: 100%;
   height: auto;
   border-radius: 100%;
 }
-.owner-name {
+.profile-name{
   text-align: center;
-  margin: 10px 0;
+  margin: 0;
+  margin-top: 10px;
   font-weight: 600;
+}
+.profile-title {
+  text-align: center;
+  font-size: .8em;
+  color: #555;
+  margin: 0;
+  opacity: 0;
+  transition: all .3s ease 0s;
+}
+.profile:hover .profile-title{
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .profile-title{
+    opacity: 1;
+  }
 }
 
 /* content */
@@ -585,6 +602,16 @@ a.toc-link:hover {
 .comment-list .comment-author,
 .comment-respond .comment-respond-author{
   font-weight: 600;
+}
+.comment-list .comment-author-title{
+  font-size: .8em;
+  border-radius: .5em;
+  border: 1px solid #555;
+  padding: 0 .25em;
+  color: #555;
+  line-height: .8em;
+  position: relative;
+  top: -1px;
 }
 .comment-list .comment-reply,
 .comment-list .comment-reply-cancel{

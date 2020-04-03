@@ -11,6 +11,10 @@ function themeInit($data)
 
 function themeConfig($form)
 {
+    $title1 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
+    $title1->html('<h2>基本信息</h2>');
+    $form->addItem($title1);
+
     // 自定义站点图标
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('站点图标'), _t('在这里填入一张图片的地址，不填则使用默认图标'));
     $form->addInput($favicon->addRule('xssCheck', _t('请不要使用特殊字符')));
@@ -26,6 +30,24 @@ function themeConfig($form)
     // 自定义音乐源
     $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('留空则不显示播放器'));
     $form->addInput($musicUrl->addRule('xssCheck', _t('请不要使用特殊字符')));
+    // 自定义页脚
+    $footerCopyright = new Typecho_Widget_Helper_Form_Element_Text('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; &lt;?php echo date(&quot;Y&quot;); echo &quot; &quot;; $this-&gt;options-&gt;owner(); ?&gt; · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>留空则使用默认'));
+    $form->addInput($footerCopyright);
+
+    $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
+    $title2->html('<h2>头衔</h2>');
+    $form->addItem($title2);
+    
+    $groupTitleA = new Typecho_Widget_Helper_Form_Element_Text('groupTitleA', NULL, _t('管理员'), _t('管理员'), _t(''));
+    $form->addInput($groupTitleA->addRule('xssCheck', _t('请不要使用特殊字符')));
+    $groupTitleE = new Typecho_Widget_Helper_Form_Element_Text('groupTitleE', NULL, _t('编辑'), _t('编辑'), _t(''));
+    $form->addInput($groupTitleE->addRule('xssCheck', _t('请不要使用特殊字符')));
+    $groupTitleC = new Typecho_Widget_Helper_Form_Element_Text('groupTitleC', NULL, _t('贡献者'), _t('贡献者'), _t(''));
+    $form->addInput($groupTitleC->addRule('xssCheck', _t('请不要使用特殊字符')));
+    $groupTitleS = new Typecho_Widget_Helper_Form_Element_Text('groupTitleS', NULL, _t('关注者'), _t('关注者'), _t(''));
+    $form->addInput($groupTitleS->addRule('xssCheck', _t('请不要使用特殊字符')));
+    $groupTitleV = new Typecho_Widget_Helper_Form_Element_Text('groupTitleV', NULL, _t('访问者'), _t('访问者'), _t('留空则不显示'));
+    $form->addInput($groupTitleV->addRule('xssCheck', _t('请不要使用特殊字符')));
 }
 
 function themeFields($layout)
@@ -73,6 +95,25 @@ function get_last_update(){
       echo date('y/m/d',$create['created']); //转换为更通俗易懂的格式
     }else{
       echo date('y/m/d',$update['modified']);
+    }
+}
+
+function get_user_title($name){
+    $options = Helper::options();
+    $db = Typecho_Db::get();
+    $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
+    if(sizeof($profile) == 0) return '';
+    switch($profile['group']){
+        case 'administrator':
+            return isset($options->groupTitleA) ? $options->groupTitleA: ''; break;
+        case 'editor':
+            return isset($options->groupTitleE) ? $options->groupTitleE: ''; break;
+        case 'contributor':
+            return isset($options->groupTitleC) ? $options->groupTitleC: ''; break;
+        case 'subscriber':
+            return isset($options->groupTitleS) ? $options->groupTitleS: ''; break;
+        case 'visitor':
+            return isset($options->groupTitleV) ? $options->groupTitleV: ''; break;
     }
 }
 

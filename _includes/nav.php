@@ -10,24 +10,35 @@
         </form>
     </div>
 
-    <div class="owner">
-        <?php if($this->is('post')): ?>
-            <?php echo $this->author->gravatar($size=256,$rating = 'X', $default = NULL,$class='shadow');?>
+    <div class="profile">
+        <?php if($this->user->hasLogin()): ?>
+            <img class="shadow"
+                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->user->mail)) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                alt="<?php echo $this->options->user->name ?>">
+        <?php elseif($this->is('post')): ?>
+            <img class="shadow"
+                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->author->mail)) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                alt="<?php echo $this->options->user->name ?>">
         <?php elseif($this->options->avatar): ?>
             <img class="shadow" src="<?php $this->options->avatar(); ?>">
         <?php endif ?>
-        <?php if($this->is('post')): ?>
-            <p class="owner-name"><?php $this->author(); ?></p>
+        <?php if($this->user->hasLogin()): ?>
+            <p class="profile-name"><?php echo $this->user->screenName ?></p><p class="profile-title"><?php echo get_user_title($this->user->screenName) ?></p>
+        <?php elseif($this->is('post')): ?>
+            <p class="profile-name"><?php $this->author(); ?></p><p class="profile-title">作者</p>
         <?php elseif($this->options->owner): ?>
-            <p class="owner-name"><?php $this->options->owner(); ?></p>
+            <p class="profile-name"><?php $this->options->owner(); ?></p>
         <?php endif ?>
     </div>
 
     <div class="site-controls text-center align-middle">
         <div class="row">
-            <div class="col-4 active" data-tab="navigation"><a href="javascript:;"><i data-feather="compass"></i><br /><span>导航</span></a></div>
-            <div class="col-4" data-tab="folder"><a href="javascript:;"><i data-feather="folder"></i><br /><span>归档</span></a></div>
-            <div class="col-4" data-tab="setting"><a href="javascript:;"><i data-feather="settings"></i><br /><span>设置</span></a></div>
+            <div class="col-4 active" data-tab="navigation"><a href="javascript:;"><i
+                        data-feather="compass"></i><br /><span>导航</span></a></div>
+            <div class="col-4" data-tab="folder"><a href="javascript:;"><i
+                        data-feather="folder"></i><br /><span>归档</span></a></div>
+            <div class="col-4" data-tab="setting"><a href="javascript:;"><i
+                        data-feather="settings"></i><br /><span>设置</span></a></div>
         </div>
     </div>
 
@@ -37,22 +48,29 @@
                 <a class="nav-link <?php if($this->is('index')): ?>active<?php endif; ?>" href="/">首页</a>
                 <?php $this->widget('Widget_Contents_Page_List') -> to($pages); ?>
                 <?php while($pages->next()): ?>
-                    <a class="nav-link <?php echo $this->is('page', $pages->slug)?'active':''; ?>" 
-                        href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+                <a class="nav-link <?php echo $this->is('page', $pages->slug)?'active':''; ?>"
+                    href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
                 <?php endwhile; ?>
             </nav>
         </div>
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
-                <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>" href="/archive/">文章归档</a>
+                <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>"
+                    href="/archive/">文章归档</a>
             </nav>
         </div>
         <div data-tab="setting">
             <div class="title">主题</div>
             <div class="theme-control row">
-                <div class="col"><div class=""></div></div>
-                <div class="col"><div class="theme-front-green"></div></div>
-                <div class="col"><div class="theme-front-orange"></div></div>
+                <div class="col">
+                    <div class=""></div>
+                </div>
+                <div class="col">
+                    <div class="theme-front-green"></div>
+                </div>
+                <div class="col">
+                    <div class="theme-front-orange"></div>
+                </div>
             </div>
             <?php if ($this->user->hasLogin()): ?>
             <div class="title">已登录</div>
@@ -62,19 +80,24 @@
             </nav>
             <?php else: ?>
             <div class="title">未登录</div>
-            <form action="<?php $this->options->loginAction()?>" method="post" name="login" class="login-form" rold="form">
-                <input type="hidden" name="referer" class="form-control form-control-sm" value="<?php $this->options->siteUrl(); ?>">
+            <form action="<?php $this->options->loginAction()?>" method="post" name="login" class="login-form"
+                rold="form">
+                <input type="hidden" name="referer" class="form-control form-control-sm"
+                    value="<?php $this->options->siteUrl(); ?>">
                 <div class="form-row">
                     <div class="col">
-                        <input type="text" name="name" class="form-control form-control-sm" autocomplete="username" placeholder="用户名" required/>
+                        <input type="text" name="name" class="form-control form-control-sm" autocomplete="username"
+                            placeholder="用户名" required />
                     </div>
                     <div class="col-auto">
-                        <a href="<?php echo $this->options->adminUrl.'register.php'; ?>" class="submit btn btn-sm" style="padding-left: 0;padding-right:0"><?php _e('没有账号？'); ?></a>
+                        <a href="<?php echo $this->options->adminUrl.'register.php'; ?>" class="submit btn btn-sm"
+                            style="padding-left: 0;padding-right:0"><?php _e('没有账号？'); ?></a>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <input type="password" name="password" class="form-control form-control-sm" autocomplete="current-password" placeholder="密码" required/>
+                        <input type="password" name="password" class="form-control form-control-sm"
+                            autocomplete="current-password" placeholder="密码" required />
                     </div>
                     <div class="col-auto">
                         <button type="submit" class="submit btn btn-sm btn-primary"><?php _e('登录'); ?></button>

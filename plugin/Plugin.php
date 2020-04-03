@@ -1,7 +1,7 @@
 <?php
 /**
- * 建议与 Morecho 主题共同使用，也支持单独使用<br/>
- * 此插件会修改后台样式，添加与 Morecho 主题相同的 Markdown 预览
+ * 与 Morecho 主题共同使用，请启用前查看使用说明
+ * 
  * 
  * @package Morecho Theme Plugin
  * @author MuZhou233
@@ -152,7 +152,7 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
     }
     
     /**
-     * 修改markdown编辑器
+     * archive页面支持
      * 
      * @access public
      * @return void

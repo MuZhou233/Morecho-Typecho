@@ -2,6 +2,11 @@ body {
   background-color: #eee;
   min-width: 320px;
 }
+.notice,
+.success{
+  background-color: unset;
+  color: unset;
+}
 .typecho-head-nav,
 .typecho-table-wrap,
 #custom-field,

@@ -1,6 +1,8 @@
 <footer>
     <div class="text-center text-black-50" style="padding:1rem">
+        <?php if(strlen($this->options->footerCopyright)>0): echo $this->options->footerCopyright; else: ?>
         <div>&copy; <?php echo date('Y'); echo ' '; $this->options->owner(); ?> · Powered by Typecho · Theme by <a href="https://github.com/muzhou233/Morecho-Typecho">Morecho</a></div>
+        <?php endif ?>
     </div>
     <script src="<?php $this->options->themeUrl('asserts/lib/jquery-3.4.1.slim.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/bootstrap/popper.min.js'); ?>"></script>
@@ -12,6 +14,12 @@
     <script src="<?php $this->options->themeUrl('asserts/lib/highlight/highlight.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/SmoothScroll.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/Autolinker.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('asserts/lib/pangu.min.js'); ?>"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            pangu.autoSpacingPage();
+        });
+    </script>
     
     <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
     <script src="<?php $this->options->themeUrl('asserts/lib/clipboard.min.js'); ?>"></script>

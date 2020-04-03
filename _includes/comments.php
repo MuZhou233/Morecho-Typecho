@@ -24,9 +24,12 @@ function threadedComments($comments, $options)
         <div class="comment-meta">
             <div class="comment-author">
               <?php if ($comments->url): ?>
-                <a href="' . $comments->url . '"' . '" target="_blank"' . ' rel="external nofollow">
+                <a href="<?php echo $comments->url ?>" target="_blank"' . ' rel="external nofollow">
               <?php endif; ?>
-              <?php $comments->gravatar('64', 'mp'); $comments->author(); ?>
+              <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
+              <?php $title = get_user_title($comments->author); if(strlen($title)>0): ?>
+              <span class="comment-author-title"><?php echo $title ?></span>
+              <?php endif; ?>
               <?php if ($comments->url): ?>
                 </a>
               <?php endif; ?>
