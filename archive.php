@@ -14,9 +14,9 @@ if($this->is('tag')){
 }
 
 $GLOBALS['is_archive'] = true;
-if($this->is('archive'))$article = $this;
-else if($this->is('page')||$this->is('Morecho_archive')){
-    $this->widget('Widget_Contents_Post_Recent', 'pageSize=6')->to($article);
+if($this->is('archive')||$this->parameter->type == 'Morecho_archive_page')$article = $this;
+else if($this->is('page')){
+    $this->widget('Widget_Contents_Post_Recent')->to($article);
 }else $article = $this->widget('Widget_Contents_Post_List');
 
 $this->need('_layouts/default-0.php');

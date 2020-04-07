@@ -157,9 +157,15 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
      * @access public
      * @return void
      */
-    public static function archive($parameterType, $data, $select)
+    public static function archive($parameterType, $data, Typecho_Db_Query $select)
     {
+        if($parameterType != 'Morecho_archive_page') return false;
+
+        $select->where('table.contents.type = ?', 'post');
+
         $data->setThemeFile('archive.php');
+
+        $data->setArchiveType = 'date';
 
         /** 设置头部feed */
         /** RSS 2.0 */
@@ -180,6 +186,6 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
         /** 设置描述 */
         $data->setDescription($data->description);
 
-        return true;
+        return false;
     }
 }

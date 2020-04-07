@@ -44,7 +44,7 @@
 <?php if($this->options->musicUrl): ?>
 <div class="card card-musicbox">
     <audio id="player"><source src="<?php $this->options->musicUrl(); ?>" type="audio/mp3" /></audio>
-    <?php if($this->options->musicName): ?><div class="title" style="padding-bottom: 1rem"><?php $this->options->musicName(); ?></div><?php endif ?>
+    <?php if($this->options->musicName): ?><div style="padding-bottom: 1rem"><?php $this->options->musicName(); ?></div><?php endif ?>
     <div class="music-controls paused">
         <!--span class="backward"><i data-feather="chevrons-left"></i></span-->
         <span class="pause"><i data-feather="pause"></i></span>
