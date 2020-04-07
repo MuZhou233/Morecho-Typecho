@@ -4,6 +4,11 @@ body.theme-front-green a{
 }
 .theme-control div.theme-front-green:before,
 .theme-control div.theme-front-green:after,
+body.theme-front-green .btn-primary,
+body.theme-front-green .comment-list .comment-reply,
+body.theme-front-green .comment-list .comment-reply:before,
+body.theme-front-green .comment-list .comment-reply-cancel,
+body.theme-front-green .comment-list .comment-respond:before,
 body.theme-front-green .js-toc-move:before,
 body.theme-front-green .page-item.active .page-link,
 body.theme-front-green .nav-pills .nav-link.active,

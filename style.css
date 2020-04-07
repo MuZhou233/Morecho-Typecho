@@ -16,6 +16,9 @@ body {
   width: 1em;
   height: 1em;
 }
+.btn {
+  border: none !important;
+}
 
 /* sidebar */
 .sidebar {
