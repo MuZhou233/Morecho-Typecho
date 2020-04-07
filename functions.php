@@ -5,7 +5,7 @@ define('__TYPECHO_DEBUG__',true);
 
 function themeInit($data)
 {
-    if($data->is('category')||$data->is('search')||$data->is('tag')||$data->is('author'))
+    if($data->is('category')||$data->is('search')||$data->is('tag')||$data->is('author')||$this->parameter->type == 'Morecho_archive_page')
         $data->parameter->pageSize = 2^32;
 }
 
