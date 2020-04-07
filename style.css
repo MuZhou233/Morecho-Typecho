@@ -172,9 +172,7 @@ body {
 .dynamic-hide.active .card{
   box-shadow: none !important;
 }
-.site-control .title,
-.card-site-meta .title,
-.card-post-meta .title{
+.card .title{
   padding: .75rem 0 0 .75rem;
   font-size: .8rem;
   color: #555;
@@ -373,7 +371,7 @@ body {
 }
 
 /* content */
-.content h1.title {
+.content .title {
   text-align: center;
   margin: 3em 0;
 }

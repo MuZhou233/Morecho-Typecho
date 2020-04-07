@@ -64,8 +64,12 @@ body {
   display: block;
   background-color: #fff;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.25rem .5rem rgba(0, 0, 0, 0.1) !important;
   border: 0;
+  transition: all .3s ease 0s;
+}
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .btn{
   border-radius: .5rem;

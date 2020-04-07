@@ -22,14 +22,19 @@ else if($this->is('page')||$this->is('Morecho_archive')){
 $this->need('_layouts/default-0.php');
 ?>
 
-<h1 class="title">
-<?php $this->archiveTitle(array(
-    'category'  =>  _t('分类 %s 下的文章'),
-    'search'    =>  _t('包含关键字 %s 的文章'),
-    'tag'       =>  _t('标签 %s 下的文章'),
-    'author'    =>  _t('%s 发布的文章')
-), '', ''); ?>
-</h1>
+<div class="title">
+    <h1>
+    <?php $this->archiveTitle(array(
+        'category'  =>  _t('%s'),
+        'search'    =>  _t('包含关键字 %s 的文章'),
+        'tag'       =>  _t('标签 %s 下的文章'),
+        'author'    =>  _t('%s 发布的文章')
+    ), '', ''); ?>
+    </h1>
+    <p>
+    <?php echo $this->getDescription(); ?>
+    </p>
+</div>
 
 <?php if(!$this->is('tag')): ?>
 <div id='tag_cloud' class="tags js-tags">

@@ -1,4 +1,21 @@
 window.article = function ($){
+    $('article h1,article h2,article h3,article h4').each(function(){
+        if($(this).attr('id')!=undefined) return;
+        $(this).attr('id', encodeURI($(this).text()));
+    });
+    try{
+        tocbot.init({
+            tocSelector: '.js-toc',
+            contentSelector: '.js-toc-content',
+            headingSelector: 'h1, h2, h3, h4',
+            hasInnerContainers: true,
+            scrollEndCallback: function(){
+                var padding = 5;
+                $('.js-toc-move').css('top', $('.is-active-li a').offset().top - $('.js-toc').offset().top - padding)
+                $('.js-toc-move').css('height', $('.is-active-li a').height() + padding*2)
+            }
+        });
+    }catch(e){}
     $('article pre code').each(function(){
         $(this).html(hljs.highlightAuto($(this).text()).value);
         $(this).addClass('hljs')

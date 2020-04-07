@@ -56,7 +56,12 @@
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
                 <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>"
-                    href="/archive/">文章归档</a>
+                    href="/archive/">全部文章</a>
+                <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
+                <?php while($categories->next()): ?>
+                <a class="nav-link <?php echo $this->is('category', $categories->slug)?'active':''; ?>"
+                    href="<?php $categories->permalink(); ?>"><?php $categories->name(); ?></a>
+                <?php endwhile; ?>
             </nav>
         </div>
         <div data-tab="setting">
@@ -75,6 +80,9 @@
             <?php if ($this->user->hasLogin()): ?>
             <div class="title">已登录</div>
             <nav class="nav flex-column nav-pills">
+                <?php if($this->user->group == 'administrator'): ?>
+                <a class="nav-link" href="<?php $this->options->adminUrl(); ?>"><?php _e('后台管理'); ?></a>
+                <?php endif; ?>
                 <a class="nav-link active" href="<?php $this->options->profileUrl(); ?>"><?php _e('个人设置'); ?></a>
                 <a class="nav-link" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
             </nav>

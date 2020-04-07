@@ -87,17 +87,15 @@ function threadedComments($comments, $options)
             <div class="comment-respond-author">
               <img class="avatar shadow" src="https://secure.gravatar.com/avatar?s=80&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp">
               <div class="form-row">
-                  <div class="col">
+                  <div class="col-6 col-md-4">
                     <input type="text" name="author" class="form-control form-control-sm" 
                         value="<?php $this->remember('author'); ?>" placeholder="称呼" required />
                   </div>
-                  <div class="col-auto">
+                  <div class="col-6 col-md-4">
                     <input type="text" name="url" class="form-control form-control-sm" 
                         value="<?php $this->remember('url'); ?>" placeholder="http://" 
                         <?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?> />
                   </div>
-              </div>
-              <div class="form-row">
                   <div class="col">
                     <input type="text" name="mail" class="form-control form-control-sm" 
                         value="<?php $this->remember('mail'); ?>" placeholder="Email" 

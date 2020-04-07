@@ -12,6 +12,43 @@
 require_once dirname(__FILE__) . '/Parsedown.php';
 
 class ParsedownExtend extends Parsedown {
+    
+    #
+    # Header
+
+    protected function blockHeader($Line)
+    {
+        if (isset($Line['text'][1]))
+        {
+            $level = 1;
+
+            while (isset($Line['text'][$level]) and $Line['text'][$level] === '#')
+            {
+                $level ++;
+            }
+
+            if ($level > 6)
+            {
+                return;
+            }
+
+            $text = trim($Line['text'], '# ');
+
+            $Block = array(
+                'element' => array(
+                    'name' => 'h' . min(6, $level),
+                    'attributes' => array(
+                        'id' => urlencode($text),
+                    ),
+                    'text' => $text,
+                    'handler' => 'line',
+                ),
+            );
+
+            return $Block;
+        }
+    }
+
     protected function inlineCode($Excerpt) {
         $marker = $Excerpt['text'][0];
 

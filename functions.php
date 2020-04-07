@@ -102,7 +102,7 @@ function get_user_title($name){
     $options = Helper::options();
     $db = Typecho_Db::get();
     $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
-    if(sizeof($profile) == 0) return '';
+    if(sizeof($profile) == 0) return isset($options->groupTitleV) ? $options->groupTitleV: '';
     switch($profile['group']){
         case 'administrator':
             return isset($options->groupTitleA) ? $options->groupTitleA: ''; break;
@@ -115,6 +115,7 @@ function get_user_title($name){
         case 'visitor':
             return isset($options->groupTitleV) ? $options->groupTitleV: ''; break;
     }
+    return isset($options->groupTitleV) ? $options->groupTitleV: '';
 }
 
 class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_PageNavigator

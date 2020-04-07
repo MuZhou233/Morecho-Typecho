@@ -24,21 +24,11 @@
     <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
     <script src="<?php $this->options->themeUrl('asserts/lib/clipboard.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/tocbot.min.js'); ?>"></script>
-    <script>
-        tocbot.init({
-            tocSelector: '.js-toc',
-            contentSelector: '.js-toc-content',
-            headingSelector: 'h1, h2, h3, h4',
-            hasInnerContainers: true,
-            scrollEndCallback: function(){
-                var padding = 5;
-                $('.js-toc-move').css('top', $('.is-active-li a').offset().top - $('.js-toc').offset().top - padding)
-                $('.js-toc-move').css('height', $('.is-active-li a').height() + padding*2)
-            }
-        });
-    </script>
     <?php endif ?>
-    
+
+    <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
+
     <?php if (array_key_exists('is_archive', $GLOBALS) && $GLOBALS['is_archive']): ?>
     <script src="<?php $this->options->themeUrl('asserts/js/archive.js') ?>"></script>
     <script>
@@ -51,8 +41,6 @@
     </script>
     <?php endif ?>
 
-    <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/plyr/plyr.polyfilled.min.js'); ?>"></script>
     <script>
         const player = new Plyr('#player', { controls: '',loadSprite: false });
