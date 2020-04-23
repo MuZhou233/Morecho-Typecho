@@ -14,11 +14,11 @@ article h5 {
   position: relative;
   margin-bottom: 1rem;
 }
-article h1:before,
-article h2:before,
-article h3:before,
-article h4:before,
-article h5:before {
+article > h1:before,
+article > h2:before,
+article > h3:before,
+article > h4:before,
+article > h5:before {
   content: "";
   position: absolute;
   left: -1.2rem;
@@ -145,6 +145,20 @@ article code.hljs .copy-btn {
 }
 article pre.control-bar .hljs-line-number {
   height: calc(100% - 30px);
+}
+article pre.hljs h1.hljs-title,
+article pre.hljs h2.hljs-title,
+article pre.hljs h3.hljs-title,
+article pre.hljs h4.hljs-title {
+  position: absolute;
+  color: #dcdcdc;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  height: 12px;
+  left: 70px;
+  top: 10px;
+  z-index: 2;
 }
 article .alt {
   position: relative;

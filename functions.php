@@ -12,14 +12,16 @@ function themeInit($data)
 function themeConfig($form)
 {
     $title1 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
-    $title1->html('<h2>基本信息</h2>');
+    $title1->html('<h2>基本信息</h2>
+    <p>图片和音乐仅支持网络位置，你可以放在服务器上typecho的文件夹里，也可以通过下载站或cdn实现<br/>
+    左侧栏头像的显示逻辑为：已登录即显示登录用户头像，否则显示作者头像，无作者显示博主头像</p>');
     $form->addItem($title1);
 
     // 自定义站点图标
-    $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('站点图标'), _t('在这里填入一张图片的地址，不填则使用默认图标'));
+    $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('站点图标'), _t('在这里填入一张图片的地址'));
     $form->addInput($favicon->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义头像
-    $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像'), _t('在这里填入一张图片的地址，不填则使用默认图标'));
+    $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像'), _t('在这里填入一张图片的地址'));
     $form->addInput($avatar->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义名称
     $owner = new Typecho_Widget_Helper_Form_Element_Text('owner', NULL, NULL, _t('博主名称'), _t('在这里填入侧栏要显示的博主名称'));
@@ -28,14 +30,15 @@ function themeConfig($form)
     $musicName = new Typecho_Widget_Helper_Form_Element_Text('musicName', NULL, NULL, _t('音乐播放器显示的标题'), _t(''));
     $form->addInput($musicName->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义音乐源
-    $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('留空则不显示播放器'));
+    $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('仅支持mp3格式，留空则不显示播放器，主题文件中包含了一个测试音频，填入<code>/usr/themes/Morecho/asserts/lib/plyr/test.mp3</code>即可'));
     $form->addInput($musicUrl->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义页脚
     $footerCopyright = new Typecho_Widget_Helper_Form_Element_Text('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; &lt;?php echo date(&quot;Y&quot;); echo &quot; &quot;; $this-&gt;options-&gt;owner(); ?&gt; · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>留空则使用默认'));
     $form->addInput($footerCopyright);
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
-    $title2->html('<h2>头衔</h2>');
+    $title2->html('<h2>头衔</h2>
+    <p>会在左侧栏和评论区显示</p>');
     $form->addItem($title2);
     
     $groupTitleA = new Typecho_Widget_Helper_Form_Element_Text('groupTitleA', NULL, _t('管理员'), _t('管理员'), _t(''));

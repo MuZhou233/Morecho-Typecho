@@ -51,17 +51,26 @@ window.article = function ($){
         feather.replace();
         new ClipboardJS('.copy-btn');
 
-        var lines = $(this).text().split('\n').length - 1;
+        var lines = $(this).text().split('\n').length;
         var numbering = $('<ul/>').addClass('hljs').addClass('hljs-line-number');
+        var headtags = ['H1','H2','H3','H4'];
+
         $(this)
             .parent()
             .addClass('hljs').addClass('hljs-line-numbered')
             .prepend(numbering);
-        if(lines > 3){
-            $(this).parent().addClass('control-bar')
+        if(lines > 2){
+            $(this).parent().addClass('control-bar');
             for (i = 1; i <= lines; i++) {
                 numbering.append($('<li/>').text(i));
             }
+        }
+        if(headtags.indexOf($(this).parent().prev().prop('tagName')) >= 0 && $(this).parent().prev().text()[0] === '!'){
+            $(this).parent().addClass('control-bar');
+            var tagname = $(this).parent().prev().prop('tagName')
+            var title = $(this).parent().prev().text().slice(1);
+            $(this).parent().prepend('<'+tagname+' class="hljs-title">'+title+'</'+tagname+'>');
+            $(this).parent().prev().remove();
         }
     });
     $('article img').each(function(){

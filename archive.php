@@ -77,7 +77,16 @@ $this->need('_layouts/default-0.php');
             <div class="tl-title"><?php $article->date('y年m月'); ?></div>
         </div>
         <?php endif ?>
-        <div class="post-preview item tl-item" data-tags="<?php $article->tags(',', false, ''); ?>">
+        <div class="post-preview item tl-item" data-tags="<?php 
+        if ($article->tags) {
+            $result = array();
+            foreach ($article->tags as $tag) {
+                $result[] = urlencode($tag['name']);
+            }
+
+            echo implode(',', $result);
+        }
+        ?>">
             <div class="tl-date"><?php $article->date('d日') ?></div>
             <div class="tl-body">
                 <div class="tl-content">
