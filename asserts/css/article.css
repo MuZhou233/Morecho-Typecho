@@ -51,6 +51,10 @@ article thead,
 article tbody {
   width: 100%;
 }
+article .table{
+  width: 100%;
+  margin-bottom: 1rem;
+}
 article .table-responsive {
   position: relative;
   left: -1rem;
@@ -135,6 +139,9 @@ article pre.hljs.control-bar:before {
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
   z-index: 2;
 }
+article code.hljs {
+  white-space: pre;
+}
 article code.hljs .copy-btn {
   position: absolute;
   cursor: pointer;
@@ -149,7 +156,8 @@ article pre.control-bar .hljs-line-number {
 article pre.hljs h1.hljs-title,
 article pre.hljs h2.hljs-title,
 article pre.hljs h3.hljs-title,
-article pre.hljs h4.hljs-title {
+article pre.hljs h4.hljs-title,
+article pre.hljs h5.hljs-title {
   position: absolute;
   color: #dcdcdc;
   font-weight: bold;
@@ -158,6 +166,7 @@ article pre.hljs h4.hljs-title {
   height: 12px;
   left: 70px;
   top: 10px;
+  margin: 0;
   z-index: 2;
 }
 article .alt {

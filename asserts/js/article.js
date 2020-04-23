@@ -3,19 +3,6 @@ window.article = function ($){
         if($(this).attr('id')!=undefined) return;
         $(this).attr('id', encodeURI($(this).text()));
     });
-    try{
-        tocbot.init({
-            tocSelector: '.js-toc',
-            contentSelector: '.js-toc-content',
-            headingSelector: 'h1, h2, h3, h4',
-            hasInnerContainers: true,
-            scrollEndCallback: function(){
-                var padding = 5;
-                $('.js-toc-move').css('top', $('.is-active-li a').offset().top - $('.js-toc').offset().top - padding)
-                $('.js-toc-move').css('height', $('.is-active-li a').height() + padding*2)
-            }
-        });
-    }catch(e){}
     $('article pre code').each(function(){
         $(this).html(hljs.highlightAuto($(this).text()).value);
         $(this).addClass('hljs')
@@ -27,20 +14,6 @@ window.article = function ($){
             $(this).text(content.slice(1,-1))
         }
     })
-    try{
-        $('article p').each(function(){
-            $(this).html(Autolinker.link($(this).html()));
-        })
-        $('article a').each(function(){
-            var href = $(this).attr('href').trim();
-            if(href.slice(0,4) === 'http' && href[4] != 's')
-                href = '<strong>不安全 http</strong>' + href.slice(4)
-            $(this).tooltip({
-                html: true,
-                title: href
-            })
-        })
-    }catch(e){}
     $('article pre code').each(function () {
         var id;
         do{
@@ -53,7 +26,7 @@ window.article = function ($){
 
         var lines = $(this).text().split('\n').length;
         var numbering = $('<ul/>').addClass('hljs').addClass('hljs-line-number');
-        var headtags = ['H1','H2','H3','H4'];
+        var headtags = ['H1','H2','H3','H4','H5'];
 
         $(this)
             .parent()
@@ -77,6 +50,7 @@ window.article = function ($){
         if($(this).attr('alt').length === 0) return 0;
         var $imgalt = $('<div/>').addClass('alt').text($(this).attr('alt'));
         $(this).parent().append($imgalt);
+        $(this).attr('alt',' ');
     })
     $('article thead').addClass('thead-light')
     $('article table').each(function(){
@@ -121,4 +95,31 @@ window.article = function ($){
         $(this).find('.alt').remove();
         $(this).append(img)
     })
+    try{
+        tocbot.init({
+            tocSelector: '.js-toc',
+            contentSelector: '.js-toc-content',
+            headingSelector: 'h1, h2, h3, h4',
+            hasInnerContainers: true,
+            scrollEndCallback: function(){
+                var padding = 5;
+                $('.js-toc-move').css('top', $('.is-active-li a').offset().top - $('.js-toc').offset().top - padding)
+                $('.js-toc-move').css('height', $('.is-active-li a').height() + padding*2)
+            }
+        });
+    }catch(e){}
+    try{
+        $('article p').each(function(){
+            $(this).html(Autolinker.link($(this).html()));
+        })
+        $('article a').each(function(){
+            var href = $(this).attr('href').trim();
+            if(href.slice(0,4) === 'http' && href[4] != 's')
+                href = '<strong>不安全 http</strong>' + href.slice(4)
+            $(this).tooltip({
+                html: true,
+                title: href
+            })
+        })
+    }catch(e){}
 }
