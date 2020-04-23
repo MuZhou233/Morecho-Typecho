@@ -1,10 +1,10 @@
 <?php
 /**
- * Morecho
+ * 一个简单的响应式三栏主题，需与配套插件共同使用
  * 
  * @package Morecho Theme
  * @author MuZhou233
- * @version 0.3.1
+ * @version 0.4.2.2
  * @link https://typecho.mosar.in
  */
 
