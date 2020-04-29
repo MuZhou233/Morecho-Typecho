@@ -36,7 +36,15 @@ function threadedComments($comments, $options)
             </div>
             <div class="comment-time"><?php $comments->date('y-m-d'); ?></div>
             <?php $comments->content(); ?>
-            <div class="comment-reply"><?php $comments->reply('<i data-feather="message-square"></i> 回复') ?></div>
+            <div class="comment-reply">
+              <?php 
+                if(in_array(get_user_group(), ['administrator', 'editor'])):
+                  Typecho_Widget::widget('Widget_Security')->to($security);
+              ?>
+              <a href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"><i data-feather="trash"></i> 删除</a>
+              <?php endif ?>
+              <?php $comments->reply('<i data-feather="message-square"></i> 回复') ?>
+            </div>
         </div>
         <hr />
     </div>

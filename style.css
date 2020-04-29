@@ -618,16 +618,17 @@ a.toc-link:hover {
 .comment-list .comment-reply-cancel{
   opacity: 0;
   float: right;
-  background-color: #007bff;
-  padding: .125em .25em;
-  border-radius: .25em;
   transition: all .3s ease 0s;
 }
 .comment-list .comment-reply a,
 .comment-list .comment-reply-cancel a{
+  background-color: #007bff;
+  border-radius: .25em;
   position: relative;
   color: #fff;
   z-index: 12;
+  padding: .125em .25em;
+  margin-right: .25em;
 }
 .comment-list .comment-body:hover .comment-reply{
   opacity: 1;

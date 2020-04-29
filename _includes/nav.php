@@ -1,13 +1,11 @@
 <div class="card card-nav">
     <div class="search">
-        <form>
-            <div class="input-group">
+            <div id="site-search" class="input-group" action="<?php $this->options->siteUrl(); echo 'search/'; ?>">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i data-feather="search"></i></div>
                 </div>
                 <input type="text" class="form-control" placeholder="搜索">
             </div>
-        </form>
     </div>
 
     <div class="profile">
@@ -23,7 +21,7 @@
             <img class="shadow" src="<?php $this->options->avatar(); ?>">
         <?php endif ?>
         <?php if($this->user->hasLogin()): ?>
-            <p class="profile-name"><?php echo $this->user->screenName ?></p><p class="profile-title"><?php echo get_user_title($this->user->screenName) ?></p>
+            <p class="profile-name"><?php echo $this->user->screenName ?></p><p class="profile-title"><?php echo get_user_title() ?></p>
         <?php elseif($this->is('post')): ?>
             <p class="profile-name"><?php $this->author(); ?></p><p class="profile-title">作者</p>
         <?php elseif($this->options->owner): ?>
@@ -56,7 +54,10 @@
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
                 <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>"
-                    href="/archive/">全部文章</a>
+                    href="<?php 
+                    if(Typecho_Router::get('Morecho_archive_page') === NULL) echo '/archive.html/';
+                    else echo '/archive/';
+                    ?>">全部文章</a>
                 <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
                 <?php while($categories->next()): ?>
                 <a class="nav-link <?php echo $this->is('category', $categories->slug)?'active':''; ?>"

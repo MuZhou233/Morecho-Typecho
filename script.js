@@ -12,6 +12,16 @@ $(function(){
     }).blur(function(){
         $('.search').removeClass('active');
     })
+    $('#site-search input').bind('keydown',function(event){
+        if(event.keyCode == "13")    
+        {
+            window.location.href = $('#site-search').attr('action') + $('#site-search input').val();
+        }
+    });
+    $('#site-search div').click(function(){
+        if($('#site-search input').val().length !== 0)
+            window.location.href = $('#site-search').attr('action') + $('#site-search input').val();
+    })
 
     $('.card-sidebar-control').click(function(){
         if($('.sidebar').hasClass('active'))

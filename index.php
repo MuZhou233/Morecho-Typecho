@@ -4,7 +4,7 @@
  * 
  * @package Morecho Theme
  * @author MuZhou233
- * @version 0.4.2.2
+ * @version 0.4.2.3
  * @link https://typecho.mosar.in
  */
 

@@ -101,12 +101,20 @@ function get_last_update(){
     }
 }
 
-function get_user_title($name){
+function get_user_group($name = NULL){
     $options = Helper::options();
     $db = Typecho_Db::get();
-    $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
+    if($name === NULL)
+        $profile = $db->fetchRow($db->select('group', 'uid')->from('table.users')->where('uid = ?', intval(Typecho_Cookie::get('__typecho_uid'))));
+    else
+        $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
     if(sizeof($profile) == 0) return isset($options->groupTitleV) ? $options->groupTitleV: '';
-    switch($profile['group']){
+    return $profile['group'];
+}
+
+function get_user_title($name = NULL){
+    $options = Helper::options();
+    switch(get_user_group($name)){
         case 'administrator':
             return isset($options->groupTitleA) ? $options->groupTitleA: ''; break;
         case 'editor':
@@ -224,15 +232,6 @@ class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_Page
     }
 }
 
-/**
- * 文章页面列表组件
- *
- * @author qining
- * @category typecho
- * @package Widget
- * @copyright Copyright (c) 2008 Typecho team (http://www.typecho.org)
- * @license GNU General Public License 2.0
- */
 class Widget_Contents_Post_List extends Widget_Abstract_Contents
 {
     /**
