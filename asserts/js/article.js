@@ -1,7 +1,7 @@
 window.article = function ($){
     $('article h1,article h2,article h3,article h4').each(function(){
         if($(this).attr('id')!=undefined) return;
-        $(this).attr('id', encodeURI($(this).text()));
+        $(this).attr('id', $(this).text());
     });
     $('article pre code').each(function(){
         $(this).html(hljs.highlightAuto($(this).text()).value);
@@ -42,7 +42,7 @@ window.article = function ($){
             $(this).parent().addClass('control-bar');
             var tagname = $(this).parent().prev().prop('tagName')
             var title = $(this).parent().prev().text().slice(1);
-            $(this).parent().prepend('<'+tagname+' class="hljs-title">'+title+'</'+tagname+'>');
+            $(this).parent().prepend('<'+tagname+' id="'+title+'" class="hljs-title">'+title+'</'+tagname+'>');
             $(this).parent().prev().remove();
         }
     });
@@ -90,10 +90,21 @@ window.article = function ($){
         if($(this).text().trim().slice(0,8) !== 'METACARD')return;
         $(this).addClass('card-meta')
         $(this).children('p:contains(METACARD)').remove();
-        var img = $(this).find('img').first().prop('outerHTML')
+        var imgurl = $(this).find('img').first().prop('src');
+        var img = $(this).find('img').first().prop('outerHTML');
         $(this).find('img').remove();
         $(this).find('.alt').remove();
-        $(this).append(img)
+        $(this).html('<span>'+$(this).html()+'</span>');
+        if(imgurl !== undefined){
+            $(this).append('<span class="card-meta-background" style="background-image:url('+imgurl+')"></span>');
+            $(this).append('<span>'+img+'</span>');
+            $(this).find('img').bind('load',function(){
+                var image = new Image()
+                image.src = $(this).prop('src');
+                var sizescale = image.width > image.height ? 1 : image.width/image.height;
+                $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
+            })
+        }
     })
     try{
         tocbot.init({

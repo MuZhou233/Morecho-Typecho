@@ -210,9 +210,33 @@ article blockquote:before {
     top: 0;
 }
 article blockquote.card-meta {
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
+  padding: 0;
   min-height: 8rem;
+}
+article blockquote.card-meta .card-meta-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(20px);
+  filter: blur(20px);
+  background-color: #888;
+  background-blend-mode: color-dodge;
+  background-size: cover;
+  background-position: 50%;
+}
+article blockquote.card-meta > *:first-child {
+  padding: 1rem;
+  z-index: 1;
+}
+article blockquote.card-meta > *:last-child {
+  z-index: 1;
 }
 article blockquote.card-meta:before {
   display: none;
@@ -231,17 +255,7 @@ article blockquote.card-meta h4:before,
 article blockquote.card-meta h5:before {
   display: none;
 }
-article blockquote.card-meta *{
-  z-index: 5;
-  position: relative;
-  text-shadow: 0px 0px 10px #fff;
-}
 article blockquote.card-meta img{
-  z-index: 1;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
   border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
 }
