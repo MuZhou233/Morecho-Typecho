@@ -29,6 +29,9 @@ function threadedComments($comments, $options)
               <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
               <?php $title = get_user_title($comments->author); if(strlen($title)>0): ?>
               <span class="comment-author-title"><?php echo $title ?></span>
+              <?php if ($comments->authorId === $comments->ownerId): ?>
+              <span class="comment-author-title">作者</span>
+              <?php endif ?>
               <?php endif; ?>
               <?php if ($comments->url): ?>
                 </a>
@@ -41,7 +44,7 @@ function threadedComments($comments, $options)
                 if(in_array(get_user_group(), ['administrator', 'editor'])):
                   Typecho_Widget::widget('Widget_Security')->to($security);
               ?>
-              <a href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"><i data-feather="trash"></i> 删除</a>
+              <a href="javascript:;" data-rel="delete" data-href="<?php $security->index('/action/comments-edit?do=delete&coid='.$comments->coid); ?>"><i data-feather="trash"></i> 删除</a>
               <?php endif ?>
               <?php $comments->reply('<i data-feather="message-square"></i> 回复') ?>
             </div>
@@ -97,16 +100,16 @@ function threadedComments($comments, $options)
               <div class="form-row">
                   <div class="col-6 col-md-4">
                     <input type="text" name="author" class="form-control form-control-sm" 
-                        placeholder="称呼" required />
+                        placeholder="昵称" required />
                   </div>
                   <div class="col-6 col-md-4">
                     <input type="text" name="url" class="form-control form-control-sm" 
-                        placeholder="http://" 
+                        placeholder="网站" 
                         <?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?> />
                   </div>
                   <div class="col">
                     <input type="text" name="mail" class="form-control form-control-sm" 
-                        placeholder="Email" 
+                        placeholder="邮箱" 
                         <?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?> />
                   </div>
               </div>
@@ -114,7 +117,7 @@ function threadedComments($comments, $options)
             <?php endif; ?>
             <div class="form-row">
                 <div class="col">
-                    <textarea type="text" class="form-control form-control-sm" rows="1" name="text" id="textarea" required></textarea>
+                    <textarea type="text" class="form-control form-control-sm" rows="2" name="text" id="textarea" required></textarea>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="submit btn btn-sm btn-primary"><?php _e('提交'); ?></button>

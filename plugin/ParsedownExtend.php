@@ -38,7 +38,7 @@ class ParsedownExtend extends Parsedown {
                 'element' => array(
                     'name' => 'h' . min(6, $level),
                     'attributes' => array(
-                        'id' => urlencode($text),
+                        'id' => str_replace(' ', '-', $text),
                     ),
                     'text' => $text,
                     'handler' => 'line',

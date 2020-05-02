@@ -5,6 +5,7 @@
         <?php endif ?>
     </div>
     <script src="<?php $this->options->themeUrl('asserts/lib/jquery-3.4.1.slim.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('asserts/lib/js.cookie.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/bootstrap/popper.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/bootstrap/bootstrap.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/feather.min.js'); ?>"></script>

@@ -1,13 +1,17 @@
 body.theme-front-orange .flex-column.nav-pills:hover .nav-link.active,
-body.theme-front-orange a{
-    color: #fb6340;
+body.theme-front-orange article a,
+body.theme-front-orange footer a,
+body.theme-front-orange .site-control a,
+body.theme-front-orange .card-comments a,
+body.theme-front-orange .btn-link{
+    color: #2dce89;
 }
-.theme-control div.theme-front-orange:before,
-.theme-control div.theme-front-orange:after,
+.theme-control div.theme-front-green:before,
+.theme-control div.theme-front-green:after,
 body.theme-front-orange .btn-primary,
-body.theme-front-orange .comment-list .comment-reply,
+body.theme-front-orange .comment-list .comment-reply a,
 body.theme-front-orange .comment-list .comment-reply:before,
-body.theme-front-orange .comment-list .comment-reply-cancel,
+body.theme-front-orange .comment-list .comment-reply-cancel a,
 body.theme-front-orange .comment-list .comment-respond:before,
 body.theme-front-orange .js-toc-move:before,
 body.theme-front-orange .page-item.active .page-link,
@@ -18,23 +22,24 @@ body.theme-front-orange .search:after,
 body.theme-front-orange .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before,
 body.theme-front-orange .custom-checkbox .custom-control-input:disabled:checked::before,
 body.theme-front-orange .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before{
-    background-color: #fb6340;
+    background-color: #2dce89;
 }
 body.theme-front-orange article h1:before {
-  background-color: rgba(251, 99, 64);
+  background-color: rgba(45, 206, 137);
 }
 body.theme-front-orange article h2:before {
-  background-color: rgba(251, 99, 64, 0.8);
+  background-color: rgba(45, 206, 137, 0.8);
 }
 body.theme-front-orange article h3:before {
-  background-color: rgba(251, 99, 64, 0.6);
+  background-color: rgba(45, 206, 137, 0.6);
 }
 body.theme-front-orange article h4:before {
-  background-color: rgba(251, 99, 64, 0.4);
+  background-color: rgba(45, 206, 137, 0.4);
 }
 body.theme-front-orange article h5:before {
-  background-color: rgba(251, 99, 64, 0.2);
+  background-color: rgba(45, 206, 137, 0.2);
 }
-body.theme-front-orange .nav-pills:hover .nav-link.active:hover{
+body.theme-front-orange .nav-pills:hover .nav-link.active:hover,
+body.theme-front-orange .comment-reply a{
   color: #fff;
 }

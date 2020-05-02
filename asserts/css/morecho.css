@@ -89,7 +89,8 @@ blockquote {
   position: relative;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 0.25rem 1rem;
-  border-radius: .5rem;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
   overflow: hidden;
 }
 blockquote:before {

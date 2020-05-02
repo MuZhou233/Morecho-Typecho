@@ -678,3 +678,35 @@ a.toc-link:hover {
 .comment-respond textarea{
   min-height: 2.2em;
 }
+
+/* tools */
+.tools{
+  z-index: 233;
+  position: fixed;
+  width: 100%;
+}
+.tools,
+.tools > .container > .row, 
+.tools > .container > .row > div{
+  height: 0;
+}
+.toast-wrap{
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .toast-wrap{
+    width: calc(100% + 3rem);
+    left: -2rem;
+  }
+}
+.card.toast{
+  margin-top: 1rem;
+  max-width: unset;
+}
+.toast-wrap .toast-header{
+  border: unset;
+}
+.toast-wrap .toast-body {
+  padding: 0 .75rem;
+}

@@ -1,7 +1,7 @@
 window.article = function ($){
     $('article h1,article h2,article h3,article h4').each(function(){
         if($(this).attr('id')!=undefined) return;
-        $(this).attr('id', $(this).text());
+        $(this).attr('id', $(this).text().replace(' ', '-'));
     });
     $('article pre code').each(function(){
         $(this).html(hljs.highlightAuto($(this).text()).value);
@@ -22,7 +22,6 @@ window.article = function ($){
         var copybtn = '<a class="copy-btn" data-clipboard-action="copy" data-clipboard-target="#'+id+'"><i data-feather="copy"></i></a>';
         $(this).attr('id',id).prepend(copybtn);
         feather.replace();
-        new ClipboardJS('.copy-btn');
 
         var lines = $(this).text().split('\n').length;
         var numbering = $('<ul/>').addClass('hljs').addClass('hljs-line-number');
@@ -45,6 +44,14 @@ window.article = function ($){
             $(this).parent().prepend('<'+tagname+' id="'+title+'" class="hljs-title">'+title+'</'+tagname+'>');
             $(this).parent().prev().remove();
         }
+    });
+    var clipboard = new ClipboardJS('.copy-btn');
+    clipboard.on('success', function(e) {
+        toast('复制成功');
+        e.clearSelection();
+    }).on('error', function(e){
+        toast('复制失败');
+        e.clearSelection();
     });
     $('article img').each(function(){
         if($(this).attr('alt').length === 0) return 0;
@@ -98,12 +105,14 @@ window.article = function ($){
         if(imgurl !== undefined){
             $(this).append('<span class="card-meta-background" style="background-image:url('+imgurl+')"></span>');
             $(this).append('<span>'+img+'</span>');
-            $(this).find('img').bind('load',function(){
-                var image = new Image()
-                image.src = $(this).prop('src');
-                var sizescale = image.width > image.height ? 1 : image.width/image.height;
-                $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
-            })
+            try{
+                $(this).find('img').bind('load',function(){
+                    var image = new Image()
+                    image.src = $(this).prop('src');
+                    var sizescale = image.width > image.height ? 1 : image.width/image.height;
+                    $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
+                })
+            }catch{}
         }
     })
     try{

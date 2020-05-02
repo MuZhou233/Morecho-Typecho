@@ -149,6 +149,7 @@ article code.hljs .copy-btn {
   top: 6px;
   font-size: 18px;
   line-height: 18px;
+  color: #fff;
 }
 article pre.control-bar .hljs-line-number {
   height: calc(100% - 30px);
@@ -215,7 +216,11 @@ article blockquote.card-meta {
   align-items: center;
   font-size: 0.9rem;
   padding: 0;
-  min-height: 8rem;
+  min-height: 6rem;
+  border-radius: .5rem;
+}
+article#wmd-preview blockquote.card-meta{
+  padding: 0 !important;
 }
 article blockquote.card-meta .card-meta-background {
   position: absolute;
@@ -231,11 +236,13 @@ article blockquote.card-meta .card-meta-background {
   background-size: cover;
   background-position: 50%;
 }
-article blockquote.card-meta > *:first-child {
-  padding: 1rem;
+article blockquote.card-meta > *:last-child {
+  max-width: 30%;
   z-index: 1;
 }
-article blockquote.card-meta > *:last-child {
+article blockquote.card-meta > *:first-child {
+  max-width: unset;
+  padding: 1rem;
   z-index: 1;
 }
 article blockquote.card-meta:before {

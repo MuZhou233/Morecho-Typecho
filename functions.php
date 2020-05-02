@@ -33,7 +33,7 @@ function themeConfig($form)
     $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('仅支持mp3格式，留空则不显示播放器，主题文件中包含了一个测试音频，填入<code>/usr/themes/Morecho/asserts/lib/plyr/test.mp3</code>即可'));
     $form->addInput($musicUrl->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义页脚
-    $footerCopyright = new Typecho_Widget_Helper_Form_Element_Text('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; &lt;?php echo date(&quot;Y&quot;); echo &quot; &quot;; $this-&gt;options-&gt;owner(); ?&gt; · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>留空则使用默认'));
+    $footerCopyright = new Typecho_Widget_Helper_Form_Element_Textarea('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; [当前年份] · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>如果需要添加备案号，复制前面的内容，修改年份，并在后面添加<code>&lt;div&gt;备案号内容&lt;/div&gt;</code><br/>你也可以选择不保留原有的版权声明</br>留空则使用默认'));
     $form->addInput($footerCopyright);
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));

@@ -5,7 +5,7 @@ Page Plan
 - [x] archive
 - [x] post
 - [x] comment board
-- [ ] single page
+- [x] single page
 
 Plugin Plan  
 
@@ -27,8 +27,10 @@ Feature Plan
     - [ ] Play List
 - [x] Smooth Scroll
 - [ ] Pjax
-- [ ] Search
+- [x] Search
 - [x] TimeLine
+- [x] Notification
+- [ ] Frinend Linker
  
 MarkDown Adaptation Plan  
 
@@ -36,7 +38,7 @@ MarkDown Adaptation Plan
 - [x] Automatic Link
 - [x] Syntax Hightlighting
 - [x] Inline Code
-    - [ ] One Click Copy
+    - [x] One Click Copy
 - [x] Task Lists
 - [x] Hide Text
 - [ ] Picture Viewer

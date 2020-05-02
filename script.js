@@ -67,5 +67,53 @@ $(function(){
             dynamicHideStat = true;
         }
         lastScrollH = thisScrollH;
+    });
+
+    $('.comment-list a[data-rel=delete]').on('click', function(){
+        var e = $(this);
+        toast('删除 '+$(this).parent().parent().find('.avatar').attr('alt')+' 的评论', '', '', 0, function(res){
+            if(res === true)
+                window.location.href = e.data('href');
+        })
     })
+
+    var cookies = Cookies.get();
+    for(var k in cookies){
+        if(k.slice(-21) !== '__typecho_notice_type') continue;
+        if(cookies[k] === 'success')
+            toast(unescape(cookies[k.slice(0, -21)+'__typecho_notice'].slice(2, -2).replace(/\\u/gi, '%u')));
+        else
+            toast(cookies[k], unescape(cookies[k.slice(0, -21)+'__typecho_notice'].slice(2, -2).replace(/\\u/gi, '%u')));
+        Cookies.remove(k);
+        Cookies.remove(k.slice(0, -21)+'__typecho_notice');
+    }
 })
+
+function toast(title, content="", subtitle="", delay=5000, call=false){
+    var autohide;
+    if(delay === 0)autohide = 'false';
+    else autohide = 'true';
+    if(typeof call === 'function') content += '<div class="btn btn-link" data-value="true">确定</div><div class="btn btn-link" data-value="false">取消</div>'
+    var toastItem = `
+    <div class="toast card" data-autohide="${autohide}" data-delay="${delay}">
+        <div class="toast-header">
+            <strong class="mr-auto">${title}</strong>
+            <small class="text-muted">${subtitle}</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            ${content}
+        </div>
+    </div>
+    `
+    $('#toast-wrap').append(toastItem);
+    $('#toast-wrap > div:last-child').toast('show').on('hidden.bs.toast', function(){
+        $(this).remove();
+    }).find('div.btn').on('click', function(){
+        if(typeof call === 'function')
+            call($(this).data('value'));
+        $(this).parents('.toast').toast('hide');
+    });
+}

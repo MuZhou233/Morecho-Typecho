@@ -1,13 +1,17 @@
 body.theme-front-green .flex-column.nav-pills:hover .nav-link.active,
-body.theme-front-green a{
+body.theme-front-green article a,
+body.theme-front-green footer a,
+body.theme-front-green .site-control a,
+body.theme-front-green .card-comments a,
+body.theme-front-green .btn-link{
     color: #2dce89;
 }
 .theme-control div.theme-front-green:before,
 .theme-control div.theme-front-green:after,
 body.theme-front-green .btn-primary,
-body.theme-front-green .comment-list .comment-reply,
+body.theme-front-green .comment-list .comment-reply a,
 body.theme-front-green .comment-list .comment-reply:before,
-body.theme-front-green .comment-list .comment-reply-cancel,
+body.theme-front-green .comment-list .comment-reply-cancel a,
 body.theme-front-green .comment-list .comment-respond:before,
 body.theme-front-green .js-toc-move:before,
 body.theme-front-green .page-item.active .page-link,
@@ -35,6 +39,7 @@ body.theme-front-green article h4:before {
 body.theme-front-green article h5:before {
   background-color: rgba(45, 206, 137, 0.2);
 }
-body.theme-front-green .nav-pills:hover .nav-link.active:hover{
+body.theme-front-green .nav-pills:hover .nav-link.active:hover,
+body.theme-front-green .comment-reply a{
   color: #fff;
 }
