@@ -45,6 +45,7 @@ window.article = function ($){
             $(this).parent().prev().remove();
         }
     });
+    try{
     var clipboard = new ClipboardJS('.copy-btn');
     clipboard.on('success', function(e) {
         toast('复制成功');
@@ -53,6 +54,7 @@ window.article = function ($){
         toast('复制失败');
         e.clearSelection();
     });
+    }catch{}
     $('article img').each(function(){
         if($(this).attr('alt').length === 0) return 0;
         var $imgalt = $('<div/>').addClass('alt').text($(this).attr('alt'));
