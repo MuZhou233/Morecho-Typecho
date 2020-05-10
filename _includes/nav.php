@@ -9,7 +9,11 @@
     </div>
 
     <div class="profile">
-        <?php if($this->user->hasLogin()): ?>
+        <?php if($this->is('author')): ?>
+            <img class="shadow"
+                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower(get_user($this->_archiveSlug)['mail'])) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                alt="<?php echo get_user($this->_archiveSlug)['screenName'] ?>">
+        <?php elseif($this->user->hasLogin()): ?>
             <img class="shadow"
                 src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->user->mail)) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
                 alt="<?php echo $this->options->user->name ?>">
@@ -20,7 +24,8 @@
         <?php elseif($this->options->avatar): ?>
             <img class="shadow" src="<?php $this->options->avatar(); ?>">
         <?php endif ?>
-        <?php if($this->user->hasLogin()): ?>
+        <?php if($this->is('author')): ?>
+        <?php elseif($this->user->hasLogin()): ?>
             <p class="profile-name"><?php echo $this->user->screenName ?></p><p class="profile-title"><?php echo get_user_title() ?></p>
         <?php elseif($this->is('post')): ?>
             <p class="profile-name"><?php $this->author(); ?></p><p class="profile-title">作者</p>
@@ -53,7 +58,7 @@
         </div>
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
-                <?php if(Typecho_Router::get('Morecho_archive_page') !== NULL): ?> 
+                <?php if(array_key_exists('MorechoCore', Typecho_Plugin::export()['activated'])): ?> 
                 <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>"
                     href="/archive/">全部文章</a>
                 <?php endif; ?>

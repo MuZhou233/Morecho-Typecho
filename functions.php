@@ -71,6 +71,14 @@ function themeFields($layout)
     }
 }
 
+function get_user($uid){
+    $db = Typecho_Db::get();
+    return $db->fetchRow($db->select()
+            ->from('table.users')
+            ->where('uid = ?', $uid)
+            ->limit(1));
+}
+
 function get_post_num($id = false){
     $db = Typecho_Db::get();
     if($id == false) $postnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'allpostnum'))->from ('table.contents')->where('table.contents.type=?', 'post'));
@@ -99,6 +107,23 @@ function get_last_update(){
     }else{
       echo date('y/m/d',$update['modified']);
     }
+}
+
+function get_PublishedPostsNum($uid){
+    $db     = Typecho_Db::get();
+    return $db->fetchObject($db->select(array('COUNT(cid)' => 'num'))
+                ->from('table.contents')
+                ->where('table.contents.type = ?', 'post')
+                ->where('table.contents.status = ?', 'publish')
+                ->where('table.contents.authorId = ?', $uid))->num;
+}
+
+function get_SpamCommentsNum($uid){
+    $db     = Typecho_Db::get();
+    return $db->fetchObject($db->select(array('COUNT(coid)' => 'num'))
+                ->from('table.comments')
+                ->where('table.comments.status = ?', 'spam')
+                ->where('table.comments.ownerId = ?', $uid))->num;
 }
 
 function get_user_group($name = NULL){

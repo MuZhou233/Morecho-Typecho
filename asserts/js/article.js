@@ -56,7 +56,7 @@ window.article = function ($){
     });
     }catch{}
     $('article img').each(function(){
-        if($(this).attr('alt').length === 0) return 0;
+        if($(this).attr('alt') === undefined || $(this).attr('alt').length === 0) return 0;
         var $imgalt = $('<div/>').addClass('alt').text($(this).attr('alt'));
         $(this).parent().append($imgalt);
         $(this).attr('alt',' ');
@@ -107,16 +107,16 @@ window.article = function ($){
         if(imgurl !== undefined){
             $(this).append('<span class="card-meta-background" style="background-image:url('+imgurl+')"></span>');
             $(this).append('<span>'+img+'</span>');
-            try{
-                $(this).find('img').bind('load',function(){
-                    var image = new Image()
-                    image.src = $(this).prop('src');
-                    var sizescale = image.width > image.height ? 1 : image.width/image.height;
-                    $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
-                })
-            }catch{}
         }
     })
+    try{
+        $('article blockquote.card-meta').find('img').bind('load',function(){
+            var image = new Image()
+            image.src = $(this).prop('src');
+            var sizescale = image.width > image.height ? 1 : image.width/image.height;
+            $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
+        })
+    }catch{}
     try{
         tocbot.init({
             tocSelector: '.js-toc',

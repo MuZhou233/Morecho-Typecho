@@ -3,12 +3,12 @@
  * 与 Morecho 主题共同使用，请启用前查看使用说明
  * 
  * 
- * @package Morecho Theme Plugin
+ * @package Morecho Theme Plugin - Core
  * @author MuZhou233
  * @version 0.3.1
  * @link https://typecho.mosar.in
  */
-class Morecho_Plugin implements Typecho_Plugin_Interface
+class MorechoCore_Plugin implements Typecho_Plugin_Interface
 {
     /**
      * 插件版本号
@@ -26,14 +26,14 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
     public static function activate()
     {
         Helper::addRoute('Morecho_archive_page', '/archive/', 'Widget_Archive', 'render');
-        Typecho_Plugin::factory('Widget_Archive')->handle = array('Morecho_Plugin', 'archive');
-        Typecho_Plugin::factory('admin/header.php')->header = array('Morecho_Plugin', 'header');
-        Typecho_Plugin::factory('admin/footer.php')->end = array('Morecho_Plugin', 'footer');
-        Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('Morecho_Plugin', 'markdown');
-        Typecho_Plugin::factory('Widget_Abstract_Comments')->markdown = array('Morecho_Plugin', 'markdown_safemod');
-        Typecho_Plugin::factory('admin/editor-js.php')->markdownEditor = array('Morecho_Plugin', 'markdown_editor');
-        Typecho_Plugin::factory('admin/write-post.php')->richEditor = array('Morecho_Plugin', 'editor');
-        Typecho_Plugin::factory('admin/write-page.php')->richEditor = array('Morecho_Plugin', 'editor');
+        Typecho_Plugin::factory('Widget_Archive')->handle = array('MorechoCore_Plugin', 'archive');
+        Typecho_Plugin::factory('admin/header.php')->header = array('MorechoCore_Plugin', 'header');
+        Typecho_Plugin::factory('admin/footer.php')->end = array('MorechoCore_Plugin', 'footer');
+        Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('MorechoCore_Plugin', 'markdown');
+        Typecho_Plugin::factory('Widget_Abstract_Comments')->markdown = array('MorechoCore_Plugin', 'markdown_safemod');
+        Typecho_Plugin::factory('admin/editor-js.php')->markdownEditor = array('MorechoCore_Plugin', 'markdown_editor');
+        Typecho_Plugin::factory('admin/write-post.php')->richEditor = array('MorechoCore_Plugin', 'editor');
+        Typecho_Plugin::factory('admin/write-page.php')->richEditor = array('MorechoCore_Plugin', 'editor');
     }
     
     /**
@@ -66,7 +66,7 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
         // 是否修改后台样式
         $no_change_dashbord_style = new Typecho_Widget_Helper_Form_Element_Radio(
             'no_change_dashbord_style',
-            array('0' => _t('不修改'), '1' => _t('修改')), '1', _t('是否修改后台外观'), _t('是否修改后台外观')
+            array('0' => _t('不修改'), '1' => _t('修改')), '1', _t('是否修改后台外观'), _t('后台外观包括对移动端的适配修复')
         );
         $form->addInput($no_change_dashbord_style);
     }
@@ -88,9 +88,9 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
      */
     public static function header($header)
     {
-        $options = Typecho_Widget::widget('Widget_Options')->plugin('Morecho');
+        $options = Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore');
         if($options->no_change_dashbord_style != '0')
-            $header .= '<link rel="stylesheet" href="'.Helper::options()->pluginUrl.'/Morecho/style.css"/>';
+            $header .= '<link rel="stylesheet" href="'.Helper::options()->pluginUrl.'/MorechoCore/style.css"/>';
         $header .=  '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/article.css">';
         $header .= '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/morecho.css">';
         return $header;
@@ -105,7 +105,7 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
     public static function footer()
     {
         $options = Helper::options();
-        echo '<script src="'.$options->pluginUrl.'/Morecho/script.js"></script>';
+        echo '<script src="'.$options->pluginUrl.'/MorechoCore/script.js"></script>';
     }
 
     /**
@@ -147,7 +147,7 @@ class Morecho_Plugin implements Typecho_Plugin_Interface
     {
         Typecho_Widget::widget('Widget_Options')->to($options);
         list($prefixVersion, $suffixVersion) = explode('/', $options->version);
-        $options->theme_folder_name = Typecho_Widget::widget('Widget_Options')->plugin('Morecho')->theme_folder_name;
+        $options->theme_folder_name = Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore')->theme_folder_name;
         require dirname(__FILE__) . '/editor-js.php';
     }
     

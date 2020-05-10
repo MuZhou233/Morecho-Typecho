@@ -10,7 +10,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 if($this->is('tag')){
     $url = Typecho_Router::getPathInfo();
     if(substr($url, -1) == '/')$url = substr($url, 0, strlen($url)-1);
-    if(Typecho_Router::get('Morecho_archive_page') === NULL)
+    if(!array_key_exists('MorechoCore', Typecho_Plugin::export()['activated']))
         Header("Location: ".$this->options->siteUrl.'archive.html/?tag='.trim(strrchr($url, '/'),'/'));
     else
         Header("Location: ".$this->options->siteUrl.'archive/?tag='.trim(strrchr($url, '/'),'/'));

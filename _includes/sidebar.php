@@ -1,6 +1,6 @@
 <div class="dynamic-hide">
-<div class="card card-site-meta">
-    <div class="title">站点信息</div>
+<?php if(!$this->is('author')): ?>
+<div class="card card-author-meta">
     <div class="site-meta row text-center">
         <div class="col-4">
             <div><?php echo get_post_num(); ?></div>
@@ -16,13 +16,36 @@
         </div>
     </div>
 </div>
+<?php elseif(get_user($this->_archiveSlug)['group'] !== 'subscriber'): ?>
+<div class="card card-site-meta">
+    <div class="title">作者信息</div>
+    <div class="site-meta row text-center">
+        <div class="col-4">
+            <div><?php echo get_PublishedPostsNum($this->_archiveSlug); ?></div>
+            <div>文章</div>
+        </div>
+        <div class="col-4">
+            <div><?php echo get_SpamCommentsNum($this->_archiveSlug); ?></div>
+            <div>评论</div>
+        </div>
+        <div class="col-4">
+            <div><?php 
+            $last_logged = get_user($this->_archiveSlug)['logged'];
+            if($last_logged == 0) echo '从未';
+            else echo date('y/m/d', $last_logged); 
+            ?></div>
+            <div>上次登录</div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
 <?php if ($this->is('post')||$this->is('page') && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
 <div class="card card-post-meta">
     <div class="title">文章信息</div>
     <div class="site-meta row text-center">
         <div class="col-4">
-            <div><?php $this->author(); ?></div>
+            <div><a class="theme" href="/author/<?php echo $this->author->uid ?>"><?php $this->author(); ?></a></div>
             <div>作者</div>
         </div>
         <div class="col-4">

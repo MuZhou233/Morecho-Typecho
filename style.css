@@ -19,6 +19,12 @@ body {
 .btn {
   border: none !important;
 }
+.card {
+  margin-top: 1rem;
+}
+a:hover {
+  text-decoration: unset;
+}
 
 /* sidebar */
 .sidebar {
@@ -28,9 +34,6 @@ body {
   height: 100%;
   overflow-y: scroll;
   padding-bottom: 1rem;
-}
-.sidebar .card {
-  margin-top: 1rem;
 }
 .card-sidebar-control,
 .card-fullscreen-control {
@@ -67,7 +70,6 @@ body {
     display: block;
     width: 3rem;
     height: 3rem;
-    top: 1rem;
   }
   .card-fullscreen-control [data-control="off"] {
     display: none;

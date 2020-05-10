@@ -3,7 +3,8 @@ body.theme-front-orange article a,
 body.theme-front-orange footer a,
 body.theme-front-orange .site-control a,
 body.theme-front-orange .card-comments a,
-body.theme-front-orange .btn-link{
+body.theme-front-orange .btn-link,
+body.theme-front-orange a.theme{
     color: #fb6340;
 }
 .theme-control div.theme-front-orange:before,

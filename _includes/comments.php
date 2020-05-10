@@ -23,8 +23,10 @@ function threadedComments($comments, $options)
     <div id="<?php $comments->theId(); ?>" class="comment-body">
         <div class="comment-meta">
             <div class="comment-author">
-              <?php if ($comments->url): ?>
-                <a href="<?php echo $comments->url ?>" target="_blank"' . ' rel="external nofollow">
+              <?php if ($comments->authorId > 0): ?>
+                <a href="/author/<?php echo $comments->authorId ?>" rel="external nofollow">
+              <?php elseif ($comments->url): ?>
+                <a href="<?php echo $comments->url ?>" target="_blank" rel="external nofollow">
               <?php endif; ?>
               <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
               <?php $title = get_user_title($comments->author); if(strlen($title)>0): ?>
@@ -33,7 +35,7 @@ function threadedComments($comments, $options)
               <span class="comment-author-title">作者</span>
               <?php endif ?>
               <?php endif; ?>
-              <?php if ($comments->url): ?>
+              <?php if ($comments->authorId > 0 || $comments->url): ?>
                 </a>
               <?php endif; ?>
             </div>

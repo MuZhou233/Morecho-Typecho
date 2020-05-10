@@ -6,6 +6,7 @@ Page Plan
 - [x] post
 - [x] comment board
 - [x] single page
+- [x] Friend Link
 
 Plugin Plan  
 

@@ -1,6 +1,6 @@
 <?php if(!defined('__TYPECHO_ADMIN__')) exit; ?>
 <?php $content = !empty($post) ? $post : $page; if ($options->markdown): ?>
-<script src="<?php echo Helper::options()->pluginUrl ?>/Morecho/cheerio.js"></script>
+<script src="<?php echo Helper::options()->pluginUrl ?>/MorechoCore/cheerio.js"></script>
 <script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/feather.min.js"></script>
 <script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/highlight.min.js"></script>
 <link rel="stylesheet" href="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/vscode.css">
