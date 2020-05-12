@@ -55,17 +55,13 @@ function themeConfig($form)
 
 function themeFields($layout)
 {
-    /*
     if (preg_match("/write-page.php/", $_SERVER['REQUEST_URI'])) {
-        $title = new Typecho_Widget_Helper_Form_Element_Text('title', NULL, NULL, _t('标题'), _t('首页模板功能'));
-        $layout->addItem($title);
-        $intro = new Typecho_Widget_Helper_Form_Element_Text('intro', NULL, NULL, _t('介绍'), _t('首页模板功能'));
-        $layout->addItem($intro);
+        $textIndent = new Typecho_Widget_Helper_Form_Element_Select('textIndent', array('false' => '不缩进', 'true' => '缩进'), 'false', '开启全文首行缩进');
+        $layout->addItem($textIndent);
     }
-    */
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
-        //$mood = new Typecho_Widget_Helper_Form_Element_Select('mood', array('一般' => '一般', '开心' => '开心', '伤心' => '伤心', '沉闷' => '沉闷', '无聊' => '无聊', '紧张' => '紧张', '愤怒' => '愤怒', '迷茫' => '迷茫', '心酸' => '心酸', '绝望' => '绝望'), '一般', '心情如何');
-        //$layout->addItem($mood);
+        $textIndent = new Typecho_Widget_Helper_Form_Element_Select('textIndent', array('false' => '不缩进', 'true' => '缩进'), 'false', '开启全文首行缩进');
+        $layout->addItem($textIndent);
         $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('副标题'), _t('首页模板功能'));
         $layout->addItem($subtitle);
     }

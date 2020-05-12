@@ -31,10 +31,10 @@ function threadedComments($comments, $options)
               <?php $comments->gravatar('64', 'mp'); echo $comments->author; ?>
               <?php $title = get_user_title($comments->author); if(strlen($title)>0): ?>
               <span class="comment-author-title"><?php echo $title ?></span>
+              <?php endif; ?>
               <?php if ($comments->authorId === $comments->ownerId): ?>
               <span class="comment-author-title">作者</span>
               <?php endif ?>
-              <?php endif; ?>
               <?php if ($comments->authorId > 0 || $comments->url): ?>
                 </a>
               <?php endif; ?>

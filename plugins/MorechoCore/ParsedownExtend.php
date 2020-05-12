@@ -10,9 +10,18 @@
 #
 
 require_once dirname(__FILE__) . '/Parsedown.php';
+require_once dirname(__FILE__) . '/ParsedownExtra.php';
 
-class ParsedownExtend extends Parsedown {
+class ParsedownExtend extends ParsedownExtra {
     
+    function __construct()
+    {
+        parent::__construct();
+        
+        $this->InlineTypes['['][] = 'Kbd';
+        $this->inlineMarkerList .= '[';
+    }
+
     #
     # Header
 
@@ -78,6 +87,20 @@ class ParsedownExtend extends Parsedown {
                 );
             }
         };
+    }
+
+    protected function inlineKbd($Excerpt)
+    {
+        if (preg_match('/^(?<!\[)(?:\[\[([^\[\]]*|[\[\]])\]\])(?!\])/s', $Excerpt['text'], $matches)) {
+            return array(
+                'extent' => strlen($matches[0]),
+                'element' => array(
+                    'name' => 'kbd',
+                    'text' => $matches[1]
+                ),
+
+            );
+        }
     }
 
     protected function blockList($Line)

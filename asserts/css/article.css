@@ -197,9 +197,11 @@ article .alt:after {
 article blockquote {
     position: relative;
     background-color: rgba(0, 0, 0, 0.05);
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 1rem 0.25rem calc(1rem + 4px);
     overflow: hidden;
-    margin: 0 0 1rem;
+    margin: 0 0 1rem calc(-1rem - 4px);
+    width:calc(100% + 1rem + 4px);
+    max-width: unset;
 }
 article blockquote:before {
     content: "";
@@ -217,6 +219,8 @@ article blockquote.card-meta {
   font-size: 0.9rem;
   padding: 0;
   border-radius: .5rem;
+  margin-left: 0;
+  width: 100%;
 }
 article#wmd-preview blockquote.card-meta{
   padding: 0 !important;

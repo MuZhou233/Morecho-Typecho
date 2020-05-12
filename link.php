@@ -65,6 +65,9 @@ for ($i = 0; $i < 4; $i++) if (!empty($groupName[$i])) foreach ($users as $user)
 .card-link h3:before{
     display: none;
 }
+.card-link > a{
+    padding: 0 .25rem;
+}
 .card-link blockquote.card-meta{
     height: 65px;
     transition: all .3s ease 0s;

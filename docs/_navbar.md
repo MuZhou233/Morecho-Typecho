@@ -1,0 +1,1 @@
+* [立即下载](https://github.com/MuZhou233/Morecho-Typecho/releases)

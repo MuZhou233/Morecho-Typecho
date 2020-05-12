@@ -27,6 +27,11 @@
     <script src="<?php $this->options->themeUrl('asserts/lib/tocbot.min.js'); ?>"></script>
     <?php endif ?>
 
+    <?php if(($this->is('page') || $this->is('post')) && $this->fields->textIndent === 'true'): ?>
+    <script>$(function(){$('article p > br').after('<span style="margin-left: 2em;"></span>');});</script>
+    <style>article p{text-indent: 2em;}</style>
+    <?php endif; ?>
+
     <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
 
