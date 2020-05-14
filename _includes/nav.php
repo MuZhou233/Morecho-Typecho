@@ -11,15 +11,15 @@
     <div class="profile">
         <?php if($this->is('author')): ?>
             <img class="shadow"
-                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower(get_user($this->_archiveSlug)['mail'])) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                src="<?php echo Typecho_Common::gravatarUrl(get_user($this->_archiveSlug)['mail'], 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"
                 alt="<?php echo get_user($this->_archiveSlug)['screenName'] ?>">
         <?php elseif($this->user->hasLogin()): ?>
             <img class="shadow"
-                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->user->mail)) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                src="<?php echo Typecho_Common::gravatarUrl($this->user->mail, 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"
                 alt="<?php echo $this->options->user->name ?>">
         <?php elseif($this->is('post')): ?>
             <img class="shadow"
-                src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->author->mail)) ?>?s=256&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp"
+                src="<?php echo Typecho_Common::gravatarUrl($this->author->mail, 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"
                 alt="<?php echo $this->options->user->name ?>">
         <?php elseif($this->options->avatar): ?>
             <img class="shadow" src="<?php $this->options->avatar(); ?>">

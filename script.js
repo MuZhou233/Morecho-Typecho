@@ -1,3 +1,14 @@
+console.log("%c%s%c%s",
+    "color: white; background: #007bff; border: solid 1px #007bff; font-weight: bold; line-height: 1em; padding: .5em; border-top-left-radius: .5em; border-bottom-left-radius: .5em;",
+    "Morecho",
+    "color: #007bff; background: white; border: solid 1px #777; font-weight: bold; line-height: 1em; padding: .5em; border-top-right-radius: .5em; border-bottom-right-radius: .5em;",
+    "by 沐雨橙舟");
+console.log("%c%s%c%s",
+    "color: white; background: #007bff; border: solid 1px #007bff; font-weight: bold; line-height: 1em; padding: .5em; border-top-left-radius: .5em; border-bottom-left-radius: .5em;",
+    "访问",
+    "color: #007bff; background: white; border: solid 1px #777; font-weight: bold; line-height: 1em; padding: .5em; border-top-right-radius: .5em; border-bottom-right-radius: .5em;",
+    "typecho.mosar.in");
+
 $(function(){
     $('body').attr('class', localStorage.getItem('theme'))
     $('.theme-control .col div').click(function(){

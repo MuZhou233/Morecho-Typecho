@@ -91,14 +91,14 @@ function threadedComments($comments, $options)
             <?php if($this->user->hasLogin()): ?>
             <div class="comment-respond-author">
               <a href="<?php $this->options->profileUrl(); ?>" target="_blank" rel="external nofollow">
-                <img class="avatar shadow" src="https://secure.gravatar.com/avatar/<?php echo md5(strtolower($this->user->mail)) ?>?s=80&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp" alt="<?php echo $this->options->user->name ?>">
+                <img class="avatar shadow" src="<?php echo Typecho_Common::gravatarUrl($this->user->mail, 80, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>">
                 <?php echo $this->user->screenName ?>
               </a>
               <span>添加回复</span>
             </div>
             <?php else: ?>
             <div class="comment-respond-author">
-              <img class="avatar shadow" src="https://secure.gravatar.com/avatar?s=80&r=<?php echo $this->options->commentsAvatarRating ?>&d=mp">
+              <img class="avatar shadow" src="<?php echo Typecho_Common::gravatarUrl('', 80, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>">
               <div class="form-row">
                   <div class="col-6 col-md-4">
                     <input type="text" name="author" class="form-control form-control-sm" 

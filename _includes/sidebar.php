@@ -1,6 +1,7 @@
 <div class="dynamic-hide">
 <?php if(!$this->is('author')): ?>
 <div class="card card-author-meta">
+    <div class="title">站点信息</div>
     <div class="site-meta row text-center">
         <div class="col-4">
             <div><?php echo get_post_num(); ?></div>

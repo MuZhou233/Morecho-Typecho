@@ -24,6 +24,11 @@
 </head>
 
 <body class="theme-front-none">
+    <div class="background"></div>
+    <style><?php 
+    if($this->options->backgroundlg) echo '.background{background-image:url('.$this->options->backgroundlg.');}';
+    if($this->options->backgroundsm) echo '@media (max-width: 767px) {.background{background-image:url('.$this->options->backgroundsm.');}';
+    ?>"</style>
     <div class="sidebar">
         <div class="container">
             <div class="row row-nav">

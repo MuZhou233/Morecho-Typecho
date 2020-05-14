@@ -1,8 +1,6 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('__TYPECHO_DEBUG__',true);
-
 function themeInit($data)
 {
     if($data->is('category')||$data->is('search')||$data->is('tag')||$data->is('author')||$data->parameter->type == 'Morecho_archive_page')
@@ -35,6 +33,11 @@ function themeConfig($form)
     // 自定义页脚
     $footerCopyright = new Typecho_Widget_Helper_Form_Element_Textarea('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; [当前年份] · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>如果需要添加备案号，复制前面的内容，修改年份，并在后面添加<code>&lt;div&gt;备案号内容&lt;/div&gt;</code><br/>你也可以选择不保留原有的版权声明</br>留空则使用默认'));
     $form->addInput($footerCopyright);
+    // 自定义背景图
+    $backgroundlg = new Typecho_Widget_Helper_Form_Element_Text('backgroundlg', NULL, NULL, _t('背景图片地址'));
+    $form->addInput($backgroundlg->addRule('xssCheck', _t('请不要使用特殊字符')));
+    $backgroundsm = new Typecho_Widget_Helper_Form_Element_Text('backgroundsm', NULL, NULL, _t('移动端背景图片地址'), _t('在移动端使用长图替换宽图体验更好'));
+    $form->addInput($backgroundsm->addRule('xssCheck', _t('请不要使用特殊字符')));
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
     $title2->html('<h2>头衔</h2>

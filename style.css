@@ -26,6 +26,14 @@ a:hover {
   text-decoration: unset;
 }
 
+.background{
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
 /* sidebar */
 .sidebar {
   position: fixed;
@@ -564,6 +572,9 @@ a.toc-link:hover {
   padding-left: 3rem;
   line-height: 1.2rem;
   color: #555;
+}
+.comment-list .comment-list .comment-list{
+  padding-left: 0;
 }
 .comment-list a,
 .comment-respond a{

@@ -12,7 +12,7 @@ function linkCard($user, $avatarRating){
     $url = $user['url'];
     $name = $user['screenName'];
     $intro = $user['introduction'];
-    $avatar = 'https://secure.gravatar.com/avatar/'.md5(strtolower($user['mail'])).'?s=144&r='.$avatarRating.'&d=mp';
+    $avatar = Typecho_Common::gravatarUrl($user['mail'], 144, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure());;
     echo '
     <a href="'.$url.'">
         <blockquote class="card-meta">

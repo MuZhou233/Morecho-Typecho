@@ -1,8 +1,23 @@
 window.article = function ($){
-    $('article h1,article h2,article h3,article h4').each(function(){
-        if($(this).attr('id')!=undefined) return;
-        $(this).attr('id', $(this).text().replace(' ', '-'));
+    var headers = [];
+    $('article h1,article h2,article h3,article h4,article h5').each(function(){
+        if($(this).attr('id')===undefined)
+            $(this).attr('id', $(this).text().replace(' ', '-'));
+        headers.push($(this).attr('id'));
     });
+    $('article h1,article h2,article h3,article h4,article h5').each(function(){
+        var repeatHeaders = [];
+        headers.sort().sort(function (a,b) {
+            if(a === b && repeatHeaders.indexOf(a) === -1){
+                repeatHeaders.push(a);
+            }
+        })
+        repeatHeaders.forEach(function(v){
+            $('article #'+v).each(function(i){
+                $(this).attr('id', v+'-'+(i+1));
+            })
+        })
+    })
     $('article pre code').each(function(){
         $(this).html(hljs.highlightAuto($(this).text()).value);
         $(this).addClass('hljs')
