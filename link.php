@@ -8,11 +8,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $db = Typecho_Db::get();
 $users = $db->fetchALL($db->select('name','screenName','url','mail','group','introduction')->from('table.users')->where('url <> ?', ''));
 
-function linkCard($user, $avatarRating){
+function linkCard($user){
     $url = $user['url'];
     $name = $user['screenName'];
     $intro = $user['introduction'];
-    $avatar = Typecho_Common::gravatarUrl($user['mail'], 144, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure());;
+    $avatar = $user['avatar'];
     echo '
     <a href="'.$url.'">
         <blockquote class="card-meta">
@@ -43,7 +43,8 @@ for ($i = 0; $i < 4; $i++) if (!empty($groupName[$i])) foreach ($users as $user)
     foreach ($users as $user)if ($user['group'] === $group[$i]) {
         if (empty($user['screenName'])) $user['screenName'] = $user['name'];
         $user['introduction'] = Typecho_Common::subStr(Typecho_Common::stripTags(Widget_Abstract_Contents::markdown($user['introduction'])), 0, 14, '...');
-        linkCard($user, $this->options->commentsAvatarRating);
+        $user['avatar'] = Typecho_Common::gravatarUrl($user['mail'], 144, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure());
+        linkCard($user);
     }
     break;
 }
