@@ -54,6 +54,16 @@
                 <a class="nav-link <?php echo $this->is('page', $pages->slug)?'active':''; ?>"
                     href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
                 <?php endwhile; ?>
+                <?php if(array_key_exists('MorechoCore', Typecho_Plugin::export()['activated'])): ?>
+                    <?php if($this->options->linkAbout != '0'): ?>
+                    <a class="nav-link <?php echo $this->is('author', $this->options->linkAbout)?'active':''; ?>"
+                        href="/author/<?php echo $this->options->linkAbout; ?>">关于</a>
+                    <?php endif; ?>
+                    <?php if($this->options->linkFriends != '0'): ?>
+                    <a class="nav-link <?php echo $this->is('Morecho_link_page')?'active':''; ?>"
+                        href="/link/"><?php echo $this->options->linkFriends; ?></a>
+                    <?php endif; ?>
+                <?php endif; ?>
             </nav>
         </div>
         <div data-tab="folder">

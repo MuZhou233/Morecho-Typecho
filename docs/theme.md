@@ -7,6 +7,15 @@
 1. 首行缩进  
     建议在长文本文章中启用，无脑将所有行首行缩进两个全角字符，实现方式比较粗暴
 
+## 评论
+
+评论区按照常见的从第二层开始不再缩进的排列方式展示，如果你有更好的排列方式可以提出建议。  
+Typecho 默认评论区层数限制是2-7，如果你想修改这个限制可以打开Typecho的文件，在`/var/Widget/Options/Discussion.php`第`206`行
+```
+206| $settings['commentsMaxNestingLevels'] = min(7, max(2, intval($settings['commentsMaxNestingLevels'])));
+```
+修改其中的7和2即可修改限制
+
 ## 额外页面
 
 ### 全部文章归档

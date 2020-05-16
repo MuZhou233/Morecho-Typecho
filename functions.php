@@ -24,6 +24,12 @@ function themeConfig($form)
     // 自定义名称
     $owner = new Typecho_Widget_Helper_Form_Element_Text('owner', NULL, NULL, _t('博主名称'), _t('在这里填入侧栏要显示的博主名称'));
     $form->addInput($owner->addRule('xssCheck', _t('请不要使用特殊字符')));
+    // 关于链接
+    $linkAbout = new Typecho_Widget_Helper_Form_Element_Text('linkAbout', NULL, NULL, _t('添加“关于”链接'), _t('仅在启用MorechoFriends插件时生效，填入你的用户id（一般为1）即显示地址为<code>/author/ID</code>名为“关于”的链接，填入0不显示链接'));
+    $form->addInput($linkAbout->addRule('xssCheck', _t('请不要使用特殊字符')));
+    // 友链链接
+    $linkFriends = new Typecho_Widget_Helper_Form_Element_Text('linkFriends', NULL, NULL, _t('添加“友链”链接'), _t('仅在启用MorechoFriends插件时生效，链接地址为<code>/link/</code>，在此填入链接名称，填0即不显示链接'));
+    $form->addInput($linkFriends->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义音乐名称
     $musicName = new Typecho_Widget_Helper_Form_Element_Text('musicName', NULL, NULL, _t('音乐播放器显示的标题'), _t(''));
     $form->addInput($musicName->addRule('xssCheck', _t('请不要使用特殊字符')));

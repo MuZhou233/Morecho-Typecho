@@ -1,5 +1,5 @@
 * 起步
-    * [开始使用](/start.md)
+    * [快速开始](/start.md)
 * 配置
     * [主题配置](/theme.md)
     * [插件配置](/plugins.md)

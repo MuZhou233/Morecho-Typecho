@@ -69,7 +69,7 @@ window.article = function ($){
         toast('复制失败');
         e.clearSelection();
     });
-    }catch{}
+    }catch(e){}
     $('article img').each(function(){
         if($(this).attr('alt') === undefined || $(this).attr('alt').length === 0) return 0;
         var $imgalt = $('<div/>').addClass('alt').text($(this).attr('alt'));
@@ -131,7 +131,7 @@ window.article = function ($){
             var sizescale = image.width > image.height ? 1 : image.width/image.height;
             $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
         })
-    }catch{}
+    }catch(e){}
     try{
         tocbot.init({
             tocSelector: '.js-toc',
