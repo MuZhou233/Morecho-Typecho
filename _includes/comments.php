@@ -39,7 +39,7 @@ function threadedComments($comments, $options)
                 </a>
               <?php endif; ?>
             </div>
-            <div class="comment-time"><?php $comments->date('y-m-d'); ?></div>
+            <div class="comment-time"><?php $comments->date('Y年m月d日'); ?></div>
             <?php $comments->content(); ?>
             <div class="comment-reply">
               <?php 

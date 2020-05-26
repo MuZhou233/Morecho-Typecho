@@ -197,25 +197,61 @@ article .alt:after {
 article blockquote {
     position: relative;
     background-color: rgba(0, 0, 0, 0.05);
-    padding: 0.25rem 1rem 0.25rem calc(1rem + 4px);
-    overflow: hidden;
+    padding: 0.75rem 1rem 0.75rem calc(1rem + 4px);
     margin: 0 0 1rem calc(-1rem - 4px);
     width:calc(100% + 1rem + 4px);
     max-width: unset;
+}
+article blockquote blockquote{
+  margin-bottom: .25rem;
 }
 article blockquote:before {
     content: "";
     position: absolute;
     height: 100%;
     width: .25rem;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
     left: 0;
     top: 0;
+}
+article blockquote.warning {
+  background-color: rgba(245, 54, 92, 0.2);
+}
+article blockquote.warning:before {
+  background-color: #f5365c;
+}
+article blockquote.warning:after{
+  content: '!';
+  background-color: #f5365c;
+}
+article blockquote.info {
+  background-color: rgba(94, 114, 228, 0.2);
+}
+article blockquote.info:before {
+  background-color: #5e72e4;
+}
+article blockquote.info:after{
+  content: '?';
+  background-color: #5e72e4;
+}
+article blockquote.warning:after,
+article blockquote.info:after {
+  position: absolute;
+  right: -0.7rem;
+  top: calc(50% - 0.7rem);
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  color: #fff;
+  border-radius: 100%;
+  text-align: center;
 }
 article blockquote.card-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   font-size: 0.9rem;
   padding: 0;
   border-radius: .5rem;

@@ -613,6 +613,12 @@ a.toc-link:hover {
   margin-top: .75rem;
   margin-bottom: .75rem;
 }
+.comment-respond hr{
+  display: none;
+}
+.comment-list .comment-respond hr{
+  display: block;
+}
 .comment-list .comment-author,
 .comment-respond .comment-respond-author{
   font-weight: 600;

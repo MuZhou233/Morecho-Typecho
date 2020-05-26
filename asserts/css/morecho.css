@@ -75,7 +75,7 @@ body {
   border-radius: .5rem;
 }
 p {
-  line-height: 1.6;
+  line-height: 1.6em;
 }
 code {
   color: #555;
@@ -91,7 +91,6 @@ blockquote {
   padding: 0.25rem 1rem;
   border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
-  overflow: hidden;
 }
 blockquote:before {
   content: "";

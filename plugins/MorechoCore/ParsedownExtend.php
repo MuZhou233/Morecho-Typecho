@@ -20,6 +20,8 @@ class ParsedownExtend extends ParsedownExtra {
         
         $this->InlineTypes['['][] = 'Kbd';
         $this->inlineMarkerList .= '[';
+        $this->BlockTypes['?'] []= 'Quote';
+        $this->BlockTypes['!'] []= 'Quote';
     }
 
     #
@@ -219,6 +221,56 @@ class ParsedownExtend extends ParsedownExtra {
             $Block['li']['text'] []= $text;
 
             unset($Block['interrupted']);
+
+            return $Block;
+        }
+    }
+    
+    #
+    # Quote
+
+    protected function blockQuote($Line)
+    {
+        if (preg_match('/^([!?])?>[ ]?(.*)/', $Line['text'], $matches))
+        {
+            $class = '';
+            if($matches[1] === '!') $class = 'info';
+            if($matches[1] === '?') $class = 'warning';
+            
+            $Block = array(
+                'element' => array(
+                    'name' => 'blockquote',
+                    'handler' => 'lines',
+                    'text' => (array) $matches[2],
+                    'attributes' => array(
+                        'class' => $class,
+                    )
+                ),
+            );
+
+            return $Block;
+        }
+    }
+
+    protected function blockQuoteContinue($Line, array $Block)
+    {
+        if (preg_match('/^[!?]?>[ ]?(.*)/', $Line['text'], $matches))
+        {
+            if (isset($Block['interrupted']))
+            {
+                $Block['element']['text'] []= '';
+
+                unset($Block['interrupted']);
+            }
+
+            $Block['element']['text'] []= $matches[1];
+
+            return $Block;
+        }
+
+        if ( ! isset($Block['interrupted']))
+        {
+            $Block['element']['text'] []= $Line['text'];
 
             return $Block;
         }

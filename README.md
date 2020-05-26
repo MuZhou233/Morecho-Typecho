@@ -13,14 +13,3 @@ Morecho 插件推荐配套使用，插件提供了后台样式、后台编辑器
     - 根据你的需要将`plugins`文件夹中的插件复制到服务器插件目录中  
 
 ## [文档](https://typecho.mosar.in)
-
-## 感谢（借用表）
-
-- JQuery
-- BootStrap
-- Argon Design System
-- Feather Icon
-- Plyr
-- jekyll-TeXt-theme
-- smoothscroll.net
-- Paul-typecho-theme

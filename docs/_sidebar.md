@@ -1,12 +1,13 @@
 * 起步
     * [快速开始](/start.md)
 * 配置
-    * [主题配置](/theme.md)
-    * [插件配置](/plugins.md)
+    * [主题](/theme.md)
+    * [插件](/plugins.md)
     * [常见问题](/Q&A.md)
 * 使用
     * [Markdown语法](/markdown.md)
     * [表情与图标](/icon.md)
-* 记录
+* 其它
     * [更新记录](/logs.md)
     * [开发进度](/progress.md)
+    * [版权](/licenses.md)
