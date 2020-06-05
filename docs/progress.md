@@ -26,12 +26,13 @@ Feature Plan
     - [x] Custom Color
 - [x] Music Player
     - [ ] Play List
+    - [ ] Volumn
 - [x] Smooth Scroll
-- [ ] Pjax
 - [x] Search
 - [x] TimeLine
 - [x] Notification
 - [ ] Frinend Linker
+- [x] Image Lazyload
  
 MarkDown Adaptation Plan  
 
@@ -64,3 +65,4 @@ Won't Adapt
 - [ ] Disable JavaScript              on Any Device
 - [ ] Hover style                     on touch screen device  
 - [ ] Animation Jitter                on IOS IpadOS
+- [ ] Pjax

@@ -159,6 +159,14 @@ function get_user_title($name = NULL){
     return isset($options->groupTitleV) ? $options->groupTitleV: '';
 }
 
+function get_comment($coid){
+    $db = Typecho_Db::get();
+    return $db->fetchRow($db->select()
+            ->from('table.comments')
+            ->where('coid = ?', $coid)
+            ->limit(1));
+}
+
 class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_PageNavigator
 {
     /**

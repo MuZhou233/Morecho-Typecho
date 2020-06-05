@@ -25,6 +25,7 @@
     <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
     <script src="<?php $this->options->themeUrl('asserts/lib/clipboard.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/lib/tocbot.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('asserts/lib/lazyload.min.js'); ?>"></script>
     <?php endif ?>
 
     <?php if(($this->is('page') || $this->is('post')) && $this->fields->textIndent === 'true'): ?>

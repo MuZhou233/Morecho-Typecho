@@ -40,7 +40,11 @@ function threadedComments($comments, $options)
               <?php endif; ?>
             </div>
             <div class="comment-time"><?php $comments->date('Y年m月d日'); ?></div>
-            <?php $comments->content(); ?>
+            <?php 
+              $pcomments = get_comment($comments->parent);
+              if($pcomments) echo '<code style="float:left;margin: 2px 6px">@'.$pcomments['author'].'</code>';
+              $comments->content();
+            ?>
             <div class="comment-reply">
               <?php 
                 if(in_array(get_user_group(), ['administrator', 'editor'])):

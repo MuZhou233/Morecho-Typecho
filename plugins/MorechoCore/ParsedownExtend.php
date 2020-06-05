@@ -20,6 +20,8 @@ class ParsedownExtend extends ParsedownExtra {
         
         $this->InlineTypes['['][] = 'Kbd';
         $this->inlineMarkerList .= '[';
+        $this->InlineTypes['@'][] = 'At';
+        $this->inlineMarkerList .= '@';
         $this->BlockTypes['?'] []= 'Quote';
         $this->BlockTypes['!'] []= 'Quote';
     }
@@ -103,6 +105,68 @@ class ParsedownExtend extends ParsedownExtra {
 
             );
         }
+    }
+
+
+    private function searchUser($name){
+        $options = Helper::options();
+        $db = Typecho_Db::get();
+        $profile = $db->fetchRow($db->select('uid', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
+        if(sizeof($profile) == 0) return false;
+        return $profile['uid'];
+    }
+
+    protected function inlineAt($Excerpt)
+    {
+        if (preg_match('/^@([^\s]{1,30})\s/s', $Excerpt['text'], $matches)) {
+            $uid = $this->searchUser($matches[1]);
+            if($uid)
+                return array(
+                    'extent' => strlen($matches[0]),
+                    'element' => array(
+                        'name' => 'a',
+                        'text' => '@'.$matches[1],
+                        'attributes' => array(
+                            'href' => '/author/'.$uid,
+                        )
+                    )
+                );
+        }
+    }
+
+    protected function inlineImage($Excerpt)
+    {
+        if ( ! isset($Excerpt['text'][1]) or $Excerpt['text'][1] !== '[')
+        {
+            return;
+        }
+
+        $Excerpt['text']= substr($Excerpt['text'], 1);
+
+        $Link = $this->inlineLink($Excerpt);
+
+        if ($Link === null)
+        {
+            return;
+        }
+
+        $Inline = array(
+            'extent' => $Link['extent'] + 1,
+            'element' => array(
+                'name' => 'img',
+                'attributes' => array(
+                    'data-src' => $Link['element']['attributes']['href'],
+                    'alt' => $Link['element']['text'],
+                    'class' => "lazy"
+                ),
+            ),
+        );
+
+        $Inline['element']['attributes'] += $Link['element']['attributes'];
+
+        unset($Inline['element']['attributes']['href']);
+
+        return $Inline;
     }
 
     protected function blockList($Line)
@@ -234,8 +298,8 @@ class ParsedownExtend extends ParsedownExtra {
         if (preg_match('/^([!?])?>[ ]?(.*)/', $Line['text'], $matches))
         {
             $class = '';
-            if($matches[1] === '!') $class = 'info';
-            if($matches[1] === '?') $class = 'warning';
+            if($matches[1] === '!') $class = 'warning';
+            if($matches[1] === '?') $class = 'info';
             
             $Block = array(
                 'element' => array(

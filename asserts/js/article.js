@@ -120,18 +120,29 @@ window.article = function ($){
         $(this).find('.alt').remove();
         $(this).html('<span>'+$(this).html()+'</span>');
         if(imgurl !== undefined){
-            $(this).append('<span class="card-meta-background" style="background-image:url('+imgurl+')"></span>');
             $(this).append('<span>'+img+'</span>');
         }
     })
     try{
+        var lazyLoadInstance = new LazyLoad({
+            elements_selector: "img.lazy",
+            thresholds: "1200px 10%",
+            use_native: true,
+            callback_enter: function (el){
+                console.log("ImgEnter", el);
+            }
+            // ... more custom settings?
+        });
+    }catch(e){console.log(e)}
+    try{
         $('article blockquote.card-meta').find('img').bind('load',function(){
+            $(this).parent().before('<span class="card-meta-background" style="background-image:url('+$(this).prop('src')+')"></span>');
             var image = new Image()
             image.src = $(this).prop('src');
             var sizescale = image.width > image.height ? 1 : image.width/image.height;
             $(this).parent().css('max-width', parseInt(sizescale*30)+'%');
         })
-    }catch(e){}
+    }catch(e){console.log(e)}
     try{
         tocbot.init({
             tocSelector: '.js-toc',
@@ -144,19 +155,22 @@ window.article = function ($){
                 $('.js-toc-move').css('height', $('.is-active-li a').height() + padding*2)
             }
         });
-    }catch(e){}
+    }catch(e){console.log(e)}
     try{
         $('article p').each(function(){
             $(this).html(Autolinker.link($(this).html()));
         })
         $('article a').each(function(){
-            var href = $(this).attr('href').trim();
-            if(href.slice(0,4) === 'http' && href[4] != 's')
-                href = '<strong>不安全 http</strong>' + href.slice(4)
-            $(this).tooltip({
-                html: true,
-                title: href
-            })
+            var href = $(this).attr('href')+'';
+            if(href !== 'undefined' && href.length > 0){
+                href = href.trim();
+                if(href.slice(0,4) === 'http' && href[4] != 's')
+                    href = '<strong>不安全 http</strong>' + href.slice(4)
+                $(this).tooltip({
+                    html: true,
+                    title: href
+                })
+            }
         })
-    }catch(e){}
+    }catch(e){console.log(e)}
 }
