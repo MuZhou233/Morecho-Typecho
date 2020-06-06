@@ -5,7 +5,7 @@
  * 
  * @package Morecho Theme Plugin - Core
  * @author MuZhou233
- * @version 0.3.2
+ * @version 0.3.3
  * @link https://typecho.mosar.in
  */
 class MorechoCore_Plugin implements Typecho_Plugin_Interface
@@ -14,7 +14,7 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
      * 插件版本号
      * @var string
      */
-    const _VERSION = '0.3.2';
+    const _VERSION = '0.3.3';
     
     /**
      * 激活插件方法,如果激活失败,直接抛出异常
@@ -64,11 +64,17 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
         );
         $form->addInput($theme_folder_name);
         // 是否修改后台样式
-        $no_change_dashbord_style = new Typecho_Widget_Helper_Form_Element_Radio(
-            'no_change_dashbord_style',
+        $no_change_dashboard_style = new Typecho_Widget_Helper_Form_Element_Radio(
+            'no_change_dashboard_style',
             array('0' => _t('不修改'), '1' => _t('修改')), '1', _t('是否修改后台外观'), _t('后台外观包括对移动端的适配修复')
         );
-        $form->addInput($no_change_dashbord_style);
+        $form->addInput($no_change_dashboard_style);
+        // 是否启用lazyload
+        $lazyload = new Typecho_Widget_Helper_Form_Element_Radio(
+            'lazyload',
+            array('0' => _t('不启用'), '1' => _t('启用')), '1', _t('是否启用图片lazyload'), _t('lazyload在图片较多的长文章中效果更好')
+        );
+        $form->addInput($lazyload);
     }
     
     /**
@@ -89,7 +95,7 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
     public static function header($header)
     {
         $options = Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore');
-        if($options->no_change_dashbord_style != '0')
+        if($options->no_change_dashboard_style != '0')
             $header .= '<link rel="stylesheet" href="'.Helper::options()->pluginUrl.'/MorechoCore/style.css"/>';
         $header .=  '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/article.css">';
         $header .= '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/morecho.css">';

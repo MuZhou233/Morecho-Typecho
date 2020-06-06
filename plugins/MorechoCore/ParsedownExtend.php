@@ -134,6 +134,10 @@ class ParsedownExtend extends ParsedownExtra {
         }
     }
 
+    private function lazyLoad(){
+        return Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore')->lazyload === '1';
+    }
+
     protected function inlineImage($Excerpt)
     {
         if ( ! isset($Excerpt['text'][1]) or $Excerpt['text'][1] !== '[')
@@ -150,6 +154,7 @@ class ParsedownExtend extends ParsedownExtra {
             return;
         }
 
+        if($this->lazyload())
         $Inline = array(
             'extent' => $Link['extent'] + 1,
             'element' => array(
@@ -158,6 +163,17 @@ class ParsedownExtend extends ParsedownExtra {
                     'data-src' => $Link['element']['attributes']['href'],
                     'alt' => $Link['element']['text'],
                     'class' => "lazy"
+                ),
+            ),
+        );
+        else
+        $Inline = array(
+            'extent' => $Link['extent'] + 1,
+            'element' => array(
+                'name' => 'img',
+                'attributes' => array(
+                    'src' => $Link['element']['attributes']['href'],
+                    'alt' => $Link['element']['text'],
                 ),
             ),
         );

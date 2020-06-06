@@ -15,6 +15,8 @@
 1. 修改了 markdown 解析器和编辑器，在服务端支持了主题增加的 markdown 功能
 1. 增加了全部文章归档的页面
 
+修改后的 MarkDown 解析器使用了图片 lazyload，如果你在使用中出现问题可以在插件设置中关闭
+
 ### MorechoFriends
 
 增强友链体验

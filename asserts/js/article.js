@@ -128,10 +128,7 @@ window.article = function ($){
             elements_selector: "img.lazy",
             thresholds: "1200px 10%",
             use_native: true,
-            callback_enter: function (el){
-                console.log("ImgEnter", el);
-            }
-            // ... more custom settings?
+            cancel_on_exit: true
         });
     }catch(e){console.log(e)}
     try{
