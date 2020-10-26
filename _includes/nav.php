@@ -73,10 +73,10 @@
                     href="/archive/">全部文章</a>
                 <?php endif; ?>
                 <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
-                <?php while($categories->next()): ?>
+                <?php while($categories->next()): if($categories->parent == "0"): ?>
                 <a class="nav-link <?php echo $this->is('category', $categories->slug)?'active':''; ?>"
                     href="<?php $categories->permalink(); ?>"><?php $categories->name(); ?></a>
-                <?php endwhile; ?>
+                <?php endif; endwhile; ?>
             </nav>
         </div>
         <div data-tab="setting">

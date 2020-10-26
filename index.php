@@ -21,14 +21,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="post-title">
             <?php $this->title(); ?>
         </div>
+        <?php if($this->fileds->foldInIndex == false): ?>
         <?php if(isset($this->fields->subtitle)): ?>
         <div class="post-subtitle">
             <?php $this->fields->subtitle(); ?>
         </div>
         <?php endif ?>
         <div class="post-content-preview">
-            <?php $this->excerpt(50 , '...'); ?>
+            <?php $this->excerpt(100 , '...'); ?>
         </div>
+        <?php endif ?>
     </a>
     <div class="post-meta">
         <i data-feather="edit-3"></i> <?php $this->author(); ?>
