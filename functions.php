@@ -71,8 +71,8 @@ function themeFields($layout)
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
         $textIndent = new Typecho_Widget_Helper_Form_Element_Select('textIndent', array('false' => '不缩进', 'true' => '缩进'), 'false', '开启全文首行缩进');
         $layout->addItem($textIndent);
-        $hideInIndex = new Typecho_Widget_Helper_Form_Element_Select('hideInIndex', array('false' => '不隐藏', 'true' => '隐藏'), 'false', '在主页列表中隐藏');
-        $layout->addItem($hideInIndex);
+        $foldInIndex = new Typecho_Widget_Helper_Form_Element_Select('foldInIndex', array('false' => '不折叠', 'true' => '折叠'), 'false', '在主页列表中折叠');
+        $layout->addItem($foldInIndex);
         $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('副标题'), _t('首页模板功能'));
         $layout->addItem($subtitle);
     }

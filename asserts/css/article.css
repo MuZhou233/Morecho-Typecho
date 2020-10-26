@@ -253,10 +253,11 @@ article blockquote.card-meta {
   align-items: center;
   overflow: hidden;
   font-size: 0.9rem;
-  padding: 0;
+  padding: 0 1rem;
   border-radius: .5rem;
   margin-left: 0;
-  width: 100%;
+  left: -1rem;
+  width: calc(100% + 2rem);
 }
 article#wmd-preview blockquote.card-meta{
   padding: 0 !important;

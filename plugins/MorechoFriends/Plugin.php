@@ -49,7 +49,7 @@ class MorechoFriends_Plugin implements Typecho_Plugin_Interface
 					('SQLite' == $type && ('HY000' == $code || 1 == $code))) {
 				try {
 					if ('Mysql' == $type) {
-						$db->query("ALTER TABLE `".$prefix."users` ADD `introduction` LONGTEXT  DEFAULT '' COMMENT '个人介绍';");
+						$db->query("ALTER TABLE `".$prefix."users` ADD `introduction` LONGTEXT COMMENT '个人介绍';");
 					} else if ('SQLite' == $type) {
 						$db->query("ALTER TABLE `".$prefix."users` ADD `introduction` LONGTEXT DEFAULT ''");
 					} else {
