@@ -79,6 +79,14 @@ article table::-webkit-scrollbar-track {
   border-radius: 0.5rem;
   background-color: transparent;
 }
+article .headimg {
+  position: relative;
+  top: -2rem;
+  max-width: calc(100% + 2rem);
+  left: -1rem;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
 .hljs {
   font-size: 0.8rem;
 }

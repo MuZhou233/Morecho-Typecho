@@ -24,6 +24,9 @@ function themeConfig($form)
     // 自定义名称
     $owner = new Typecho_Widget_Helper_Form_Element_Text('owner', NULL, NULL, _t('博主名称'), _t('在这里填入侧栏要显示的博主名称'));
     $form->addInput($owner->addRule('xssCheck', _t('请不要使用特殊字符')));
+    // 隐藏分类
+    $hideCategory = new Typecho_Widget_Helper_Form_Element_Text('hideCategory', NULL, NULL, _t('在归档中隐藏分类'), _t('填入分类缩略名，仅支持一个'));
+    $form->addInput($hideCategory->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 关于链接
     $linkAbout = new Typecho_Widget_Helper_Form_Element_Text('linkAbout', NULL, NULL, _t('添加“关于”链接'), _t('仅在启用MorechoFriends插件时生效，填入你的用户id（一般为1）即显示地址为<code>/author/ID</code>名为“关于”的链接，填入0不显示链接'));
     $form->addInput($linkAbout->addRule('xssCheck', _t('请不要使用特殊字符')));
@@ -67,12 +70,16 @@ function themeFields($layout)
     if (preg_match("/write-page.php/", $_SERVER['REQUEST_URI'])) {
         $textIndent = new Typecho_Widget_Helper_Form_Element_Select('textIndent', array('false' => '不缩进', 'true' => '缩进'), 'false', '开启全文首行缩进');
         $layout->addItem($textIndent);
+        $headImage = new Typecho_Widget_Helper_Form_Element_Text('headImage', NULL, NULL, _t('头图'), _t(''));
+        $layout->addItem($headImage);
     }
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
         $textIndent = new Typecho_Widget_Helper_Form_Element_Select('textIndent', array('false' => '不缩进', 'true' => '缩进'), 'false', '开启全文首行缩进');
         $layout->addItem($textIndent);
         $foldInIndex = new Typecho_Widget_Helper_Form_Element_Select('foldInIndex', array('false' => '不折叠', 'true' => '折叠'), 'false', '在主页列表中折叠');
         $layout->addItem($foldInIndex);
+        $headImage = new Typecho_Widget_Helper_Form_Element_Text('headImage', NULL, NULL, _t('头图'), _t(''));
+        $layout->addItem($headImage);
         $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('副标题'), _t('首页模板功能'));
         $layout->addItem($subtitle);
     }
