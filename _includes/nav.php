@@ -36,12 +36,12 @@
 
     <div class="site-controls text-center align-middle">
         <div class="row">
-            <div class="col-4 active" data-tab="navigation"><a href="javascript:;"><i
-                        data-feather="compass"></i><br /><span>导航</span></a></div>
-            <div class="col-4" data-tab="folder"><a href="javascript:;"><i
-                        data-feather="folder"></i><br /><span>归档</span></a></div>
-            <div class="col-4" data-tab="setting"><a href="javascript:;"><i
-                        data-feather="settings"></i><br /><span>设置</span></a></div>
+            <div class="col-4 active" data-tab="navigation"><a href="javascript:;"><div><i
+                        data-feather="compass"></i><br /><span>导航</span></div></a></div>
+            <div class="col-4" data-tab="folder"><a href="javascript:;"><div><i
+                        data-feather="folder"></i><br /><span>归档</span></div></a></div>
+            <div class="col-4" data-tab="setting"><a href="javascript:;"><div><i
+                        data-feather="settings"></i><br /><span>设置</span></div></a></div>
         </div>
     </div>
 
