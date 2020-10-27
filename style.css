@@ -241,7 +241,7 @@ a:hover {
   left: 0;
   bottom: 0;
   padding: 10px;
-  height: 75px;
+  height: 70px;
 }
 .site-controls .row a {
   cursor: pointer;
@@ -252,16 +252,12 @@ a:hover {
   color: #000;
   text-decoration: none;
 }
-.site-controls .row > div .feather {
-  transition: all 0.2s ease 0s;
+.site-controls .row div{
+  overflow: hidden;
+  transition: all 0.1s ease 0s;
 }
-.site-controls div.active span {
-  font-size: 0;
-}
-.site-controls div.active .feather {
-  margin-top: 0.5rem;
-  width: 2rem;
-  height: 2rem;
+.site-controls .row > div.active div {
+  transform: scale(2,2) translateY(.6em);
 }
 .site-control > div {
   display: none;

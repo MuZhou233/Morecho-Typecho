@@ -19,7 +19,6 @@
     <link rel="shortcut icon" href="<?php if($this->options->favicon)$this->options->favicon(); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/bootstrap/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/highlight/vscode.css'); ?>">
     <?php $this->header(); ?>
 </head>
 

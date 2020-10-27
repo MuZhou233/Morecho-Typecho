@@ -4,7 +4,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeInit($data)
 {
     if($data->is('category')||$data->is('search')||$data->is('tag')||$data->is('author')||$data->parameter->type == 'Morecho_archive_page')
-        $data->parameter->pageSize = 2^32;
+        $data->parameter->pageSize = 2<<30;
 }
 
 function themeConfig($form)
@@ -47,6 +47,9 @@ function themeConfig($form)
     $form->addInput($backgroundlg->addRule('xssCheck', _t('请不要使用特殊字符')));
     $backgroundsm = new Typecho_Widget_Helper_Form_Element_Text('backgroundsm', NULL, NULL, _t('移动端背景图片地址'), _t('在移动端使用长图替换宽图体验更好'));
     $form->addInput($backgroundsm->addRule('xssCheck', _t('请不要使用特殊字符')));
+
+    $blurCard = new Typecho_Widget_Helper_Form_Element_Radio('blurCard', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('是否启用半透明卡片效果（实验性）'), _t(''));
+    $form->addInput($blurCard);
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
     $title2->html('<h2>头衔</h2>
@@ -95,18 +98,30 @@ function get_user($uid){
 
 function get_post_num($id = false){
     $db = Typecho_Db::get();
-    if($id == false) $postnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'allpostnum'))->from ('table.contents')->where('table.contents.type=?', 'post'));
-    else $postnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'allpostnum'))->from ('table.contents')->where ('table.contents.authorId=?',$id)->where('table.contents.type=?', 'post'));
-    $postnum = $postnum['allpostnum'];
-    return $postnum;
+    if($id == false) $postnum=$db->fetchRow($db
+        ->select(array('COUNT(authorId)'=>'allpostnum'))
+        ->from ('table.contents')
+        ->where('table.contents.type=?', 'post'));
+    else $postnum=$db->fetchRow($db
+        ->select(array('COUNT(authorId)'=>'allpostnum'))
+        ->from ('table.contents')
+        ->where ('table.contents.authorId=?',$id)
+        ->where('table.contents.type=?', 'post'));
+    return $postnum['allpostnum'];
 }
 
 function get_comment_num($id = false){
     $db = Typecho_Db::get();
-    if($id == false) $commentnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'commentnum'))->from ('table.comments')->where ('table.comments.authorId=?',$id)->where('table.comments.type=?', 'comment'));
-    else $commentnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'commentnum'))->from ('table.comments')->where('table.comments.type=?', 'comment'));
-    $commentnum = $commentnum['commentnum'];
-    return $commentnum;
+    if($id == false) $commentnum=$db->fetchRow($db
+        ->select(array('COUNT(authorId)'=>'commentnum'))
+        ->from ('table.comments')
+        ->where('table.comments.type=?', 'comment'));
+    else $commentnum=$db->fetchRow($db
+        ->select(array('COUNT(authorId)'=>'commentnum'))
+        ->from ('table.comments')
+        ->where ('table.comments.authorId=?',$id)
+        ->where('table.comments.type=?', 'comment'));
+    return $commentnum['commentnum'];
 }
 
 function get_last_update(){
@@ -121,23 +136,6 @@ function get_last_update(){
     }else{
       echo date('y/m/d',$update['modified']);
     }
-}
-
-function get_PublishedPostsNum($uid){
-    $db     = Typecho_Db::get();
-    return $db->fetchObject($db->select(array('COUNT(cid)' => 'num'))
-                ->from('table.contents')
-                ->where('table.contents.type = ?', 'post')
-                ->where('table.contents.status = ?', 'publish')
-                ->where('table.contents.authorId = ?', $uid))->num;
-}
-
-function get_SpamCommentsNum($uid){
-    $db     = Typecho_Db::get();
-    return $db->fetchObject($db->select(array('COUNT(coid)' => 'num'))
-                ->from('table.comments')
-                ->where('table.comments.status = ?', 'spam')
-                ->where('table.comments.ownerId = ?', $uid))->num;
 }
 
 function get_user_group($name = NULL){

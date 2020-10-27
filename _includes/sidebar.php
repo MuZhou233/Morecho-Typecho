@@ -22,11 +22,11 @@
     <div class="title">作者信息</div>
     <div class="site-meta row text-center">
         <div class="col-4">
-            <div><?php echo get_PublishedPostsNum($this->_archiveSlug); ?></div>
+            <div><?php echo get_post_num($this->_archiveSlug); ?></div>
             <div>文章</div>
         </div>
         <div class="col-4">
-            <div><?php echo get_SpamCommentsNum($this->_archiveSlug); ?></div>
+            <div><?php echo get_comment_num($this->_archiveSlug); ?></div>
             <div>评论</div>
         </div>
         <div class="col-4">

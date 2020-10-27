@@ -34,6 +34,7 @@
 
     <script src="<?php $this->options->themeUrl('asserts/lib/lazyload.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/highlight/vscode.css'); ?>">
     <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
 
     <?php if (array_key_exists('is_archive', $GLOBALS) && $GLOBALS['is_archive']): ?>
@@ -48,6 +49,15 @@
     </script>
     <?php endif ?>
 
+    <?php if($this->options->blurCard === "true"): ?>
+    <style>
+    .card{
+        backdrop-filter: blur(10px) saturate(1.8);
+        background-color: rgba(255,255,255,.75);
+    }
+    </style>
+    <?php endif; ?>
+    <?php if($this->options->musicUrl): ?>
     <script src="<?php $this->options->themeUrl('asserts/lib/plyr/plyr.polyfilled.min.js'); ?>"></script>
     <script>
         const player = new Plyr('#player', { controls: '',loadSprite: false });
@@ -96,5 +106,6 @@
             }, 2000)
         })
     </script>
+    <?php endif; ?>
     <?php $this -> footer(); ?>
 </footer>
