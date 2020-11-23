@@ -4,7 +4,7 @@
 #
 # ParsedownExtend
 #
-# (c) Tabing
+# (c) Tabing & MuZhou233
 # https://gyx.moe
 #
 #
@@ -314,20 +314,32 @@ class ParsedownExtend extends ParsedownExtra {
         if (preg_match('/^([!?])?>[ ]?(.*)/', $Line['text'], $matches))
         {
             $class = '';
-            if($matches[1] === '!') $class = 'warning';
-            if($matches[1] === '?') $class = 'info';
+            $matches2 = trim($matches[2]);
+            
+            if($matches2[0] === '!') { $class = 'warning'; $matches2 = substr($matches2, 1);}
+            if($matches2[0] === '?') { $class = 'info'; $matches2 = substr($matches2, 1);}
             
             $Block = array(
                 'element' => array(
                     'name' => 'blockquote',
                     'handler' => 'lines',
-                    'text' => (array) $matches[2],
+                    'text' => (array) $matches2,
                     'attributes' => array(
                         'class' => $class,
                     )
                 ),
             );
-
+            if($matches2[0] === '[' && $matches2[1] === ']' && $matches2[2] === '(' && $matches2[-1] === ')')
+                $Block = array(
+                    'element' => array(
+                        'name' => 'blockquote',
+                        'handler' => 'lines',
+                        'text' => array($this->line('!'.$matches2)),
+                        'attributes' => array(
+                            'class' => 'card-meta',
+                        )
+                    ),
+                );
             return $Block;
         }
     }
@@ -339,18 +351,65 @@ class ParsedownExtend extends ParsedownExtra {
             if (isset($Block['interrupted']))
             {
                 $Block['element']['text'] []= '';
-
                 unset($Block['interrupted']);
             }
-
             $Block['element']['text'] []= $matches[1];
-
             return $Block;
         }
 
         if ( ! isset($Block['interrupted']))
         {
             $Block['element']['text'] []= $Line['text'];
+            return $Block;
+        }
+    }
+
+    #
+    # Fenced Code
+
+    protected function blockFencedCode($Line)
+    {
+        if (preg_match('/^['.$Line['text'][0].']{3,}[ ]*([^`]+)?[ ]*$/', $Line['text'], $matches))
+        {
+            $Element = array(
+                'name' => 'code',
+                'text' => '',
+            );
+
+            if (isset($matches[1]))
+            {
+                /**
+                 * https://www.w3.org/TR/2011/WD-html5-20110525/elements.html#classes
+                 * Every HTML element may have a class attribute specified.
+                 * The attribute, if specified, must have a value that is a set
+                 * of space-separated tokens representing the various classes
+                 * that the element belongs to.
+                 * [...]
+                 * The space characters, for the purposes of this specification,
+                 * are U+0020 SPACE, U+0009 CHARACTER TABULATION (tab),
+                 * U+000A LINE FEED (LF), U+000C FORM FEED (FF), and
+                 * U+000D CARRIAGE RETURN (CR).
+                 */
+                $language = substr($matches[1], 0, strcspn($matches[1], " \t\n\f\r"));
+
+                if(is_numeric($language))
+                    $Element['attributes'] = array(
+                        'data-startnum' => $language,
+                    );
+                else
+                    $Element['attributes'] = array(
+                        'class' => $class,
+                    );
+            }
+
+            $Block = array(
+                'char' => $Line['text'][0],
+                'element' => array(
+                    'name' => 'pre',
+                    'handler' => 'element',
+                    'text' => $Element,
+                ),
+            );
 
             return $Block;
         }

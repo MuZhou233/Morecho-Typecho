@@ -91,10 +91,10 @@ function themeFields($layout)
     }
 }
 
-function get_libUrl($local, $cdn){
+function get_libUrl($local, $cdn = 'none'){
     $options = Helper::options();
-    if($options->useJsDelivr) echo $cdn;
-    else $options->themeUrl($local);
+    if($options->useJsDelivr == 'true' && $cdn != 'none') return $cdn;
+    else return $options->themeUrl.'/'.$local;
 }
 
 function get_user($uid){

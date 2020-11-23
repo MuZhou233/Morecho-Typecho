@@ -111,9 +111,23 @@ code.hljs::-webkit-scrollbar-track {
   background-color: transparent;
 }
 article pre.hljs {
-  border-radius: 0.5rem;
+  max-width: unset;
+  width: calc(100% + 1rem);
+  left: -1rem;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
   position: relative;
   padding: 0;
+  overflow: unset;
+}
+article pre.hljs:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: .25rem;
+    background-color: #1e1e1e;
+    left: -.25rem;
+    top: 0;
 }
 article pre.hljs-line-numbered code {
   margin-left: 3em;
@@ -258,14 +272,16 @@ article blockquote.info:after {
 article blockquote.card-meta {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   align-items: center;
   overflow: hidden;
   font-size: 0.9rem;
   padding: 0 1rem;
-  border-radius: .5rem;
-  margin-left: 0;
+  border-bottom-right-radius: .5rem;
+  border-top-right-radius: .5rem;
+  margin-left: -.25rem;
   left: -1rem;
-  width: calc(100% + 2rem);
+  width: calc(100% + 2rem + .25rem);
 }
 article#wmd-preview blockquote.card-meta{
   padding: 0 !important;
@@ -284,17 +300,13 @@ article blockquote.card-meta .card-meta-background {
   background-size: cover;
   background-position: 50%;
 }
-article blockquote.card-meta > *:last-child {
-  max-width: 0%;
+article blockquote.card-meta > *:first-child {
   z-index: 1;
 }
-article blockquote.card-meta > *:first-child {
+article blockquote.card-meta > *:last-child {
   max-width: unset;
   padding: 1rem;
   z-index: 1;
-}
-article blockquote.card-meta:before {
-  display: none;
 }
 article blockquote.card-meta h1,
 article blockquote.card-meta h2,
@@ -311,6 +323,11 @@ article blockquote.card-meta h5:before {
   display: none;
 }
 article blockquote.card-meta img{
+  max-width: 30%;
   border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
+}
+
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-customized .tooltipster-box {
+  font-size: .9rem;
 }

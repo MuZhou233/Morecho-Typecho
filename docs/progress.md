@@ -11,7 +11,7 @@ Page Plan
 Plugin Plan  
 
 - [x] Dashboard Style
-- [ ] Server render
+- [x] Server render
 - [x] Synchronous scrolling
 - [x] Article preview
 - [x] Auto add single page
@@ -31,7 +31,7 @@ Feature Plan
 - [x] Search
 - [x] TimeLine
 - [x] Notification
-- [ ] Frinend Linker
+- [x] Friend Linker
 - [x] Image Lazyload
  
 MarkDown Adaptation Plan  
