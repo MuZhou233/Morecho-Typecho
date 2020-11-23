@@ -50,6 +50,9 @@ function themeConfig($form)
 
     $blurCard = new Typecho_Widget_Helper_Form_Element_Radio('blurCard', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('是否启用半透明卡片效果（实验性）'), _t(''));
     $form->addInput($blurCard);
+    
+    $useJsDelivr = new Typecho_Widget_Helper_Form_Element_Radio('useJsDelivr', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('是否使用cdn（jsDelivr）'), _t('使用cdn可以加快页面加载，不使用cdn可以保证所有地区的用户都正确加载页面'));
+    $form->addInput($useJsDelivr);
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
     $title2->html('<h2>头衔</h2>
@@ -86,6 +89,12 @@ function themeFields($layout)
         $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('副标题'), _t('首页模板功能'));
         $layout->addItem($subtitle);
     }
+}
+
+function get_libUrl($local, $cdn){
+    $options = Helper::options();
+    if($options->useJsDelivr) echo $cdn;
+    else $options->themeUrl($local);
 }
 
 function get_user($uid){

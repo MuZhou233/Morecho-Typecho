@@ -4,18 +4,18 @@
         <div>&copy; <?php echo date('Y'); echo ' '; $this->options->owner(); ?> · Powered by Typecho · Theme by <a href="https://github.com/muzhou233/Morecho-Typecho">Morecho</a></div>
         <?php endif ?>
     </div>
-    <script src="<?php $this->options->themeUrl('asserts/lib/jquery-3.4.1.slim.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/js.cookie.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/bootstrap/popper.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/bootstrap/bootstrap.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/feather.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/jquery-3.4.1.slim.min.js', 'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/js.cookie.min.js', 'https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/bootstrap/popper.min.js', 'asserts/lib/bootstrap/popper.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/bootstrap/bootstrap.min.js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/feather.min.js'); ?>"></script>
     <script>
         feather.replace();
     </script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/highlight/highlight.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/SmoothScroll.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/Autolinker.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/pangu.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/highlight/highlight.min.js', 'https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/SmoothScroll.min.js', 'asserts/lib/SmoothScroll.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/Autolinker.min.js', 'https://cdn.jsdelivr.net/npm/autolinker@3.13.0/dist/Autolinker.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/pangu.min.js', 'https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js'); ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
@@ -23,8 +23,8 @@
     </script>
     
     <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
-    <script src="<?php $this->options->themeUrl('asserts/lib/clipboard.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/lib/tocbot.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/clipboard.min.js', 'https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/tocbot.min.js', 'https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js'); ?>"></script>
     <?php endif ?>
 
     <?php if(($this->is('page') || $this->is('post')) && $this->fields->textIndent === 'true'): ?>
@@ -32,7 +32,7 @@
     <style>article p{text-indent: 2em;}</style>
     <?php endif; ?>
 
-    <script src="<?php $this->options->themeUrl('asserts/lib/lazyload.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/lazyload.min.js', 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/highlight/vscode.css'); ?>">
     <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
@@ -58,7 +58,7 @@
     </style>
     <?php endif; ?>
     <?php if($this->options->musicUrl): ?>
-    <script src="<?php $this->options->themeUrl('asserts/lib/plyr/plyr.polyfilled.min.js'); ?>"></script>
+    <script src="<?php $this->get_libUrl('asserts/lib/plyr/plyr.min.js', 'https://cdn.jsdelivr.net/npm/plyr@3.6.3/dist/plyr.min.js'); ?>"></script>
     <script>
         const player = new Plyr('#player', { controls: '',loadSprite: false });
         /*
