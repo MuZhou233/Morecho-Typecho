@@ -50,7 +50,7 @@
             <div>作者</div>
         </div>
         <div class="col-4">
-            <div><?php echo (string)mb_strlen(str_replace(PHP_EOL,'',strip_tags($this->content)),'utf-8'); ?></div>
+            <div><?php echo (string)mb_strlen(str_replace(PHP_EOL,'',strip_tags(preg_replace('/(<code.*?>[\s|\S]*?<\/code>)/', '', $this->content))),'utf-8'); ?></div>
             <div>字数</div>
         </div>
         <div class="col-4">

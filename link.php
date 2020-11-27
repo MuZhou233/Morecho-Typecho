@@ -16,15 +16,10 @@ function linkCard($user){
     echo '
     <a href="'.$url.'">
         <blockquote class="card-meta">
+            <img src="'.$avatar.'">
             <span>
                 <p>'.$name.'</p>
                 <p>'.$intro.'</p>
-            </span>
-            <span class="card-meta-background"
-                style="background-image:url('.$avatar.')">
-            </span>
-            <span>
-                <img src="'.$avatar.'">
             </span>
         </blockquote>
     </a>

@@ -110,11 +110,13 @@ function get_post_num($id = false){
     if($id == false) $postnum=$db->fetchRow($db
         ->select(array('COUNT(authorId)'=>'allpostnum'))
         ->from ('table.contents')
+        ->where('table.contents.status=?', 'publish')
         ->where('table.contents.type=?', 'post'));
     else $postnum=$db->fetchRow($db
         ->select(array('COUNT(authorId)'=>'allpostnum'))
         ->from ('table.contents')
         ->where ('table.contents.authorId=?',$id)
+        ->where('table.contents.status=?', 'publish')
         ->where('table.contents.type=?', 'post'));
     return $postnum['allpostnum'];
 }

@@ -28,7 +28,7 @@
 
     <?php if(($this->is('page') || $this->is('post')) && $this->fields->textIndent === 'true'): ?>
     <script>$(function(){$('article p > br').after('<span style="margin-left: 2em;"></span>');});</script>
-    <style>article p{text-indent: 2em;}</style>
+    <style>article p{text-indent: 2em;}article p>img{transform:translateX(-2rem);}</style>
     <?php endif; ?>
 
     <script src="<?php echo get_libUrl('asserts/lib/lazyload.min.js', 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'); ?>"></script>
