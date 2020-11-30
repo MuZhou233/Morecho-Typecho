@@ -42,6 +42,9 @@ function themeConfig($form)
     // 自定义页脚
     $footerCopyright = new Typecho_Widget_Helper_Form_Element_Textarea('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; [当前年份] · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>如果需要添加备案号，复制前面的内容，修改年份，并在后面添加<code>&lt;div&gt;备案号内容&lt;/div&gt;</code><br/>你也可以选择不保留原有的版权声明</br>留空则使用默认'));
     $form->addInput($footerCopyright);
+    // 自定义打印页脚
+    $footerCopyrightPrint = new Typecho_Widget_Helper_Form_Element_Textarea('footerCopyrightPrint', NULL, NULL, _t('自定义打印页脚'), _t('仅在打印页面时有效，留空则不变'));
+    $form->addInput($footerCopyrightPrint);
     // 自定义背景图
     $backgroundlg = new Typecho_Widget_Helper_Form_Element_Text('backgroundlg', NULL, NULL, _t('背景图片地址'));
     $form->addInput($backgroundlg->addRule('xssCheck', _t('请不要使用特殊字符')));

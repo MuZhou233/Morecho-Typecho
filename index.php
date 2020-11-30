@@ -33,7 +33,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <div class="post-meta">
             <i data-feather="edit-3"></i> <?php $this->author(); ?>
             <i data-feather="calendar"></i> <?php $this->date('Y年m月d日'); ?>
-            <i data-feather="clock"></i> <?php echo (string)mb_strlen(str_replace(PHP_EOL,'',strip_tags($this->content)),'utf-8'); echo ' 字' ?>
+            <i data-feather="clock"></i> <?php echo (string)mb_strlen(str_replace(PHP_EOL,'',strip_tags(preg_replace('/(<code.*?>[\s|\S]*?<\/code>)/', '', $this->content))),'utf-8'); echo ' 字' ?>
         </div>
         <?php endif ?>
     </a>

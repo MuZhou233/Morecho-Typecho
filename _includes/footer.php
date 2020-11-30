@@ -1,8 +1,17 @@
 <footer>
-    <div class="text-center text-black-50" style="padding:1rem">
-        <?php if(strlen($this->options->footerCopyright)>0): echo $this->options->footerCopyright; else: ?>
-        <div>&copy; <?php echo date('Y'); echo ' '; $this->options->owner(); ?> · Powered by Typecho · Theme by <a href="https://github.com/muzhou233/Morecho-Typecho">Morecho</a></div>
-        <?php endif ?>
+    <div class="footer-copyright text-center text-black-50" style="padding:1rem">
+        <div>
+            <?php if(strlen($this->options->footerCopyright)>0): echo $this->options->footerCopyright; else: ?>
+            <div>&copy; <?php echo date('Y'); echo ' '; $this->options->owner(); ?> · Powered by Typecho · Theme by <a href="https://github.com/muzhou233/Morecho-Typecho">Morecho</a></div>
+            <?php endif ?>
+        </div>
+        <div style="display: none;">
+            <?php 
+                if(strlen($this->options->footerCopyrightPrint)>0) echo $this->options->footerCopyrightPrint;
+                else if(strlen($this->options->footerCopyright)>0): echo $this->options->footerCopyright; else: ?>
+                <div>&copy; <?php echo date('Y'); echo ' '; $this->options->owner(); ?> · Powered by Typecho · Theme by <a href="https://github.com/muzhou233/Morecho-Typecho">Morecho</a></div>
+            <?php endif ?>
+        </div>
     </div>
     <script src="<?php echo get_libUrl('asserts/lib/jquery-3.4.1.slim.min.js', 'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js'); ?>"></script>
     <script src="<?php echo get_libUrl('asserts/lib/js.cookie.min.js', 'https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'); ?>"></script>

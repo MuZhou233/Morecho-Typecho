@@ -1,0 +1,21 @@
+@media print {
+    body.fullscreen{
+        background-color: #fff;
+    }
+    body.fullscreen .card{
+        box-shadow: none !important;
+    }
+    body.fullscreen>.sidebar,
+    body.fullscreen>.tools,
+    body.fullscreen>.background,
+    body.fullscreen .card-fullscreen-control,
+    body.fullscreen .card-comments{
+        display: none;
+    }
+    body.fullscreen .footer-copyright>div:first-child{
+        display: none;
+    }
+    body.fullscreen .footer-copyright>div:last-child{
+        display: block !important;
+    }
+}

@@ -4,6 +4,7 @@
 @import "asserts/css/theme-none.css";
 
 @import "asserts/css/article.css";
+@import "asserts/css/fullscreen-print.css";
 
 *{
   scroll-behavior:smooth;
