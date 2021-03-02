@@ -107,6 +107,42 @@ class ParsedownExtend extends ParsedownExtra {
         }
     }
 
+    protected function inlineEmphasis($Excerpt)
+    {
+        if ( ! isset($Excerpt['text'][1]))
+        {
+            return;
+        }
+
+        $marker = $Excerpt['text'][0];
+        
+        if($marker === '_')
+        {
+            return;
+        }
+
+        if ($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))
+        {
+            $emphasis = 'strong';
+        }
+        elseif (preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))
+        {
+            $emphasis = 'em';
+        }
+        else
+        {
+            return;
+        }
+
+        return array(
+            'extent' => strlen($matches[0]),
+            'element' => array(
+                'name' => $emphasis,
+                'handler' => 'line',
+                'text' => $matches[1],
+            ),
+        );
+    }
 
     private function searchUser($name){
         $options = Helper::options();

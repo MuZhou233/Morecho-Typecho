@@ -25,13 +25,14 @@
     <?php
         if($this->options->mathEnable === "true"): 
             if(!empty($this->options->mathCustom)):
-        ?>
-        <script>
-            <?php echo $this->options->mathCustom; ?>
-        </script>
-        <script async src="<?php echo get_libUrl('', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js'); ?>"></script>
-    <?php else: ?>
-        <script async src="<?php echo get_libUrl('asserts/lib/tex-mml-chtml.js', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'); ?>"></script>
+            ?>
+            <script>
+                <?php echo $this->options->mathCustom; ?>
+            </script>
+            <script async src="<?php echo get_libUrl('', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js'); ?>"></script>
+        <?php else: ?>
+            <script async src="<?php echo get_libUrl('asserts/lib/tex-mml-chtml.js', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'); ?>"></script>
+        <?php endif; ?>
     <?php endif; ?>
     <script src="<?php echo get_libUrl('asserts/lib/SmoothScroll.min.js'); ?>"></script>
     <script src="<?php echo get_libUrl('asserts/lib/pangu.min.js', 'https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js'); ?>"></script>

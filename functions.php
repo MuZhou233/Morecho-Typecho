@@ -54,8 +54,8 @@ function themeConfig($form)
     $blurCard = new Typecho_Widget_Helper_Form_Element_Radio('blurCard', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('是否启用半透明卡片效果（实验性）'), _t(''));
     $form->addInput($blurCard);
 
-    $mathEnable = new Typecho_Widget_Helper_Form_Element_Select('mathEnable', array('false' => '禁用', 'true' => '启用'), 'false', '开启 MathJax 公式解析器（不支持编辑器实时预览）');
-    $layout->addItem($mathEnable);
+    $mathEnable = new Typecho_Widget_Helper_Form_Element_Radio('mathEnable', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('开启 MathJax 公式解析器（不支持编辑器实时预览）'), _t(''));
+    $form->addInput($mathEnable);
     $mathCustom = new Typecho_Widget_Helper_Form_Element_Textarea('mathCustom', NULL, NULL, _t('自定义 MathJax 配置'), _t('留空保持默认，配置内容请参考官方文档，自定义配置会强制从 jsDelivr 加载 MathJax 文件。<br/>默认情况下将加载 tex-mml-chtml.js，自定义配置时会加载 startup.js'));
     $form->addInput($mathCustom);
 
@@ -63,8 +63,8 @@ function themeConfig($form)
     $form->addInput($useJsDelivr);
 
     $info1 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
-    $info1->html('
-    <p>文章在展开模式/宽屏模式下适配页面打印功能，如果你启用了插件的lazyload功能，建议在打印前滑动至底端以加载所有图片。以Chrome为例，推荐的打印设置为彩色并勾选背景图形。</p>');
+    $info1->html('<p>文章在展开模式/宽屏模式下适配页面打印功能，如果你启用了插件的lazyload功能，建议在打印前滑动至底端以加载所有图片。以Chrome为例，推荐的打印设置为彩色并勾选背景图形。</p>');
+    $form->addItem($info1);
 
     $title2 = new Typecho_Widget_Helper_Layout('div', array('class=' => 'typecho-page-title'));
     $title2->html('<h2>头衔</h2>

@@ -38,6 +38,9 @@ article h4:before {
 article h5:before {
   background-color: rgba(0, 123, 255, 0.2);
 }
+article p {
+  overflow-x: auto;
+}
 article code.cover {
   color: #555;
   background-color: #555;
