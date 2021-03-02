@@ -18,4 +18,7 @@
     body.fullscreen .footer-copyright>div:last-child{
         display: block !important;
     }
+    article pre.hljs{
+        page-break-inside: auto;
+    }
 }
