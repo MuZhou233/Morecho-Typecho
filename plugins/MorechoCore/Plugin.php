@@ -5,7 +5,7 @@
  * 
  * @package Morecho Theme Plugin - Core
  * @author MuZhou233
- * @version 0.3.3
+ * @version 0.3.4
  * @link https://typecho.mosar.in
  */
 class MorechoCore_Plugin implements Typecho_Plugin_Interface
@@ -14,7 +14,7 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
      * 插件版本号
      * @var string
      */
-    const _VERSION = '0.3.3';
+    const _VERSION = '0.3.4';
     
     /**
      * 激活插件方法,如果激活失败,直接抛出异常

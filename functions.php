@@ -70,7 +70,7 @@ function themeConfig($form)
     $title2->html('<h2>头衔</h2>
     <p>会在左侧栏和评论区显示</p>');
     $form->addItem($title2);
-    
+
     $groupTitleA = new Typecho_Widget_Helper_Form_Element_Text('groupTitleA', NULL, _t('管理员'), _t('管理员'), _t(''));
     $form->addInput($groupTitleA->addRule('xssCheck', _t('请不要使用特殊字符')));
     $groupTitleE = new Typecho_Widget_Helper_Form_Element_Text('groupTitleE', NULL, _t('编辑'), _t('编辑'), _t(''));
