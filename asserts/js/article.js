@@ -45,10 +45,12 @@ window.article = function ($){
             feather.replace();
 
             $(this).addClass('hljs');
+            lang = $(this).attr('data-language');
+            if(lang == 'undefined') lang = 'auto';
             worker.onmessage = (event) => { 
                 $('#'+event.data[0]).get(0).innerHTML = event.data[1];
             }
-            worker.postMessage(Array(id, $(this).text()));
+            worker.postMessage(Array(id, $(this).text(), lang));
 
             var lines = $(this).text().split('\n').length;
             var numbering = $('<ul/>').addClass('hljs').addClass('hljs-line-number');

@@ -434,7 +434,7 @@ class ParsedownExtend extends ParsedownExtra {
                     );
                 else
                     $Element['attributes'] = array(
-                        'class' => $class,
+                        'data-language' => $language,
                     );
             }
 
