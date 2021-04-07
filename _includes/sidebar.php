@@ -58,8 +58,8 @@
             <div>修改</div>
         </div>
     </div>
-    <ul class="category"><li>
-        <?php $this->category('</li><li>'); ?>
+    <ul class="category"><li><i data-feather="folder"></i>
+        <?php $this->category('</li><li><i data-feather="folder"></i>'); ?>
     </li></ul>
     <div class="tags">
         <?php $this->tags(' ', true, ''); ?>

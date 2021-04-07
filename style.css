@@ -191,8 +191,18 @@ a:hover {
   font-size: .8rem;
   color: #555;
 }
+.card-post-meta .category{
+  font-size: 0.85rem;
+  padding-left: 0.75rem;
+}
+.card-post-meta .category a{
+  color: #555;
+}
 .card-post-meta .category li{
   list-style: none;
+}
+.card-post-meta .category li:last-child{
+  display: none;
 }
 .card-post-meta .tags{
   margin: -.25rem 1rem .25rem 1rem;
