@@ -96,6 +96,8 @@ function themeFields($layout)
         $layout->addItem($textIndent);
         $foldInIndex = new Typecho_Widget_Helper_Form_Element_Select('foldInIndex', array('false' => '不折叠', 'true' => '折叠'), 'false', '在主页列表中折叠');
         $layout->addItem($foldInIndex);
+        $timeliness = new Typecho_Widget_Helper_Form_Element_Select('timeliness', array('false' => '关闭', 'true' => '开启'), 'false', '时效性警告');
+        $layout->addItem($timeliness);
         $headImage = new Typecho_Widget_Helper_Form_Element_Text('headImage', NULL, NULL, _t('头图'), _t('输入图片链接'));
         $layout->addItem($headImage);
         $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('副标题'), _t('首页模板功能'));

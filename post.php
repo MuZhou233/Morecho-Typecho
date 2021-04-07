@@ -13,7 +13,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  ?>
 
 <h1 class="title"><?php $this->title() ?></h1>
-<div class="author"><a class="theme" href="/author/<?php echo $this->author->uid ?>"><?php $this->author(); ?></a></div>
+<div class="stamp">
+    <?php if($this->fields->timeliness): $now = new Typecho_Date(Typecho_Date::gmtTime());?>
+        <a class="timeliness" href="javascript:;">已发布 <?php echo (int)(($now->timeStamp - $this->created) / 86400) ?> 天</a>
+    <?php endif ?>
+    <a class="author" href="/author/<?php echo $this->author->uid ?>"><?php $this->author(); ?></a>
+</div>
 
 <article class="card card-article">
     <?php if($this->fields->headImage): ?><img class="headimg" src="<?php $this->fields->headImage() ?>"></img><?php endif ?>

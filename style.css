@@ -200,9 +200,7 @@ a:hover {
 }
 .card-post-meta .category li{
   list-style: none;
-}
-.card-post-meta .category li:last-child{
-  display: none;
+  overflow: hidden;
 }
 .card-post-meta .tags{
   margin: -.25rem 1rem .25rem 1rem;
@@ -398,17 +396,35 @@ a:hover {
   text-align: center;
   margin: 2.7em 0;
 }
-.content .author{
-  text-align: right;
-  margin-bottom: -0.7rem;
+.content .stamp{
+  display: flex;
+  justify-content: flex-end;
+  overflow-x: hidden;
+  margin-bottom: -1.7rem;
+  border-radius: 0.5rem;
 }
-.content .author a {
+.content .stamp .timeliness {
+  padding: 0.3rem 1.4rem 1rem 0.8rem;
+  color: #FFF;
+  background-color: #fdbc40;
+  border-radius: 0.5rem;
+  z-index: -1;
+  transform: translateX(calc(100% - 4em));
+  transition: transform 0.4s ease;
+}
+.content .stamp .timeliness:before {
+  content: "时效性 ：";
+}
+.content .stamp:hover .timeliness {
+  transform: translateX(1em);
+}
+.content .stamp .author {
   padding: 0.3rem 0.8rem 1rem 0.8rem;
   color: #FFF;
   background-color: #007BFE;
   border-radius: 0.5rem;
 }
-.content .author a:before {
+.content .stamp .author:before {
   content: "by ";
 }
 .content > .container > .row,
