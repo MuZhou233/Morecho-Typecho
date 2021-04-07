@@ -13,6 +13,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  ?>
 
 <h1 class="title"><?php $this->title() ?></h1>
+<div class="author"><a class="theme" href="/author/<?php echo $this->author->uid ?>"><?php $this->author(); ?></a></div>
 
 <article class="card card-article">
     <?php if($this->fields->headImage): ?><img class="headimg" src="<?php $this->fields->headImage() ?>"></img><?php endif ?>

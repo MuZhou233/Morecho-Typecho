@@ -191,6 +191,9 @@ a:hover {
   font-size: .8rem;
   color: #555;
 }
+.card-post-meta .category li{
+  list-style: none;
+}
 .card-post-meta .tags{
   margin: -.25rem 1rem .25rem 1rem;
 }
@@ -383,7 +386,20 @@ a:hover {
 /* content */
 .content .title {
   text-align: center;
-  margin: 3em 0;
+  margin: 2.7em 0;
+}
+.content .author{
+  text-align: right;
+  margin-bottom: -0.7rem;
+}
+.content .author a {
+  padding: 0.3rem 0.8rem 1rem 0.8rem;
+  color: #FFF;
+  background-color: #007BFE;
+  border-radius: 0.5rem;
+}
+.content .author a:before {
+  content: "by ";
 }
 .content > .container > .row,
 .content > .container > .row > div {

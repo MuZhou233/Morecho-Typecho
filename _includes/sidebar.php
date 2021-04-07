@@ -46,18 +46,21 @@
     <div class="title">文章信息</div>
     <div class="site-meta row text-center">
         <div class="col-4">
-            <div><a class="theme" href="/author/<?php echo $this->author->uid ?>"><?php $this->author(); ?></a></div>
-            <div>作者</div>
-        </div>
-        <div class="col-4">
             <div><?php echo (string)mb_strlen(str_replace(PHP_EOL,'',strip_tags(preg_replace('/(<code.*?>[\s|\S]*?<\/code>)/', '', $this->content))),'utf-8'); ?></div>
             <div>字数</div>
+        </div>
+        <div class="col-4">
+            <div><?php echo date('y/m/d', $this->created) ?></div>
+            <div>创建</div>
         </div>
         <div class="col-4">
             <div><?php echo date('y/m/d', $this->modified) ?></div>
             <div>修改</div>
         </div>
     </div>
+    <ul class="category"><li>
+        <?php $this->category('</li><li>'); ?>
+    </li></ul>
     <div class="tags">
         <?php $this->tags(' ', true, ''); ?>
     </div>
