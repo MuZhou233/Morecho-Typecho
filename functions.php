@@ -51,6 +51,9 @@ function themeConfig($form)
     $backgroundsm = new Typecho_Widget_Helper_Form_Element_Text('backgroundsm', NULL, NULL, _t('移动端背景图片地址'), _t('在移动端使用长图替换宽图体验更好'));
     $form->addInput($backgroundsm->addRule('xssCheck', _t('请不要使用特殊字符')));
 
+    $forceTimeliness = new Typecho_Widget_Helper_Form_Element_Radio('forceTimeliness', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('强制开启文章时效性警告'), _t(''));
+    $form->addInput($forceTimeliness);
+
     $blurCard = new Typecho_Widget_Helper_Form_Element_Radio('blurCard', array('false' => _t('不启用'), 'true' => _t('启用')), 'false', _t('是否启用半透明卡片效果（实验性）'), _t(''));
     $form->addInput($blurCard);
 
