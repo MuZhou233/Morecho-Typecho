@@ -17,3 +17,7 @@ Morecho 插件推荐配套使用，插件提供了后台样式、后台编辑器
 ## [文档](https://typecho.mosar.in)
 
 [点击查看](https://typecho.mosar.in)
+
+## Typecho 1.2 支持
+
+本主题从 0.6 版本开始支持 Typecho 1.2，感谢 @jrotty 的帮助

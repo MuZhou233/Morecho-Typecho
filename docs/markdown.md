@@ -1,6 +1,6 @@
 ## 基础语法
 
-支持常见的 Markdown 语法，或者说[PHP MarkDown](http://michelf.ca/projects/php-markdown/)&[PHP MarkDown Extra](http://michelf.ca/projects/php-markdown/extra)
+支持常见的 Markdown 语法，或者说[PHP Markdown](http://michelf.ca/projects/php-markdown/)&[PHP Markdown Extra](http://michelf.ca/projects/php-markdown/extra)
 
 ## 特有语法
 

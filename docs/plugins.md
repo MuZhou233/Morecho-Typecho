@@ -7,15 +7,15 @@
 
 ### MorechoCore
 
-!> 本插件仅支持 MarkDown 编辑器，并且会替换默认 MarkDown 解析器
+!> 本插件仅支持 markdown 编辑器，并且会替换默认 markdown 解析器
 
 主要目的是在后台界面提供与前台一样的体验，也会放置一些零碎功能，比如：
 
-1. 修改了后台外观，使后台预览支持主题增加的 markdown 功能（不完善），修复了移动端的 bug
-1. 修改了 markdown 解析器和编辑器，在服务端支持了主题增加的 markdown 功能
+1. `v0.6后移除` 修改了后台外观，使后台预览支持主题增加的 markdown 功能（不完善），修复了移动端的 bug
+1. `v0.6后移除` 修改了 markdown 解析器和编辑器，在服务端支持了主题增加的 markdown 功能
 1. 增加了全部文章归档的页面
 
-修改后的 MarkDown 解析器使用了图片 lazyload，如果你在使用中出现问题可以在插件设置中关闭
+修改后的 markdown 解析器使用了图片 lazyload，如果你在使用中出现问题可以在插件设置中关闭
 
 ### MorechoFriends
 

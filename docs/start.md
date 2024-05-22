@@ -1,6 +1,7 @@
 ## 注意事项
 
 1. Morecho 主题的开发测试环境为 Typecho1.1、php7.3、MySQL，其他版本应该会正常运作。
+    - v0.6 之后开发测试环境为 Typecho1.2、php8.0、PostgreSQL
 1. 必须正确配置伪静态且将网站放在根路径，否则部分链接会出现 404
 1. 作者仅仅会测试新版本在 Chrome Firefox Safari 上是否有 bug，如果你对浏览器兼容性要求较高，请谨慎考虑是否使用
 

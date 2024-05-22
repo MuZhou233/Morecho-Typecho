@@ -5,7 +5,7 @@
  * 
  * @package Morecho Theme Plugin - Core
  * @author MuZhou233
- * @version 0.3.4
+ * @version 0.4.0
  * @link https://typecho.mosar.in
  */
 class MorechoCore_Plugin implements Typecho_Plugin_Interface

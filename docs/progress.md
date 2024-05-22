@@ -33,10 +33,10 @@ Feature Plan
 - [x] Notification
 - [x] Friend Linker
 - [x] Image Lazyload
- 
-MarkDown Adaptation Plan  
 
-- [x] Common MarkDown
+Markdown Adaptation Plan  
+
+- [x] Common Markdown
 - [x] Automatic Link
 - [x] Syntax Hightlighting
 - [x] Inline Code
