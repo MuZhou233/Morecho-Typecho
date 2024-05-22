@@ -173,7 +173,7 @@ function get_user_group($name = NULL){
         $profile = $db->fetchRow($db->select('group', 'uid')->from('table.users')->where('uid = ?', intval(Typecho_Cookie::get('__typecho_uid'))));
     else
         $profile = $db->fetchRow($db->select('group', 'name', 'screenName')->from('table.users')->where('name=? OR screenName=?', $name, $name));
-    if(sizeof($profile) == 0) return isset($options->groupTitleV) ? $options->groupTitleV: '';
+    if(empty($profile)) return isset($options->groupTitleV) ? $options->groupTitleV: '';
     return $profile['group'];
 }
 

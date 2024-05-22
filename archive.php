@@ -8,7 +8,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 if($this->is('tag')){
-    $url = Typecho_Router::getPathInfo();
+    $url = strtolower($_SERVER['REQUEST_URI']);
     if(substr($url, -1) == '/')$url = substr($url, 0, strlen($url)-1);
     if(!array_key_exists('MorechoCore', Typecho_Plugin::export()['activated']))
         Header("Location: ".$this->options->siteUrl.'archive.html/?tag='.trim(strrchr($url, '/'),'/'));

@@ -27,13 +27,13 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
     {
         Helper::addRoute('Morecho_archive_page', '/archive/', 'Widget_Archive', 'render');
         Typecho_Plugin::factory('Widget_Archive')->handle = array('MorechoCore_Plugin', 'archive');
-        Typecho_Plugin::factory('admin/header.php')->header = array('MorechoCore_Plugin', 'header');
-        Typecho_Plugin::factory('admin/footer.php')->end = array('MorechoCore_Plugin', 'footer');
-        Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('MorechoCore_Plugin', 'markdown');
-        Typecho_Plugin::factory('Widget_Abstract_Comments')->markdown = array('MorechoCore_Plugin', 'markdown_safemod');
-        Typecho_Plugin::factory('admin/editor-js.php')->markdownEditor = array('MorechoCore_Plugin', 'markdown_editor');
-        Typecho_Plugin::factory('admin/write-post.php')->richEditor = array('MorechoCore_Plugin', 'editor');
-        Typecho_Plugin::factory('admin/write-page.php')->richEditor = array('MorechoCore_Plugin', 'editor');
+        //Typecho_Plugin::factory('admin/header.php')->header = array('MorechoCore_Plugin', 'header');
+        //Typecho_Plugin::factory('admin/footer.php')->end = array('MorechoCore_Plugin', 'footer');
+        //Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('MorechoCore_Plugin', 'markdown');
+        //Typecho_Plugin::factory('Widget_Abstract_Comments')->markdown = array('MorechoCore_Plugin', 'markdown_safemod');
+        //Typecho_Plugin::factory('admin/editor-js.php')->markdownEditor = array('MorechoCore_Plugin', 'markdown_editor');
+        //Typecho_Plugin::factory('admin/write-post.php')->richEditor = array('MorechoCore_Plugin', 'editor');
+        //Typecho_Plugin::factory('admin/write-page.php')->richEditor = array('MorechoCore_Plugin', 'editor');
     }
     
     /**
@@ -112,49 +112,6 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
     {
         $options = Helper::options();
         echo '<script src="'.$options->pluginUrl.'/MorechoCore/script.js"></script>';
-    }
-
-    /**
-     * 使用 Parsedown 解析
-     * 
-     * @access public
-     * @return void
-     */
-    public static function markdown($text)
-    {
-        require_once dirname(__FILE__) . '/ParsedownExtend.php';
-        return ParsedownExtend::instance()
-            ->setBreaksEnabled(true)
-            ->text($text);
-    }
-    
-    /**
-     * 使用 Parsedown 解析（开启安全模式）
-     * 
-     * @access public
-     * @return void
-     */
-    public static function markdown_safemod($text)
-    {
-        require_once dirname(__FILE__) . '/ParsedownExtend.php';
-        return ParsedownExtend::instance()
-            ->setSafeMode(true)
-            ->setBreaksEnabled(true)
-            ->text($text);
-    }
-        
-    /**
-     * 修改markdown编辑器
-     * 
-     * @access public
-     * @return void
-     */
-    public static function editor($page)
-    {
-        Typecho_Widget::widget('Widget_Options')->to($options);
-        list($prefixVersion, $suffixVersion) = explode('/', $options->version);
-        $options->theme_folder_name = Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore')->theme_folder_name;
-        require dirname(__FILE__) . '/editor-js.php';
     }
     
     /**

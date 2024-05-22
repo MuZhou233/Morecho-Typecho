@@ -68,9 +68,9 @@
         </div>
         <div data-tab="folder">
             <nav class="nav flex-column nav-pills">
-                <?php if(array_key_exists('MorechoCore', Typecho_Plugin::export()['activated'])): ?> 
-                <a class="nav-link <?php if(Typecho_Router::getPathInfo() == '/archive/')echo 'active' ?>"
-                    href="/archive/">全部文章</a>
+                <?php if(array_key_exists('MorechoCore', Typecho_Plugin::export()['activated'])): ?>
+                    <a class="nav-link <?php if(strtolower($_SERVER['REQUEST_URI']) == '/archive/')echo 'active' ?>"
+                       href="/archive/">全部文章</a>
                 <?php endif; ?>
                 <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
                 <?php while($categories->next()): if($categories->parent == "0" && $categories->slug !== $this->options->hideCategory): ?>
