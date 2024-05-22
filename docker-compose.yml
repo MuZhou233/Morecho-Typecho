@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  typecho:
+    image: joyqi/typecho:1.2.1-php8.0-apache
+    container_name: morecho-dev-server
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      - TYPECHO_SITE_URL=http://localhost:8080
+      - TYPECHO_INSTALL=1
+      - TYPECHO_DB_ADAPTER=Pdo_Pgsql
+      - TYPECHO_DB_HOST=postgres
+      - TYPECHO_DB_PORT=5432
+      - TYPECHO_DB_USER=typecho
+      - TYPECHO_DB_PASSWORD=typecho
+      - TYPECHO_DB_DATABASE=typecho
+      - TYPECHO_USER_NAME=admin
+      - TYPECHO_USER_PASSWORD=admin
+    ports:
+      - 8080:80
+    networks:
+      - default
+    volumes:
+      - ./typecho:/app/usr
+      - ./:/app/usr/themes/Morecho
+      - ./plugins/MorechoCore:/app/usr/plugins/MorechoCore
+      - ./plugins/MorechoFriends:/app/usr/plugins/MorechoFriends
+  postgres:
+    image: postgres:13
+    container_name: morecho-dev-postgres
+    hostname: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=typecho
+      - POSTGRES_PASSWORD=typecho
+      - POSTGRES_DB=typecho
+    networks:
+      - default
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+networks:
+  default:
+    driver: bridge
