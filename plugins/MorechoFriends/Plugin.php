@@ -45,26 +45,35 @@ class MorechoFriends_Plugin implements Typecho_Plugin_Interface
 			return '检测到个人介绍字段，插件启用成功';
 		} catch (Typecho_Db_Exception $e) {
 			$code = $e->getCode();
-			if(('Mysql' == $type && (0 == $code ||1054 == $code || $code == '42S22')) ||
-					('SQLite' == $type && ('HY000' == $code || 1 == $code))) {
+			if(
+                ('Mysql' == $type && (0 == $code ||1054 == $code || $code == '42S22')) ||
+                ('SQLite' == $type && ('HY000' == $code || 1 == $code)) ||
+                ('Pgsql' == $type && (42703 == $code || '42P01' == $code))
+            ) {
 				try {
 					if ('Mysql' == $type) {
 						$db->query("ALTER TABLE `".$prefix."users` ADD `introduction` LONGTEXT COMMENT '个人介绍';");
 					} else if ('SQLite' == $type) {
-						$db->query("ALTER TABLE `".$prefix."users` ADD `introduction` LONGTEXT DEFAULT ''");
+                        $db->query("ALTER TABLE `" . $prefix . "users` ADD `introduction` LONGTEXT DEFAULT ''");
+                    } else if ('Pgsql' == $type) {
+                        $db->query("ALTER TABLE " . $prefix . "users ADD introduction TEXT DEFAULT '';");
 					} else {
 						throw new Typecho_Plugin_Exception('不支持的数据库类型：'.$type);
 					}
 					return '建立个人介绍字段，插件启用成功';
 				} catch (Typecho_Db_Exception $e) {
 					$code = $e->getCode();
-					if(('Mysql' == $type && 1060 == $code) ) {
-						return '个人介绍已经存在，插件启用成功';
-					}
+					if(
+                        ('Mysql' == $type && 1060 == $code) ||
+                        ('SQLite' == $type && 1 == $code) ||
+                        ('Pgsql' == $type && 42701 == $code)
+                    ) {
+                        return '个人介绍已经存在，插件启用成功';
+                    }
 					throw new Typecho_Plugin_Exception('个人介绍插件启用失败。错误号：'.$code);
 				}
 			}
-			throw new Typecho_Plugin_Exception('数据表检测失败，个人介绍插件启用失败。错误号：'.$code);
+			throw new Typecho_Plugin_Exception('数据表检测失败，个人介绍插件启用失败。数据库类型：'.$type.'错误号：'.$code);
 		}
 	}
 
@@ -127,7 +136,17 @@ class MorechoFriends_Plugin implements Typecho_Plugin_Interface
 		if($config['delete'] === '1'){
 			$db = Typecho_Db::get();
 			$prefix = $db->getPrefix();
-			$db->query("ALTER TABLE `".$prefix."users` DROP `introduction`");
+            $type = explode('_', $db->getAdapterName());
+            $type = array_pop($type);
+            if ('Mysql' == $type) {
+                $db->query("ALTER TABLE `".$prefix."users` DROP `introduction`");
+            } else if ('SQLite' == $type) {
+                $db->query("ALTER TABLE `" . $prefix . "users` DROP `introduction`");
+            } else if ('Pgsql' == $type) {
+                $db->query("ALTER TABLE " . $prefix . "users DROP COLUMN introduction");
+            } else {
+                throw new Typecho_Plugin_Exception('不支持的数据库类型：'.$type);
+            }
 			$config['delete'] = '0';
 		}
 		Helper::configPlugin('MorechoFriends', $config);
@@ -185,22 +204,26 @@ class MorechoFriends_Plugin implements Typecho_Plugin_Interface
 
         /** 设置头部feed */
         /** RSS 2.0 */
-        $data->setFeedUrl($data->feedUrl);
 
-        /** RSS 1.0 */
-        $data->setFeedRssUrl($data->feedRssUrl);
+        //对自定义首页使用全局变量
+        if (!$data->makeSinglePageAsFrontPage) {
+            $data->archiveFeedUrl = $data->feedUrl;
 
-        /** ATOM 1.0 */
-        $data->setFeedAtomUrl($data->feedAtomUrl);
+            /** RSS 1.0 */
+            $data->archiveFeedRssUrl = $data->feedRssUrl;
 
-        /** 设置标题 */
-        $data->setArchiveTitle($data->title);
+            /** ATOM 1.0 */
+            $data->archiveFeedAtomUrl = $data->feedAtomUrl;
 
-        /** 设置关键词 */
-        $data->setKeywords(implode(',', Typecho_Common::arrayFlatten($data->tags, 'name')));
+            /** 设置标题 */
+            $data->archiveTitle = $data->title;
 
-        /** 设置描述 */
-        $data->setDescription($data->description);
+            /** 设置关键词 */
+            $data->archiveKeywords = implode(',', array_column($data->tags, 'name'));
+
+            /** 设置描述 */
+            $data->archiveDescription = $data->plainExcerpt;
+        }
 
         return true;
     }

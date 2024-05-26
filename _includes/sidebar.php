@@ -17,21 +17,21 @@
         </div>
     </div>
 </div>
-<?php elseif(get_user($this->_archiveSlug)['group'] !== 'subscriber'): ?>
+<?php elseif(get_user($this->archiveSlug)['group'] !== 'subscriber'): ?>
 <div class="card card-site-meta">
     <div class="title">作者信息</div>
     <div class="site-meta row text-center">
         <div class="col-4">
-            <div><?php echo get_post_num($this->_archiveSlug); ?></div>
+            <div><?php echo get_post_num($this->archiveSlug); ?></div>
             <div>文章</div>
         </div>
         <div class="col-4">
-            <div><?php echo get_comment_num($this->_archiveSlug); ?></div>
+            <div><?php echo get_comment_num($this->archiveSlug); ?></div>
             <div>评论</div>
         </div>
         <div class="col-4">
             <div><?php 
-            $last_logged = get_user($this->_archiveSlug)['logged'];
+            $last_logged = get_user($this->archiveSlug)['logged'];
             if($last_logged == 0) echo '从未';
             else echo date('y/m/d', $last_logged); 
             ?></div>

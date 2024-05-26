@@ -11,8 +11,8 @@
     <div class="profile">
         <?php if($this->is('author')): ?>
             <img class="shadow"
-                src="<?php echo Typecho_Common::gravatarUrl(get_user($this->_archiveSlug)['mail'], 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"
-                alt="<?php echo get_user($this->_archiveSlug)['screenName'] ?>">
+                src="<?php echo Typecho_Common::gravatarUrl(get_user($this->archiveSlug)['mail'], 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"
+                alt="<?php echo get_user($this->archiveSlug)['screenName'] ?>">
         <?php elseif($this->user->hasLogin()): ?>
             <img class="shadow"
                 src="<?php echo Typecho_Common::gravatarUrl($this->user->mail, 256, $this->options->commentsAvatarRating, 'mp', $this->request->isSecure()); ?>"

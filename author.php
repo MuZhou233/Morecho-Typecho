@@ -12,7 +12,7 @@ if(isset($_GET['articles']) || !array_key_exists('MorechoFriends', Typecho_Plugi
 
 $db = Typecho_Db::get();
 
-$user = get_user($this->_archiveSlug);
+$user = get_user($this->archiveSlug);
 
 $this->need('_layouts/default-0.php'); ?>
 
