@@ -5,7 +5,7 @@
  * 
  * @package Morecho Theme Plugin - Friends
  * @author MuZhou233
- * @version 0.1.0
+ * @version 0.6.0
  * @link https://typecho.mosar.in
  */
 class MorechoFriends_Plugin implements Typecho_Plugin_Interface
