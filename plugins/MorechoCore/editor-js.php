@@ -1,12 +1,12 @@
 <?php if(!defined('__TYPECHO_ADMIN__')) exit; ?>
 <?php $content = !empty($post) ? $post : $page; if ($options->markdown): ?>
 <script src="<?php echo Helper::options()->pluginUrl ?>/MorechoCore/cheerio.js"></script>
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/feather.min.js"></script>
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/highlight.min.js"></script>
-<link rel="stylesheet" href="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/highlight/vscode.css">
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/clipboard.min.js"></script>
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/lib/Autolinker.min.js"></script>
-<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/asserts/js/article.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/lib/feather.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/lib/highlight/highlight.min.js"></script>
+<link rel="stylesheet" href="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/lib/highlight/vscode.css">
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/lib/clipboard.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/lib/Autolinker.min.js"></script>
+<script src="<?php echo Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name ?>/assets/js/article.js"></script>
 <script src="<?php $options->adminStaticUrl('js', 'hyperdown.js?v=' . $suffixVersion); ?>"></script>
 <script src="<?php $options->adminStaticUrl('js', 'pagedown.js?v=' . $suffixVersion); ?>"></script>
 <script src="<?php $options->adminStaticUrl('js', 'pagedown-extra.js?v=' . $suffixVersion); ?>"></script>

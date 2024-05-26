@@ -1,10 +1,10 @@
-@import "asserts/css/morecho.css";
-@import "asserts/css/theme-green.css";
-@import "asserts/css/theme-orange.css";
-@import "asserts/css/theme-none.css";
+@import "assets/css/morecho.css";
+@import "assets/css/theme-green.css";
+@import "assets/css/theme-orange.css";
+@import "assets/css/theme-none.css";
 
-@import "asserts/css/article.css";
-@import "asserts/css/fullscreen-print.css";
+@import "assets/css/article.css";
+@import "assets/css/fullscreen-print.css";
 
 *{
   scroll-behavior:smooth;

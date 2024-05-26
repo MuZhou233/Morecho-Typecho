@@ -13,12 +13,12 @@
             <?php endif ?>
         </div>
     </div>
-    <script src="<?php echo get_libUrl('asserts/lib/jquery-3.4.1.slim.min.js', 'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js'); ?>"></script>
-    <script src="<?php echo get_libUrl('asserts/lib/js.cookie.min.js', 'https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php echo get_libUrl('asserts/lib/tooltipster/tooltipster.bundle.min.css', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/css/tooltipster.bundle.min.css'); ?>"></link>
-    <link rel="stylesheet" href="<?php echo get_libUrl('asserts/lib/tooltipster/theme/tooltipster-sideTip-punk.min.css', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css'); ?>"></link>
-    <script src="<?php echo get_libUrl('asserts/lib/tooltipster/tooltipster.bundle.min.js', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/js/tooltipster.bundle.min.js'); ?>"></script>
-    <script src="<?php echo get_libUrl('asserts/lib/feather.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/jquery-3.4.1.slim.min.js', 'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/js.cookie.min.js', 'https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php echo get_libUrl('assets/lib/tooltipster/tooltipster.bundle.min.css', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/css/tooltipster.bundle.min.css'); ?>"></link>
+    <link rel="stylesheet" href="<?php echo get_libUrl('assets/lib/tooltipster/theme/tooltipster-sideTip-punk.min.css', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css'); ?>"></link>
+    <script src="<?php echo get_libUrl('assets/lib/tooltipster/tooltipster.bundle.min.js', 'https://cdn.jsdelivr.net/npm/tool-tip@4.2.5/dist/js/tooltipster.bundle.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/feather.min.js'); ?>"></script>
     <script>
         feather.replace();
     </script>
@@ -31,11 +31,11 @@
             </script>
             <script async src="<?php echo get_libUrl('', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js'); ?>"></script>
         <?php else: ?>
-            <script async src="<?php echo get_libUrl('asserts/lib/tex-mml-chtml.js', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'); ?>"></script>
+            <script async src="<?php echo get_libUrl('assets/lib/tex-mml-chtml.js', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'); ?>"></script>
         <?php endif; ?>
     <?php endif; ?>
-    <script src="<?php echo get_libUrl('asserts/lib/SmoothScroll.min.js'); ?>"></script>
-    <script src="<?php echo get_libUrl('asserts/lib/pangu.min.js', 'https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/SmoothScroll.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/pangu.min.js', 'https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js'); ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             pangu.autoSpacingPage();
@@ -43,8 +43,8 @@
     </script>
     
     <?php if (($this->is('post')||$this->is('page')) && (!array_key_exists('is_archive', $GLOBALS) || !$GLOBALS['is_archive'])): ?>
-    <script src="<?php echo get_libUrl('asserts/lib/clipboard.min.js', 'https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js'); ?>"></script>
-    <script src="<?php echo get_libUrl('asserts/lib/tocbot.min.js', 'https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/clipboard.min.js', 'https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/tocbot.min.js', 'https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js'); ?>"></script>
     <?php endif ?>
 
     <?php if(($this->is('page') || $this->is('post')) && $this->fields->textIndent === 'true'): ?>
@@ -52,13 +52,13 @@
     <style>article p{text-indent: 2em;}article p>img{transform:translateX(-2rem);}</style>
     <?php endif; ?>
 
-    <script src="<?php echo get_libUrl('asserts/lib/lazyload.min.js', 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('asserts/js/article.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('asserts/lib/highlight/vscode.css'); ?>">
+    <script src="<?php echo get_libUrl('assets/lib/lazyload.min.js', 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/article.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/lib/highlight/vscode.css'); ?>">
     <script src="<?php $this->options->themeUrl('script.js'); ?>"></script>
 
     <?php if (array_key_exists('is_archive', $GLOBALS) && $GLOBALS['is_archive']): ?>
-    <script src="<?php $this->options->themeUrl('asserts/js/archive.js') ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/archive.js') ?>"></script>
     <script>
         $(function () {
             $.fn.tagcloud.defaults = {
@@ -78,7 +78,7 @@
     </style>
     <?php endif; ?>
     <?php if($this->options->musicUrl): ?>
-    <script src="<?php echo get_libUrl('asserts/lib/plyr/plyr.min.js', 'https://cdn.jsdelivr.net/npm/plyr@3.6.3/dist/plyr.min.js'); ?>"></script>
+    <script src="<?php echo get_libUrl('assets/lib/plyr/plyr.min.js', 'https://cdn.jsdelivr.net/npm/plyr@3.6.3/dist/plyr.min.js'); ?>"></script>
     <script>
         const player = new Plyr('#player', { controls: '',loadSprite: false });
         /*
@@ -86,7 +86,7 @@
             type: 'audio',
             sources: [
                 {
-                    src: '/asserts/lib/plyr/test.mp3',
+                    src: '/assets/lib/plyr/test.mp3',
                     type: 'audio/mp3',
                 },
             ],

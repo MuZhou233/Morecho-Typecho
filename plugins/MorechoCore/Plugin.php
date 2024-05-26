@@ -1,11 +1,11 @@
 <?php
 /**
- * 与 Morecho 主题共同使用，请启用前查看使用说明
+ * Morecho 主题核心插件，请启用前查看使用说明
  * 
  * 
  * @package Morecho Theme Plugin - Core
  * @author MuZhou233
- * @version 0.4.0
+ * @version 0.6.0
  * @link https://typecho.mosar.in
  */
 class MorechoCore_Plugin implements Typecho_Plugin_Interface
@@ -14,7 +14,7 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
      * 插件版本号
      * @var string
      */
-    const _VERSION = '0.3.4';
+    const _VERSION = '0.6.0';
     
     /**
      * 激活插件方法,如果激活失败,直接抛出异常
@@ -27,8 +27,8 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
     {
         Helper::addRoute('Morecho_archive_page', '/archive/', 'Widget_Archive', 'render');
         Typecho_Plugin::factory('Widget_Archive')->handle = array('MorechoCore_Plugin', 'archive');
-        //Typecho_Plugin::factory('admin/header.php')->header = array('MorechoCore_Plugin', 'header');
-        //Typecho_Plugin::factory('admin/footer.php')->end = array('MorechoCore_Plugin', 'footer');
+        Typecho_Plugin::factory('admin/header.php')->header = array('MorechoCore_Plugin', 'header');
+        Typecho_Plugin::factory('admin/footer.php')->end = array('MorechoCore_Plugin', 'footer');
         //Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('MorechoCore_Plugin', 'markdown');
         //Typecho_Plugin::factory('Widget_Abstract_Comments')->markdown = array('MorechoCore_Plugin', 'markdown_safemod');
         //Typecho_Plugin::factory('admin/editor-js.php')->markdownEditor = array('MorechoCore_Plugin', 'markdown_editor');
@@ -66,7 +66,7 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
         // 是否修改后台样式
         $no_change_dashboard_style = new Typecho_Widget_Helper_Form_Element_Radio(
             'no_change_dashboard_style',
-            array('0' => _t('不修改'), '1' => _t('修改')), '1', _t('是否修改后台外观'), _t('后台外观包括对移动端的适配修复')
+            array('0' => _t('不修改'), '1' => _t('修改')), '1', _t('是否修改后台外观'), _t('')
         );
         $form->addInput($no_change_dashboard_style);
         // 是否启用lazyload
@@ -97,8 +97,8 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
         $options = Typecho_Widget::widget('Widget_Options')->plugin('MorechoCore');
         if($options->no_change_dashboard_style != '0')
             $header .= '<link rel="stylesheet" href="'.Helper::options()->pluginUrl.'/MorechoCore/style.css"/>';
-        $header .=  '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/article.css">';
-        $header .= '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/asserts/css/morecho.css">';
+        $header .=  '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/assets/css/article.css">';
+        $header .= '<link rel="stylesheet" href="'.Helper::options()->siteUrl.'usr/themes/'.$options->theme_folder_name.'/assets/css/morecho.css">';
         return $header;
     }
 
@@ -132,22 +132,26 @@ class MorechoCore_Plugin implements Typecho_Plugin_Interface
 
         /** 设置头部feed */
         /** RSS 2.0 */
-        $data->setFeedUrl($data->feedUrl);
 
-        /** RSS 1.0 */
-        $data->setFeedRssUrl($data->feedRssUrl);
+        //对自定义首页使用全局变量
+        if (!$data->makeSinglePageAsFrontPage) {
+            $data->archiveFeedUrl = $data->feedUrl;
 
-        /** ATOM 1.0 */
-        $data->setFeedAtomUrl($data->feedAtomUrl);
+            /** RSS 1.0 */
+            $data->archiveFeedRssUrl = $data->feedRssUrl;
 
-        /** 设置标题 */
-        $data->setArchiveTitle($data->title);
+            /** ATOM 1.0 */
+            $data->archiveFeedAtomUrl = $data->feedAtomUrl;
 
-        /** 设置关键词 */
-        $data->setKeywords(implode(',', Typecho_Common::arrayFlatten($data->tags, 'name')));
+            /** 设置标题 */
+            $data->archiveTitle = $data->title;
 
-        /** 设置描述 */
-        $data->setDescription($data->description);
+            /** 设置关键词 */
+            $data->archiveKeywords = implode(',', array_column($data->tags, 'name'));
+
+            /** 设置描述 */
+            $data->archiveDescription = $data->plainExcerpt;
+        }
 
         return false;
     }

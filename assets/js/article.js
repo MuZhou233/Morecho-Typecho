@@ -34,7 +34,7 @@ window.article = function ($){
     window.setTimeout(function(){
         var eachcount = $('article pre code').length;
         var url = document.scripts[document.scripts.length - 1].src;
-        const worker = new Worker(url = url.substring(0, url.lastIndexOf('/'))+'/asserts/js/highlight-worker.js');
+        const worker = new Worker(url = url.substring(0, url.lastIndexOf('/'))+'/assets/js/highlight-worker.js');
         $('article pre code').each(function(){
             var id;
             do{

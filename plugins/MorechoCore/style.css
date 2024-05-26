@@ -14,56 +14,60 @@ body {
   box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
   border-radius: 0.25rem;
 }
-.typecho-head-nav {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 1rem;
-  padding-top: 0.5rem;
-  border-radius: 0;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  background-color: #fff;
-}
-.typecho-head-nav #typecho-nav-list .parent a,
-.typecho-head-nav .operate a,
-.typecho-head-nav:hover #typecho-nav-list .focus .parent a {
-  background-color: #fff;
-  color: rgb(23, 43, 77);
-  border-radius: 0.25em;
-  margin: 0;
-  font-weight: bold;
-  border: unset;
-  transition: transform 0.3s ease 0s;
-  transform: unset;
-}
-.typecho-head-nav #typecho-nav-list .root:hover .parent a,
-.typecho-head-nav .operate a:hover,
-.typecho-head-nav #typecho-nav-list .focus .parent a,
-.typecho-head-nav:hover #typecho-nav-list .focus:hover .parent a {
-  background-color: rgb(23, 43, 77);
-  color: #eee;
-  transform: translateY(0.35em);
-}
-.typecho-head-nav #typecho-nav-list .child {
-  border-radius: 0.25em;
-  border-top-left-radius: 0;
-  overflow: hidden;
-}
-.typecho-head-nav #typecho-nav-list .child a {
-  background-color: rgb(23, 43, 77);
-  color: #eee;
-  transition: all 0.3s ease 0s;
-}
-.typecho-head-nav #typecho-nav-list .child a:hover {
-  background-color: rgba(23, 43, 77, 0.8);
-  color: #eee;
-  padding-left: 25px;
-}
-#typecho-nav-list .child li.focus a {
-  color: #fff;
-}
-#typecho-nav-list ul:first-child {
-  border: unset;
+@media (min-width: 576px) {
+  .typecho-head-nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+  }
+  .typecho-head-nav {
+    border-radius: 0;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background-color: #fff;
+  }
+  .typecho-head-nav #typecho-nav-list > ul .parent a,
+  .typecho-head-nav .operate a,
+  .typecho-head-nav:hover #typecho-nav-list > ul .focus .parent a {
+    background-color: #fff;
+    color: rgb(23, 43, 77);
+    border-radius: 0.25em;
+    margin: 0;
+    font-weight: bold;
+    border: unset;
+    transition: transform 0.3s ease 0s;
+    transform: unset;
+  }
+  .typecho-head-nav #typecho-nav-list .root:hover .parent a,
+  .typecho-head-nav .operate a:hover,
+  .typecho-head-nav #typecho-nav-list .focus .parent a,
+  .typecho-head-nav:hover #typecho-nav-list .focus:hover .parent a {
+    background-color: rgb(23, 43, 77);
+    color: #eee;
+    transform: translateY(0.35em);
+  }
+  .typecho-head-nav #typecho-nav-list .child {
+    border-radius: 0.25em;
+    border-top-left-radius: 0;
+    overflow: hidden;
+  }
+  .typecho-head-nav #typecho-nav-list .child a {
+    background-color: rgb(23, 43, 77);
+    color: #eee;
+    transition: all 0.3s ease 0s;
+  }
+  .typecho-head-nav #typecho-nav-list .child a:hover {
+    background-color: rgba(23, 43, 77, 0.8);
+    color: #eee;
+    padding-left: 25px;
+  }
+  #typecho-nav-list .child li.focus a {
+    color: #fff;
+  }
+  .typecho-head-nav #typecho-nav-list ul:first-child {
+    border: unset;
+  }
 }
 .profile-avatar {
   border-radius: 100%;

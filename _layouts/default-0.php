@@ -17,7 +17,7 @@
     <meta name="description" content="<?php $this->options->description(); ?>" />
     <meta name="keywords" content="<?php $this->options->keywords(); ?>" />
     <link rel="shortcut icon" href="<?php if($this->options->favicon)$this->options->favicon(); ?>">
-    <link rel="stylesheet" href="<?php echo get_libUrl('asserts/lib/bootstrap/bootstrap.min.css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo get_libUrl('assets/lib/bootstrap/bootstrap.min.css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <?php $this->header(); ?>
 </head>

@@ -54,7 +54,7 @@
                 <a class="nav-link <?php echo $this->is('page', $pages->slug)?'active':''; ?>"
                     href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
                 <?php endwhile; ?>
-                <?php if(array_key_exists('MorechoCore', Typecho_Plugin::export()['activated'])): ?>
+                <?php if(array_key_exists('MorechoFriends', Typecho_Plugin::export()['activated'])): ?>
                     <?php if($this->options->linkAbout != '0'): ?>
                     <a class="nav-link <?php echo $this->is('author', $this->options->linkAbout)?'active':''; ?>"
                         href="/author/<?php echo $this->options->linkAbout; ?>">关于</a>

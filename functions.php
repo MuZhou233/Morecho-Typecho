@@ -28,16 +28,16 @@ function themeConfig($form)
     $hideCategory = new Typecho_Widget_Helper_Form_Element_Text('hideCategory', NULL, NULL, _t('在归档中隐藏分类'), _t('填入分类缩略名，仅支持一个'));
     $form->addInput($hideCategory->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 关于链接
-    $linkAbout = new Typecho_Widget_Helper_Form_Element_Text('linkAbout', NULL, NULL, _t('添加“关于”链接'), _t('仅在启用MorechoFriends插件时生效，填入你的用户id（一般为1）即显示地址为<code>/author/ID</code>名为“关于”的链接，填入0不显示链接'));
+    $linkAbout = new Typecho_Widget_Helper_Form_Element_Text('linkAbout', NULL, _t('0'), _t('添加“关于”链接'), _t('仅在启用MorechoFriends插件时生效，填入你的用户id（一般为1）即显示地址为<code>/author/ID</code>名为“关于”的链接，填入0不显示链接'));
     $form->addInput($linkAbout->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 友链链接
-    $linkFriends = new Typecho_Widget_Helper_Form_Element_Text('linkFriends', NULL, NULL, _t('添加“友链”链接'), _t('仅在启用MorechoFriends插件时生效，链接地址为<code>/link/</code>，在此填入链接名称，填0即不显示链接'));
+    $linkFriends = new Typecho_Widget_Helper_Form_Element_Text('linkFriends', NULL, _t('0'), _t('添加“友链”链接'), _t('仅在启用MorechoFriends插件时生效，链接地址为<code>/link/</code>，在此填入链接名称，填0即不显示链接'));
     $form->addInput($linkFriends->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义音乐名称
     $musicName = new Typecho_Widget_Helper_Form_Element_Text('musicName', NULL, NULL, _t('音乐播放器显示的标题'), _t(''));
     $form->addInput($musicName->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义音乐源
-    $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('仅支持mp3格式，留空则不显示播放器，主题文件中包含了一个测试音频，填入<code>/usr/themes/Morecho/asserts/lib/plyr/test.mp3</code>即可'));
+    $musicUrl = new Typecho_Widget_Helper_Form_Element_Text('musicUrl', NULL, NULL, _t('音乐播放器的音乐地址'), _t('仅支持mp3格式，留空则不显示播放器，主题文件中包含了一个测试音频，填入<code>/usr/themes/Morecho/assets/lib/plyr/test.mp3</code>即可'));
     $form->addInput($musicUrl->addRule('xssCheck', _t('请不要使用特殊字符')));
     // 自定义页脚
     $footerCopyright = new Typecho_Widget_Helper_Form_Element_Textarea('footerCopyright', NULL, NULL, _t('自定义页脚'), _t('默认为<code>&lt;div&gt;&amp;copy; [当前年份] · Powered by Typecho · Theme by &lt;a href=&quot;https://github.com/muzhou233/Morecho-Typecho&quot;&gt;Morecho&lt;/a&gt;&lt;/div&gt;</code></br>如果需要添加备案号，复制前面的内容，修改年份，并在后面添加<code>&lt;div&gt;备案号内容&lt;/div&gt;</code><br/>你也可以选择不保留原有的版权声明</br>留空则使用默认'));
